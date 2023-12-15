@@ -4,3 +4,10 @@
 // Användare ska kunna sortera habits på
 // Streak (högst till lägst, och lägst till högst)
 // Prioritet (högst till lägst, och lägst till högst)
+export default function Habits() {
+  return (
+    <div>
+      <h1>Habits</h1>
+    </div>
+  );
+}

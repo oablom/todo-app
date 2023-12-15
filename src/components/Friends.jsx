@@ -6,3 +6,10 @@
 // Kön (gender)
 // Listan ska kunna filtreras baserat på kön, samt maxålder och mininumålder.
 // Listan ska kunna sorteras på förnamn, efternamn, samt ålder.
+export default function Friends() {
+  return (
+    <div>
+      <h1>Friends</h1>
+    </div>
+  );
+}
