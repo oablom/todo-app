@@ -1,23 +1,20 @@
 import logo from "./logo.svg";
 import "./styles/style.css";
+// import Habits from "./components/Habits";
+// import Tasks from "./components/Tasks";
+// import Friends from "./components/Friends";
+import TaskPage from "./pages/TaskPage";
+import HabitPage from "./pages/HabitPage";
+import FriendPage from "./pages/FriendPage";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home />
+      {/* <TaskPage />
+      <HabitPage />
+      <FriendPage /> */}
     </div>
   );
 }

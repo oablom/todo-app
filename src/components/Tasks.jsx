@@ -5,3 +5,11 @@
 // Redigera ärendet.
 // Samtliga ärenden ska kunna filtreras efter kategori.
 // Samtliga ärenden ska kunna sorteras baserat på titel (bokstavsordning - stigande och fallande) och tidsestimat (stigande och fallande)
+
+export default function Tasks() {
+  return (
+    <div>
+      <h1>Tasks</h1>
+    </div>
+  );
+}
