@@ -1,11 +1,10 @@
-import logo from "./logo.svg";
-import "./styles/style.css";
+import "./styles/style.css"
 
-import TaskPage from "./pages/TaskPage";
-import HabitPage from "./pages/HabitPage";
-import FriendPage from "./pages/FriendPage";
-import Home from "./pages/Home";
-import { Routes, Route } from "react-router-dom";
+import TaskPage from "./pages/TaskPage"
+import HabitPage from "./pages/HabitPage"
+import FriendPage from "./pages/FriendPage"
+import Home from "./pages/Home"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
       <HabitPage />
       <FriendPage /> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
