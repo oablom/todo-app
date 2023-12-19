@@ -72,7 +72,7 @@ export default function Tasks() {
             {editTaskIndex !== index ? (
               <h4>{task.type}</h4>
             ) : (
-              <input type="text" />
+              <input type="text" /> //ÄNDRA TILL SELECT
             )}
             <button onClick={() => removeTask(index)}>Remove this task</button>
             <button
