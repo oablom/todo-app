@@ -6,10 +6,10 @@
 // Kön (gender)
 // Listan ska kunna filtreras baserat på kön, samt maxålder och mininumålder.
 // Listan ska kunna sorteras på förnamn, efternamn, samt ålder.
-import { useState, useEffect } from "react"
-import InfoFriend from "./InfoFriend"
-import FilterFriends from "./FilterFriends"
-import SortFriends from "./SortFriends"
+import { useState, useEffect } from "react";
+import InfoFriend from "./InfoFriend";
+import FilterFriends from "./FilterFriends";
+import SortFriends from "./SortFriends";
 
 export default function Friends() {
   //Initialize state for friends and filtered friends
@@ -46,18 +46,18 @@ export default function Friends() {
       dob: "1998-12-14T02:07:31.630Z",
       gender: "Male",
     },
-  ])
-  const [filteredFriends, setFilteredFriends] = useState([])
+  ]);
+  const [filteredFriends, setFilteredFriends] = useState([]);
 
   // Function to update filteredFriends based on filters
   const updateFilteredFriends = (filteredList) => {
-    setFilteredFriends(filteredList)
-  }
+    setFilteredFriends(filteredList);
+  };
   //Function to fetch new friend data
   const getData = async () => {
     try {
-      const response = await fetch("https://randomuser.me/api")
-      const json = await response.json()
+      const response = await fetch("https://randomuser.me/api");
+      const json = await response.json();
       // Add a new friend based on fetched data
       let updatedFriends = [
         ...myFriends,
@@ -70,19 +70,19 @@ export default function Friends() {
           gender: `${json.results[0].gender}`,
         },
         //construct a new friend object from fetched data
-      ]
+      ];
       //update both friends and filtered friends
-      setMyFriends(updatedFriends)
-      setFilteredFriends(updatedFriends)
-      console.log(json)
+      setMyFriends(updatedFriends);
+      setFilteredFriends(updatedFriends);
+      console.log(json);
     } catch (error) {
-      console.error("Error fetching data:", error)
+      console.error("Error fetching data:", error);
     }
-  }
+  };
   //useEffect to set filteredFriends when myFriends changes
   useEffect(() => {
-    setFilteredFriends(myFriends)
-  }, [myFriends])
+    setFilteredFriends(myFriends);
+  }, [myFriends]);
 
   // Return the JSX for rendering the Friends component
   return (
@@ -98,7 +98,7 @@ export default function Friends() {
       />
       {filteredFriends.length > 0 ? (
         filteredFriends.map((friend, index) => {
-          return <InfoFriend key={index} data={friend} />
+          return <InfoFriend key={index} data={friend} />;
         })
       ) : (
         <p>No matching friends found.</p>
@@ -106,5 +106,5 @@ export default function Friends() {
 
       <button onClick={() => getData()}>Add New Friend</button>
     </div>
-  )
+  );
 }

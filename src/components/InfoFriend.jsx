@@ -1,14 +1,14 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 export default function InfoFriend(props) {
-  let { firstName, lastName, picture, email, dob, gender } = props.data
+  let { firstName, lastName, picture, email, dob, gender } = props.data;
 
-  let [showInfo, setShowInfo] = useState(false)
+  let [showInfo, setShowInfo] = useState(false);
   return (
     <>
       <div
         onClick={() => {
-          setShowInfo(!showInfo)
+          setShowInfo(!showInfo);
         }}
       >
         <h3>
@@ -30,5 +30,5 @@ export default function InfoFriend(props) {
         </ul>
       )}
     </>
-  )
+  );
 }
