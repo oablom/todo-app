@@ -18,6 +18,7 @@ export default function NewTask(props) {
         if (response.ok) {
           const data = await response.json();
           setFetchedData(data);
+          setTitle(fetchedData.activity);
         } else {
           setFetchedData("Error fetching data: ", response.status);
         }
@@ -46,7 +47,7 @@ export default function NewTask(props) {
     taskForm.reset();
   }
   const taskForm = document.getElementById("task-form");
-  const inputTitle = document.getElementById("title");
+  const inputTitle = document.getElementById("newtask-title");
 
   return (
     <div className="new-task">
@@ -56,7 +57,7 @@ export default function NewTask(props) {
         <input
           required
           type="text"
-          id="title"
+          id="newtask-title"
           name="title"
           // value={randomise ? fetchedData.activity : ""}
           onChange={(e) => setTitle(e.target.value)}
@@ -67,7 +68,7 @@ export default function NewTask(props) {
         <input
           required
           type="text"
-          id="description"
+          id="newtask-description"
           name="description"
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -76,7 +77,7 @@ export default function NewTask(props) {
         <input
           required
           type="number"
-          id="timeEstimate"
+          id="newtask-timeEstimate"
           name="timeEstimate"
           onChange={(e) => setTimeEstimate(e.target.value)}
         />
@@ -84,7 +85,7 @@ export default function NewTask(props) {
         <label htmlFor="type">Type:</label>
         <select
           required
-          name="type"
+          name="newtask-type"
           id="type"
           onChange={(e) => setType(e.target.value)}
         >
@@ -100,7 +101,6 @@ export default function NewTask(props) {
             type="button"
             onClick={() => {
               setRandomise(!randomise);
-              setTitle(fetchedData.activity);
               inputTitle.value = fetchedData.activity;
             }}
           >

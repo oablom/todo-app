@@ -15,10 +15,10 @@ export default function Tasks() {
   const [taskArray, setTaskArray] = useState([]);
   // function Task()
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [timeEstimate, setTimeEstimate] = useState("");
-  const [type, setType] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [timeEstimate, setTimeEstimate] = useState("");
+  // const [type, setType] = useState("");
 
   function taskArrayFunction(newTask) {
     setTaskArray([...taskArray, newTask]);
@@ -41,6 +41,16 @@ export default function Tasks() {
   // }
 
   // function editTask(index)
+
+  // useEffect(() => {
+  //   titleInput.value
+  // }, [titleInput.value]);
+
+  const titleInput = document.getElementById("title");
+  const descriptionInput = document.getElementById("description");
+  const timeEstimateInput = document.getElementById("timeEstimate");
+  const typeInput = document.getElementById("type");
+
   return (
     <div className="tasks">
       <h1>Tasks</h1>
@@ -48,31 +58,66 @@ export default function Tasks() {
       <button onClick={() => setTaskArray([])}>Clear all todos</button>
       {showNewTask && <NewTask taskArrayFunction={taskArrayFunction} />}
       {taskArray.map((task, index) => {
+        const updatedTask = { ...task };
+        const newTaskArray = [...taskArray];
+
         return (
           <div key={index + 1} className="task-wrapper">
             <h3>Todo: </h3>
             {editTaskIndex !== index ? (
               <h3>{task.title}</h3>
             ) : (
-              <input type="text" />
+              <input
+                id="title"
+                type="text"
+                defaultValue={task.title}
+                onChange={(e) => {
+                  updatedTask.title = e.target.value;
+                }}
+              />
             )}
             <h4>Description: </h4>{" "}
             {editTaskIndex !== index ? (
               <h4>{task.description}</h4>
             ) : (
-              <input type="text" />
+              <input
+                id="description"
+                type="text"
+                defaultValue={task.description}
+                onChange={(e) => {
+                  updatedTask.description = e.target.value;
+                }}
+              />
             )}
             <h4>Estimated time: </h4>
             {editTaskIndex !== index ? (
               <h4>{task.timeEstimate}</h4>
             ) : (
-              <input type="text" />
+              <input
+                id="timeEstimate"
+                type="text"
+                defaultValue={task.timeEstimate}
+                onChange={(e) => {
+                  updatedTask.timeEstimate = e.target.value;
+                }}
+              />
             )}
             <h4>Type of activity: </h4>
             {editTaskIndex !== index ? (
               <h4>{task.type}</h4>
             ) : (
-              <input type="text" /> //ÄNDRA TILL SELECT
+              <select
+                required
+                name="type"
+                id="type"
+                defaultValue={task.type}
+                onChange={(e) => (updatedTask.type = e.target.value)}
+              >
+                <option value="">Choose task type</option>
+                <option>Work related</option>
+                <option>Hobby</option>
+                <option>Sports</option>
+              </select>
             )}
             <button onClick={() => removeTask(index)}>Remove this task</button>
             <button
@@ -81,12 +126,21 @@ export default function Tasks() {
                 editTaskIndex !== index
                   ? setEditTaskIndex(index)
                   : setEditTaskIndex(null);
-                console.log(editTask);
-                console.log(editTaskIndex);
               }}
             >
               Edit task
             </button>
+            {editTask && (
+              <button
+                onClick={() => {
+                  newTaskArray[index] = updatedTask;
+                  setTaskArray(newTaskArray);
+                  console.log(taskArray);
+                }}
+              >
+                Save changes
+              </button>
+            )}
           </div>
         );
       })}
