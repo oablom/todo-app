@@ -58,7 +58,7 @@ export default function Habits() {
     <div>
       <div className="habits">
         <h1>Habits</h1>
-        {/* FILTERED HABITS - FILTRERADE HABITS */}
+        {/* FILTRERADE HABITS */}
         
         <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
           <option value="all">Filter by priority:</option>
@@ -67,11 +67,6 @@ export default function Habits() {
           <option value="mid">Medium</option>
           <option value="low">Low</option>
         </select>
-
-        {/* <label><input type="radio" value="all" checked={priorityFilter === "all"} onChange={(e) => setPriorityFilter(e.target.value)} />All</label>
-        <label><input type="radio" value="low" checked={priorityFilter === "low"} onChange={(e) => setPriorityFilter(e.target.value)} />Low</label>
-        <label><input type="radio" value="mid" checked={priorityFilter === "mid"} onChange={(e) => setPriorityFilter(e.target.value)} />Medium</label>
-        <label><input type="radio" value="high" checked={priorityFilter === "high"} onChange={(e) => setPriorityFilter(e.target.value)} />High</label> */}
 
         {/* SORTERADE HABITS */}
         <label><input type="radio" value="ascending" checked={sortedHabits === "ascending"} onChange={() => setSortedHabits([...habits].sort((high,low) => low.priority.localeCompare(high.priority)))} />Ascending</label>
@@ -89,5 +84,4 @@ export default function Habits() {
       <NewHabit habitList={habits} updateHabitList={setHabits}/>
     </div>
   );
-  
 };
