@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./styles/style.css";
 
 import TaskPage from "./pages/TaskPage";

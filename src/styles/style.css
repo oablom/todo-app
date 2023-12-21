@@ -15,6 +15,104 @@
   text-decoration: none;
 }
 
+<<<<<<< HEAD
+.friends {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.friends h1 {
+  text-align: center;
+  color: #333;
+}
+.friends button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #e6eaef;
+  color: #0c0c0c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.friends button:hover {
+  background-color: #aaaeb3;
+}
+
+.infoFriend div {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.infoFriend img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+}
+.infoFriend h3 {
+  font-size: 18px;
+}
+.infoFriend ul {
+  list-style: none;
+}
+.infoFriend ul li {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.filterFriends {
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.filterFriends h2 {
+  font-size: 20px;
+}
+.filterFriends label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.filterFriends select,
+.filterFriends input[type=number] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.sortFriends {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sortFriends button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  background-color: #e6eaef;
+  color: #0c0c0c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sortFriends button:hover {
+  background-color: #aaaeb3;
+=======
 /* NewTask Component */
 .new-task {
   width: 30%;
@@ -113,4 +211,5 @@
   .tasks h1 {
     padding-top: 0px;
   }
+>>>>>>> 7414e5b0635b9ebdd128a6752c3c87efe5ca74b4
 }/*# sourceMappingURL=style.css.map */
