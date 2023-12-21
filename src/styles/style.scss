@@ -14,4 +14,44 @@
   }
 }
 
-//Habits
+//NewTask
+.new-task {
+  .task-form {
+    display: flex;
+    flex-direction: column;
+    .form-buttons {
+      display: flex;
+      button {
+        margin-left: 10px;
+        width: 100px;
+        height: 50px;
+      }
+      :nth-child(1) {
+        margin-left: 0;
+      }
+    }
+    input,
+    select {
+      width: 300px;
+    }
+    button {
+      max-width: 100px;
+    }
+  }
+}
+//Tasks
+
+.tasks {
+  margin-left: 10px;
+  .task-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+  }
+}

@@ -134,7 +134,7 @@ export default function Tasks() {
       >
         <option value="">Choose an element</option>
         <option value="title">Title (A-Z)</option>
-        <option value="timeEstimate">Time estimation (longest-shortest)</option>
+        <option value="timeEstimate">Time estimation (shortest-longest)</option>
         <option value="type">Type (A-Z)</option>
       </select>
 
