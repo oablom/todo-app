@@ -66,7 +66,7 @@ export default function NewTask(props) {
 
         <br />
         <label htmlFor="description">Description:</label>
-        <input
+        <textarea
           required
           type="text"
           id="newtask-description"
@@ -115,7 +115,7 @@ export default function NewTask(props) {
               setTitle(fetchedData.activity);
             }}
           >
-            Randomize Activity
+            Randomise Activity
           </button>
           <button
             onClick={() => {

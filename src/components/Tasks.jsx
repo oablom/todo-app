@@ -97,16 +97,18 @@ export default function Tasks() {
   return (
     <div className="tasks">
       <h1>Tasks</h1>
-      <button onClick={() => setShowNewTask(!showNewTask)}>NewTask</button>
-      <button
-        onClick={() => {
-          setTaskArray([]);
-          setFilteredTaskArray([]);
-          // setOptionValue("");
-        }}
-      >
-        Clear all todos
-      </button>
+      <div className="button-wrapper">
+        <button onClick={() => setShowNewTask(!showNewTask)}>NewTask</button>
+        <button
+          onClick={() => {
+            setTaskArray([]);
+            setFilteredTaskArray([]);
+            // setOptionValue("");
+          }}
+        >
+          Clear all todos
+        </button>
+      </div>
       {showNewTask && <NewTask taskArrayFunction={taskArrayFunction} />}
       <br />
 
@@ -137,100 +139,121 @@ export default function Tasks() {
         <option value="timeEstimate">Time estimation (shortest-longest)</option>
         <option value="type">Type (A-Z)</option>
       </select>
+      <div className="todos-wrapper">
+        {(filterByTaskType === "" ? taskArray : filteredTaskArray).map(
+          (task, index) => {
+            const updatedTask = { ...task };
+            const newTaskArray = [...taskArray];
 
-      {(filterByTaskType === "" ? taskArray : filteredTaskArray).map(
-        (task, index) => {
-          const updatedTask = { ...task };
-          const newTaskArray = [...taskArray];
+            return (
+              <div key={(task, index + 1)} className="task-wrapper">
+                <div>
+                  {" "}
+                  <h3>Todo: </h3>
+                  {editTaskIndex !== index ? (
+                    <h3>{updatedTask.title}</h3>
+                  ) : (
+                    <input
+                      id={"title" + index}
+                      type="text"
+                      defaultValue={updatedTask.title}
+                      onChange={(e) => {
+                        updatedTask.title = e.target.value;
+                      }}
+                    />
+                  )}
+                </div>
+                <div>
+                  <h4>Description: </h4>{" "}
+                  {editTaskIndex !== index ? (
+                    <h4>{updatedTask.description}</h4>
+                  ) : (
+                    <input
+                      id={"description" + index}
+                      type="text"
+                      defaultValue={updatedTask.description}
+                      onChange={(e) => {
+                        updatedTask.description = e.target.value;
+                      }}
+                    />
+                  )}
+                </div>
+                <div>
+                  {" "}
+                  <h4>Estimated time: </h4>
+                  {editTaskIndex !== index ? (
+                    <h4>{updatedTask.timeEstimate} minutes</h4>
+                  ) : (
+                    <input
+                      id={"timeEstimate" + index}
+                      type="text"
+                      defaultValue={updatedTask.timeEstimate}
+                      onChange={(e) => {
+                        updatedTask.timeEstimate = e.target.value;
+                      }}
+                    />
+                  )}
+                </div>
+                <div>
+                  {" "}
+                  <h4>Type of activity: </h4>
+                  {editTaskIndex !== index ? (
+                    <h4>{updatedTask.type}</h4>
+                  ) : (
+                    <select
+                      required
+                      name="type"
+                      id={"type" + index}
+                      defaultValue={updatedTask.type}
+                      onChange={(e) => (updatedTask.type = e.target.value)}
+                    >
+                      <option value="">Choose task type</option>
+                      <option>Work related</option>
+                      <option>Hobby</option>
+                      <option>Sports</option>
+                    </select>
+                  )}
+                </div>
 
-          return (
-            <div key={(task, index + 1)} className="task-wrapper">
-              <h3>Todo: </h3>
-              {editTaskIndex !== index ? (
-                <h3>{updatedTask.title}</h3>
-              ) : (
-                <input
-                  id={"title" + index}
-                  type="text"
-                  defaultValue={updatedTask.title}
-                  onChange={(e) => {
-                    updatedTask.title = e.target.value;
-                  }}
-                />
-              )}
-              <h4>Description: </h4>{" "}
-              {editTaskIndex !== index ? (
-                <h4>{updatedTask.description}</h4>
-              ) : (
-                <input
-                  id={"description" + index}
-                  type="text"
-                  defaultValue={updatedTask.description}
-                  onChange={(e) => {
-                    updatedTask.description = e.target.value;
-                  }}
-                />
-              )}
-              <h4>Estimated time: </h4>
-              {editTaskIndex !== index ? (
-                <h4>{updatedTask.timeEstimate}</h4>
-              ) : (
-                <input
-                  id={"timeEstimate" + index}
-                  type="text"
-                  defaultValue={updatedTask.timeEstimate}
-                  onChange={(e) => {
-                    updatedTask.timeEstimate = e.target.value;
-                  }}
-                />
-              )}
-              <h4>Type of activity: </h4>
-              {editTaskIndex !== index ? (
-                <h4>{updatedTask.type}</h4>
-              ) : (
-                <select
-                  required
-                  name="type"
-                  id={"type" + index}
-                  defaultValue={updatedTask.type}
-                  onChange={(e) => (updatedTask.type = e.target.value)}
-                >
-                  <option value="">Choose task type</option>
-                  <option>Work related</option>
-                  <option>Hobby</option>
-                  <option>Sports</option>
-                </select>
-              )}
-              <button onClick={() => removeTask(index)}>
-                Remove this task
-              </button>
-              <button
-                onClick={() => {
-                  setEditTask(!editTask);
-                  editTaskIndex !== index
-                    ? setEditTaskIndex(index)
-                    : setEditTaskIndex(null);
-                }}
-              >
-                Edit task
-              </button>
-              {editTask && editTaskIndex === index && (
                 <button
                   onClick={() => {
-                    newTaskArray[index] = updatedTask;
-                    setTaskArray(newTaskArray);
-                    setSaveChanges(!saveChanges);
-
-                    console.log(taskArray);
+                    setEditTask(!editTask);
+                    editTaskIndex !== index
+                      ? setEditTaskIndex(index)
+                      : setEditTaskIndex(null);
                   }}
                 >
-                  Save changes
+                  Edit task
                 </button>
-              )}
-            </div>
-          );
-        }
-      )}
+                <button
+                  onClick={() =>
+                    window.confirm(
+                      "Are you sure you want to delete " + updatedTask.title
+                    )
+                      ? removeTask(index)
+                      : null
+                  }
+                >
+                  Remove this task
+                </button>
+                {editTask && editTaskIndex === index && (
+                  <button
+                    onClick={() => {
+                      newTaskArray[index] = updatedTask;
+                      setTaskArray(newTaskArray);
+                      setSaveChanges(!saveChanges);
+
+                      console.log(taskArray);
+                    }}
+                  >
+                    Save changes
+                  </button>
+                )}
+              </div>
+            );
+          }
+        )}
+      </div>
     </div>
   );
 }
