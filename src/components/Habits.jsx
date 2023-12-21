@@ -40,17 +40,16 @@ export default function Habits() {
 
 
   useEffect(() => {
-
-    let alternativeHabits = [...habits];
-
-     
       
-    let filteredHabits = priorityFilter === "all" ? alternativeHabits : alternativeHabits.filter((habit) => habit.priority === priorityFilter);
-   
-  
-    let sortHabits = [...filteredHabits].sort((a,b) => {return sortedHabits === "ascending" ? a.priority.localeCompare(b.priority) : b.priority.localeCompare(a.priority)});
+    let filteredHabits = priorityFilter === "all" ? habits : habits.filter((habit) => habit.priority === priorityFilter);
 
-    //setHabits(sortHabits)
+    let sortingHabits = sortedHabits ? filteredHabits.sort((a,b) => {
+      let order = sortedHabits === "ascending" ? 1 : -1;
+      return order * a.priority.localeCompare(b.priority)
+    }) : habits;
+
+    setHabits(sortingHabits)
+
   
   }, [habits, priorityFilter, sortedHabits]);  
 
