@@ -4,7 +4,7 @@
 // Användare ska kunna sortera habits på
 // Streak (högst till lägst, och lägst till högst)
 // Prioritet (högst till lägst, och lägst till högst)
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NewHabit from "./NewHabit";
 
 export default function Habits() {
@@ -36,8 +36,23 @@ export default function Habits() {
     streak: 11}]);
 
   const [priorityFilter, setPriorityFilter] = useState("all");
-  const [sortedHabits, setSortedHabits] = useState(null);
+  const [sortedHabits, setSortedHabits] = useState("ascending");
 
+
+  useEffect(() => {
+
+    let alternativeHabits = [...habits];
+
+     
+      
+    let filteredHabits = priorityFilter === "all" ? alternativeHabits : alternativeHabits.filter((habit) => habit.priority === priorityFilter);
+   
+  
+    let sortHabits = [...filteredHabits].sort((a,b) => {return sortedHabits === "ascending" ? a.priority.localeCompare(b.priority) : b.priority.localeCompare(a.priority)});
+
+    //setHabits(sortHabits)
+  
+  }, [habits, priorityFilter, sortedHabits]);  
 
   let editHabit = (i, edit) => {
     setHabits(oldHabits => {
@@ -47,12 +62,7 @@ export default function Habits() {
     }); 
   };
 
- let filteredHabits = () => (
-  priorityFilter === "all" ? habits : habits.filter((habit) => habit.priority === priorityFilter)
 
- );
-
- console.log(sortedHabits)
  
   return (
     <div>
@@ -69,10 +79,10 @@ export default function Habits() {
         </select>
 
         {/* SORTERADE HABITS */}
-        <label><input type="radio" value="ascending" checked={sortedHabits === "ascending"} onChange={() => setSortedHabits([...habits].sort((high,low) => low.priority.localeCompare(high.priority)))} />Ascending</label>
-        <label><input type="radio" value="descending" checked={sortedHabits === "descending"} onChange={() => setSortedHabits([...habits].sort((high,low) => high.priority.localeCompare(low.priority)))} />Descending</label>
+        <label><input type="radio" value="ascending" checked={sortedHabits === "ascending"} onChange={(e) => setSortedHabits(e.target.value)} />Ascending</label>
+        <label><input type="radio" value="descending" checked={sortedHabits === "descending"} onChange={(e) => setSortedHabits(e.target.value)} />Descending</label>
         
-        {filteredHabits().map((habit, i) => (
+        {habits.map((habit, i) => (
           <div  key={i} style={{backgroundColor: habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}}>
             <p>{habit.title}</p>
             <p><button onClick={() => editHabit(i, edit => habit.streak -= 1)}>sub</button>{habit.streak}<button onClick={() => editHabit(i,edit => habit.streak += 1)}>add</button></p>
