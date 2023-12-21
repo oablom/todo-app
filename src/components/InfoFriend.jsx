@@ -5,7 +5,7 @@ export default function InfoFriend(props) {
 
   let [showInfo, setShowInfo] = useState(false);
   return (
-    <>
+    <div className="infoFriend">
       <div
         onClick={() => {
           setShowInfo(!showInfo);
@@ -19,16 +19,25 @@ export default function InfoFriend(props) {
       {showInfo && (
         <ul>
           <li>
-            <h4>{email}</h4>
+            <p>
+              <b>Email: </b>
+              {email}
+            </p>
           </li>
           <li>
-            <h4>{dob.slice(0, -14)}</h4>
+            <p>
+              <b>Dob: </b>
+              {dob.slice(0, -14)}
+            </p>
           </li>
           <li>
-            <h4>{gender.charAt(0).toUpperCase() + gender.slice(1)}</h4>
+            <p>
+              <b>Gender: </b>
+              {gender.charAt(0).toUpperCase() + gender.slice(1)}
+            </p>
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }

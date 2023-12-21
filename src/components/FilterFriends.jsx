@@ -7,19 +7,22 @@ export default function FilterFriends({ myFriends, setFilteredFriends }) {
 
   //Function to filter the friends based on selected criteria
   const filterFriends = () => {
-    let filteredList = [...myFriends]; //create a copy of the friedns list
+    let filteredList = [...myFriends]; //create a copy of the friends list
 
     //Filter by gender when selected
     if (genderFilter) {
+      // Check if a gender filter is selected
       filteredList = filteredList.filter(
-        (friend) => friend.gender.toLowerCase() === genderFilter.toLowerCase()
+        // Use filter method to match friend's gender with selected filter
+        (friend) => friend.gender.toLowerCase() === genderFilter.toLowerCase() // Compare friend's gender with selected filter
       );
     }
     //Filter by minimum age
     if (minAge) {
-      const currentDate = new Date();
-      const minAgeDate = currentDate.getFullYear() - parseInt(minAge, 10);
+      const currentDate = new Date(); //creating an instance of the current date and time.
+      const minAgeDate = currentDate.getFullYear() - parseInt(minAge, 10); //Calculates the year when a person would reach the minimum age by subtracting the specified value from the current year.
       filteredList = filteredList.filter(
+        //the function goes through the friends' list and checks if each friend's birth year is equal to or earlier than the calculated minimum age year. If so, the person stays in the filteredList.
         (friend) => new Date(friend.dob).getFullYear() <= minAgeDate
       );
     }
@@ -27,7 +30,9 @@ export default function FilterFriends({ myFriends, setFilteredFriends }) {
     if (maxAge) {
       const currentDate = new Date();
       const maxAgeDate = currentDate.getFullYear() - parseInt(maxAge, 10);
+      //Filter friends based on maximum age
       filteredList = filteredList.filter(
+        // Include friends whose birth year is equal to or earlier than the calculated maximum age year
         (friend) => new Date(friend.dob).getFullYear() >= maxAgeDate
       );
     }
@@ -36,7 +41,7 @@ export default function FilterFriends({ myFriends, setFilteredFriends }) {
   };
 
   return (
-    <div>
+    <div className="filterFriends">
       <h2>Filter Friends</h2>
       <div>
         <label>Gender:</label>
