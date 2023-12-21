@@ -5,6 +5,7 @@
 // Streak (högst till lägst, och lägst till högst)
 // Prioritet (högst till lägst, och lägst till högst)
 import { useState } from "react";
+import NewHabit from "./NewHabit";
 
 export default function Habits() {
   const [habits, setHabits] = useState([
@@ -28,46 +29,30 @@ export default function Habits() {
     { title: "New Habit 6", priority: "low", streak: 11 },
   ]);
 
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [sortedHabits, setSortedHabits] = useState(null);
+
+
   let editHabit = (i, edit) => {
     setHabits((oldHabits) => {
       let editedHabits = [...oldHabits];
       edit(editedHabits[i]);
       return editedHabits;
-    });
-  };
-
+    }) 
+  }
+  
   return (
     <div>
       <h1>Habits</h1>
       <button>Filter</button>
       {habits.map((habit, i) => (
-        <div
-          key={i}
-          style={{
-            backgroundColor:
-              habit.priority === "low"
-                ? "green"
-                : habit.priority === "mid"
-                ? "yellow"
-                : "red",
-          }}
-        >
+        <div  key={i} style={{backgroundColor: habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}}>
           <p>{habit.title}</p>
-          <p>
-            <button onClick={() => editHabit(i, (edit) => (habit.streak -= 1))}>
-              sub
-            </button>
-            {habit.streak}
-            <button onClick={() => editHabit(i, (edit) => (habit.streak += 1))}>
-              add
-            </button>
-          </p>
-          <button onClick={() => editHabit(i, (edit) => (habit.streak = 0))}>
-            Reset
-          </button>
-        </div>
-      ))}
-      ;
+          <p><button onClick={() => editHabit(i, (edit) => habit.streak -= 1)}>sub</button>{habit.streak}<button onClick={() => editHabit(i,(edit) => habit.streak += 1)}>add</button></p>
+          <button onClick={() => editHabit(i, (edit) => habit.streak = 0)}>Reset</button>
+          </div>
+      ))};
+      
     </div>
   );
-}
+};

@@ -38,28 +38,29 @@ export default function NewTask(props) {
       timeEstimate,
       type,
     };
+    console.log("Submitted Values:", title, description, timeEstimate, type);
 
     props.taskArrayFunction(newTask);
     setTitle("");
     setDescription("");
     setTimeEstimate("");
     setType("");
-    taskForm.reset();
+    // taskForm.reset();
   }
-  const taskForm = document.getElementById("task-form");
-  const inputTitle = document.getElementById("newtask-title");
+  // const taskForm = document.getElementById("task-form");
+  // const inputTitle = document.getElementById("newtask-title");
 
   return (
     <div className="new-task">
       <h1>NewTask Component</h1>
       <form className="task-form" id="task-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
+        <label for="title">Title:</label>
         <input
           required
           type="text"
           id="newtask-title"
-          name="title"
-          // value={randomise ? fetchedData.activity : ""}
+          name="newtask-title"
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
@@ -69,7 +70,8 @@ export default function NewTask(props) {
           required
           type="text"
           id="newtask-description"
-          name="description"
+          name="newtask-description"
+          value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <br />
@@ -78,7 +80,8 @@ export default function NewTask(props) {
           required
           type="number"
           id="newtask-timeEstimate"
-          name="timeEstimate"
+          name="newtask-timeEstimate"
+          value={timeEstimate}
           onChange={(e) => setTimeEstimate(e.target.value)}
         />
         <br />
@@ -86,7 +89,8 @@ export default function NewTask(props) {
         <select
           required
           name="newtask-type"
-          id="type"
+          id="newtask-type"
+          value={type}
           onChange={(e) => setType(e.target.value)}
         >
           <option value="">Choose task type</option>
@@ -96,19 +100,29 @@ export default function NewTask(props) {
         </select>
         <br />
         <div className="form-buttons">
-          <button type="submit">Add Task</button>
+          <button
+            onClick={() => {
+              console.log(title, description, timeEstimate, type);
+            }}
+            type="submit"
+          >
+            Add Task
+          </button>
           <button
             type="button"
             onClick={() => {
               setRandomise(!randomise);
-              inputTitle.value = fetchedData.activity;
+              setTitle(fetchedData.activity);
             }}
           >
             Randomize Activity
           </button>
           <button
             onClick={() => {
-              taskForm.reset();
+              setTitle("");
+              setDescription("");
+              setTimeEstimate("");
+              setType("");
             }}
           >
             Clear form
