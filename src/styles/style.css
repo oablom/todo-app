@@ -15,7 +15,6 @@
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 .friends {
   max-width: 800px;
   margin: 0 auto;
@@ -112,7 +111,8 @@
 }
 .sortFriends button:hover {
   background-color: #aaaeb3;
-=======
+}
+
 /* NewTask Component */
 .new-task {
   width: 30%;
@@ -211,5 +211,4 @@
   .tasks h1 {
     padding-top: 0px;
   }
->>>>>>> 7414e5b0635b9ebdd128a6752c3c87efe5ca74b4
 }/*# sourceMappingURL=style.css.map */
