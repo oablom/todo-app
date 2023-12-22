@@ -2,7 +2,7 @@ import Tasks from "../components/Tasks";
 
 export default function TaskPage() {
   return (
-    <div>
+    <div className="task-page">
       <h1>TaskPage</h1>
       <Tasks />
     </div>

@@ -127,46 +127,212 @@
     background-color: #aaaeb3;
   }
 }
-/* NewTask Component */
-.new-task {
+.task-page {
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: "Architects Daughter", cursive;
   }
+  button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  select:hover {
+    cursor: pointer;
+  }
+  background-color: rgba(194, 176, 160, 0.379);
+  padding-bottom: 50px;
 
-  width: 30%;
-  max-width: 1000px;
-  margin: 0 auto;
+  /* Tasks Component */
+  .tasks {
+    // background-image: url("../images/Image.jpg");
 
-  .task-form {
-    border-radius: 10px;
-    background: #eee;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
 
-    #newtask-description {
-      height: 80px;
+    // .show-more {
+    //   // visibility: hidden;
+    //   display: block;
+    // }
+    // .hide {
+    //   display: none;
+    // }
+    .todos-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      // background-color: aqua;
+      width: 30%;
+      max-width: 1000px;
     }
-    label {
-      margin: 5px;
+    .task-wrapper.cursor:hover {
+      cursor: auto;
     }
-
-    .form-buttons {
+    .task-wrapper {
+      position: relative;
       display: flex;
       justify-content: space-between;
-      margin-top: 10px;
+      border: 2px solid black;
+      border-radius: 10px;
+      width: 600px;
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+      background-color: rgb(230, 201, 173);
+      &:hover {
+        cursor: pointer;
+      }
 
-      // button {
-      //   width: 30%;
-      //   height: 50px;
-      //   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-      // }
+      &:nth-child(odd) {
+        background-color: lightblue;
+      }
+      .edit-save-wrapper {
+        button {
+          height: 50px;
+        }
+      }
+      .remove-icon {
+        position: absolute !important;
+        top: 15px;
+        right: 15px;
+        height: 80px;
+        img {
+          height: 40px;
+          &:hover {
+            cursor: pointer;
+            animation: mymove 1s ease-in-out;
+          }
+        }
+        @keyframes mymove {
+          0% {
+            transform: rotate(20deg);
+          }
+          20% {
+            transform: rotate(-20deg);
+          }
+          40% {
+            transform: rotate(20deg);
+          }
+          60% {
+            transform: rotate(-20deg);
+          }
+          80% {
+            transform: rotate(20deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+        // right: 0;
+      }
+      div {
+        margin-bottom: 10px;
+      }
     }
-    // button {
-    //   margin: 0px;
-    // }
+    .filter-sort-wrapper {
+      display: flex;
+      flex-direction: row;
+      width: 400px;
+      > :nth-child(2) {
+        margin-left: 30px;
+      }
 
+      select {
+        width: 200px;
+        margin: 0px;
+      }
+    }
+
+    button,
+    select {
+      border-radius: 10px;
+      min-width: 80px;
+      // min-height: 20px;
+      z-index: 2;
+
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      padding: 5px;
+      display: inline-block;
+    }
+    button {
+      margin: 10px;
+    }
+    select {
+      width: 250px;
+      height: 50px;
+    }
+  }
+
+  // /* Media Query */
+  // @media screen and (max-width: 380px) {
+  //   .new-task .task-form {
+  //     height: 150px;
+  //   }
+
+  //   .tasks h1 {
+  //     padding-top: 0px;
+  //   }
+  // }
+
+  /* NewTask Component */
+  .new-task {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Architects Daughter", cursive;
+    }
+
+    width: 30%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .task-form {
+      border-radius: 10px;
+      background-color: rgba(230, 201, 173, 0.513);
+      padding: 20px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+      #newtask-description {
+        height: 80px;
+      }
+      label {
+        margin: 5px;
+      }
+
+      .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        // button {
+        //   width: 30%;
+        //   height: 50px;
+        //   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        // }
+      }
+      // button {
+      //   margin: 0px;
+      // }
+
+      input,
+      select,
+      textarea {
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        padding: 10px;
+      }
+      textarea {
+        max-width: 100%;
+      }
+    }
     input,
     select,
     textarea {
@@ -279,9 +445,6 @@
     }
   }
 
-  
-
-
   .habitWrapper {
     margin-top: 10px;
   }
@@ -355,4 +518,4 @@
   .tasks h1 {
     padding-top: 0px;
   }
-}
+}}

@@ -113,37 +113,157 @@
   background-color: #aaaeb3;
 }
 
-/* NewTask Component */
-.new-task {
-  width: 30%;
-  max-width: 1000px;
-  margin: 0 auto;
+.task-page {
+  background-color: rgba(194, 176, 160, 0.379);
+  padding-bottom: 50px;
+  /* Tasks Component */
+  /* NewTask Component */
 }
-.new-task * {
+.task-page * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Architects Daughter", cursive;
 }
-.new-task .task-form {
-  border-radius: 10px;
-  background: #eee;
-  padding: 20px;
+.task-page button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
-.new-task .task-form #newtask-description {
+.task-page select:hover {
+  cursor: pointer;
+}
+.task-page .tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+.task-page .tasks .todos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 30%;
+  max-width: 1000px;
+}
+.task-page .tasks .task-wrapper.cursor:hover {
+  cursor: auto;
+}
+.task-page .tasks .task-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 600px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(230, 201, 173);
+}
+.task-page .tasks .task-wrapper:hover {
+  cursor: pointer;
+}
+.task-page .tasks .task-wrapper:nth-child(odd) {
+  background-color: lightblue;
+}
+.task-page .tasks .task-wrapper .edit-save-wrapper button {
+  height: 50px;
+}
+.task-page .tasks .task-wrapper .remove-icon {
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
   height: 80px;
 }
-.new-task .task-form label {
+.task-page .tasks .task-wrapper .remove-icon img {
+  height: 40px;
+}
+.task-page .tasks .task-wrapper .remove-icon img:hover {
+  cursor: pointer;
+  animation: mymove 1s ease-in-out;
+}
+@keyframes mymove {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.task-page .tasks .task-wrapper div {
+  margin-bottom: 10px;
+}
+.task-page .tasks .filter-sort-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+}
+.task-page .tasks .filter-sort-wrapper > :nth-child(2) {
+  margin-left: 30px;
+}
+.task-page .tasks .filter-sort-wrapper select {
+  width: 200px;
+  margin: 0px;
+}
+.task-page .tasks button,
+.task-page .tasks select {
+  border-radius: 10px;
+  min-width: 80px;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 5px;
+  display: inline-block;
+}
+.task-page .tasks button {
+  margin: 10px;
+}
+.task-page .tasks select {
+  width: 250px;
+  height: 50px;
+}
+.task-page .new-task {
+  width: 30%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.task-page .new-task * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Architects Daughter", cursive;
+}
+.task-page .new-task .task-form {
+  border-radius: 10px;
+  background-color: rgba(230, 201, 173, 0.513);
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.task-page .new-task .task-form #newtask-description {
+  height: 80px;
+}
+.task-page .new-task .task-form label {
   margin: 5px;
 }
-.new-task .task-form .form-buttons {
+.task-page .new-task .task-form .form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
-.new-task .task-form input,
-.new-task .task-form select,
-.new-task .task-form textarea {
+.task-page .new-task .task-form input,
+.task-page .new-task .task-form select,
+.task-page .new-task .task-form textarea {
   border-radius: 10px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -152,7 +272,21 @@
   margin-top: 2px;
   padding: 10px;
 }
-.new-task .task-form textarea {
+.task-page .new-task .task-form textarea {
+  max-width: 100%;
+}
+.task-page .new-task input,
+.task-page .new-task select,
+.task-page .new-task textarea {
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  padding: 10px;
+}
+.task-page .new-task textarea {
   max-width: 100%;
 }
 
@@ -208,6 +342,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  /* Media Query */
 }
 .habits .myHabits {
   width: 700px;
@@ -222,52 +357,63 @@
   height: auto;
   transition: height 0.3 ease;
 }
-.habits .habitWrapper {
+.habits .myHabits.editMode .hidden-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.habits .myHabits.editMode .hidden-settings button {
+  margin: 5px;
+}
+.habits .myHabits .habitWrapper {
   margin-top: 10px;
 }
-.habits .streakContainer button {
+.habits .myHabits .streakContainer button {
   border-radius: 50px;
   height: 50px;
   width: 50px;
   background-color: rgba(189, 178, 178, 0.4);
   border: none;
 }
-.habits button {
+.habits .myHabits button {
   cursor: pointer;
 }
-.habits .streak-counter {
+.habits .myHabits .streak-counter {
   font-weight: 700;
   font-size: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.habits .streak-counter button {
+.habits .myHabits .streak-counter button {
   align-items: center;
 }
-.habits .sorting-and-filtering {
+.habits .myHabits .sorting-and-filtering {
   display: flex;
   width: 600px;
   justify-content: space-evenly;
   align-items: center;
 }
-.habits .sortingBtn {
+.habits .myHabits .sortingBtn {
   margin-left: 20px;
 }
-.habits .newHabit {
+.habits .myHabits .newHabit {
   height: 500px;
   width: 400px;
 }
-.habits fieldset {
+.habits .myHabits fieldset {
   display: flex;
   flex-direction: column;
 }
-.habits .habit-container {
+.habits .myHabits .habit-container {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
 }
-.habits p {
+.habits .myHabits p {
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -275,13 +421,11 @@
   align-items: center;
   justify-content: center;
 }
-
-/* Media Query */
 @media screen and (max-width: 380px) {
-  .new-task .task-form {
+  .habits .new-task .task-form {
     height: 150px;
   }
-  .tasks h1 {
+  .habits .tasks h1 {
     padding-top: 0px;
   }
 }/*# sourceMappingURL=style.css.map */
