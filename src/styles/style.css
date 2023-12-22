@@ -203,6 +203,79 @@
   height: 50px;
 }
 
+/* HabitPage */
+.habits {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.habits .myHabits {
+  width: 700px;
+  height: 70px;
+  margin-top: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.habits .myHabits.editMode {
+  height: auto;
+  transition: height 0.3 ease;
+}
+.habits .habitWrapper {
+  margin-top: 10px;
+}
+.habits .streakContainer button {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: rgba(189, 178, 178, 0.4);
+  border: none;
+}
+.habits button {
+  cursor: pointer;
+}
+.habits .streak-counter {
+  font-weight: 700;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.habits .streak-counter button {
+  align-items: center;
+}
+.habits .sorting-and-filtering {
+  display: flex;
+  width: 600px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.habits .sortingBtn {
+  margin-left: 20px;
+}
+.habits .newHabit {
+  height: 500px;
+  width: 400px;
+}
+.habits fieldset {
+  display: flex;
+  flex-direction: column;
+}
+.habits .habit-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+.habits p {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Media Query */
 @media screen and (max-width: 380px) {
   .new-task .task-form {
