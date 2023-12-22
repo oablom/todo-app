@@ -36,22 +36,28 @@ export default function Habits() {
     streak: 11}]);
 
   const [priorityFilter, setPriorityFilter] = useState("all");
-  const [sortedHabits, setSortedHabits] = useState("ascending");
+  const [sortedHabits, setSortedHabits] = useState("");
+  const [filteredHabits, setFilteredHabits] = useState([])
+  const [filterType, setFilterType] = useState("")
 
 
   useEffect(() => {
-      
+
     let filteredHabits = priorityFilter === "all" ? habits : habits.filter((habit) => habit.priority === priorityFilter);
 
-    let sortingHabits = sortedHabits ? filteredHabits.sort((a,b) => {
-      let order = sortedHabits === "ascending" ? 1 : -1;
-      return order * a.priority.localeCompare(b.priority)
-    }) : habits;
+    let sortingHabits = [...filteredHabits];
+    sortingHabits.sort((a,b) => {
+      return (
+        (filterType === "priority" ? 
+        (sortedHabits === "ascending" ? 1 : -1) * a.priority.localeCompare(b.priority)
+        : filterType === "streak" ? (sortedHabits === "ascending" ? 1 : -1) * (a.streak - b.streak) : 0)
+      )
+    });
 
-    setHabits(sortingHabits)
+    setFilteredHabits(sortingHabits)
 
   
-  }, [habits, priorityFilter, sortedHabits]);  
+  }, [habits, priorityFilter, sortedHabits, filterType]);  
 
   let editHabit = (i, edit) => {
     setHabits(oldHabits => {
@@ -62,12 +68,13 @@ export default function Habits() {
   };
 
 
- 
+ console.log(filterType)
   return (
     <div>
       <div className="habits">
         <h1>Habits</h1>
         {/* FILTRERADE HABITS */}
+
         
         <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}>
           <option value="all">Filter by priority:</option>
@@ -77,11 +84,18 @@ export default function Habits() {
           <option value="low">Low</option>
         </select>
 
+        {/* SORTERINGSTYP */}
+        <select value={filterType} onChange={(e) => setFilterType(e.target.value)}>
+          <option value="">Sort by:</option>
+          <option value="priority">Priority</option>
+          <option value="streak">Streak</option>
+        </select>
+
         {/* SORTERADE HABITS */}
         <label><input type="radio" value="ascending" checked={sortedHabits === "ascending"} onChange={(e) => setSortedHabits(e.target.value)} />Ascending</label>
         <label><input type="radio" value="descending" checked={sortedHabits === "descending"} onChange={(e) => setSortedHabits(e.target.value)} />Descending</label>
         
-        {habits.map((habit, i) => (
+        {filteredHabits.map((habit, i) => (
           <div  key={i} style={{backgroundColor: habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}}>
             <p>{habit.title}</p>
             <p><button onClick={() => editHabit(i, edit => habit.streak -= 1)}>sub</button>{habit.streak}<button onClick={() => editHabit(i,edit => habit.streak += 1)}>add</button></p>
