@@ -24,6 +24,7 @@
     background-color: #1a1a1a;
     color: #ffff;
     cursor: pointer;
+    margin-top: 10px;
   }
 
   button:hover {
@@ -45,6 +46,8 @@
   align-items: center;
   padding: 20px;
   margin: 50px;
+  width: 30%;
+  height: 80%;
 }
 
 .habits-homepage {
@@ -56,6 +59,12 @@
   align-items: center;
   padding: 20px;
   margin: 50px;
+  height: 80%;
+  width: 30%;
+
+  ul {
+    list-style: none;
+  }
 }
 
 .friends-homepage {
@@ -67,6 +76,8 @@
   align-items: center;
   padding: 20px;
   margin: 50px;
+  height: 80%;
+  width: 30%;
 
   img {
     width: 100%;
