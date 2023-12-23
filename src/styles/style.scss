@@ -16,13 +16,16 @@
   }
 }
 
-<<<<<<< HEAD
-//Friends Page
+.friends-home {
+  border: 2px solid #292929;
+}
+
+/*Friends Component*/
 .friends {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  background: #1a1a1a;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,25 +33,36 @@
 
   h1 {
     text-align: center;
-    color: #333;
+    color: #fff;
   }
 
   button {
     padding: 8px 16px;
     margin-top: 10px;
-    background-color: #e6eaef;
-    color: #0c0c0c;
-    border: none;
-    border-radius: 4px;
+    background-color: #404040;
+    color: #ffff;
+    border: 2px solid #292929;
+    border-radius: 10px;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #aaaeb3;
+    background-color: #990000;
   }
 }
-
+/*Info friends component*/
 .infoFriend {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  width: 250px;
+  margin-bottom: 20px;
+  padding: 0px 20px 10px 20px;
+
+  :hover {
+    background-color: #990000;
+  }
+
   div {
     display: flex;
     flex-direction: row-reverse;
@@ -88,10 +102,13 @@
   }
 }
 
+/*Filter friends component*/
 .filterFriends {
-  border: 2px solid #ccc;
+  border: 2px solid #292929;
+  background-color: #404040;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 10px;
 
   h2 {
     font-size: 20px;
@@ -102,11 +119,28 @@
     margin-bottom: 5px;
   }
 
+  button {
+    border: 2px solid #292929;
+    background-color: #1a1a1a;
+  }
+
+  button:hover {
+    background-color: #990000;
+  }
+
   select,
   input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+
+  select:hover,
+  input[type="number"]:hover {
+    background-color: #990000;
   }
 }
 
@@ -126,7 +160,9 @@
 
   button:hover {
     background-color: #aaaeb3;
-=======
+  }
+}
+
 /* NewTask Component */
 .new-task {
   * {
@@ -252,6 +288,5 @@
 
   .tasks h1 {
     padding-top: 0px;
->>>>>>> 7414e5b0635b9ebdd128a6752c3c87efe5ca74b4
   }
 }
