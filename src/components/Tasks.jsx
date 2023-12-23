@@ -7,6 +7,7 @@
 // Samtliga ärenden ska kunna sorteras baserat på titel (bokstavsordning - stigande och fallande) och tidsestimat (stigande och fallande)
 import { useState, useEffect } from "react";
 import NewTask from "./NewTask";
+import TrashCan from "../icons/trash-can-solid.svg";
 
 export default function Tasks() {
   const [showNewTask, setShowNewTask] = useState();
@@ -16,6 +17,8 @@ export default function Tasks() {
   const [filterByTaskType, setFilterByTaskType] = useState("");
   const [filteredTaskArray, setFilteredTaskArray] = useState(taskArray);
   const [saveChanges, setSaveChanges] = useState(false);
+  const [showMore, setShowMore] = useState(null);
+  const [showMoreIndex, setShowMoreIndex] = useState(null);
   // const [optionValue, setOptionValue] = useState("");
   // const [sortOptionValue, setSortOptionValue] = useState("");
   const [sortBy, setSortBy] = useState("");
@@ -89,6 +92,9 @@ export default function Tasks() {
     console.clear();
   }, [filterByTaskType, taskArray, sortBy, saveChanges]);
 
+  const trashCanText = document.getElementById("trash-can-text");
+  const trashCanIcon = document.getElementById("trash-can-icon");
+
   // const titleInput = document.getElementById("title");
   // const descriptionInput = document.getElementById("description");
   // const timeEstimateInput = document.getElementById("timeEstimate");
@@ -112,33 +118,43 @@ export default function Tasks() {
       {showNewTask && <NewTask taskArrayFunction={taskArrayFunction} />}
       <br />
 
-      <label for="filter">Filter by type:</label>
-      <select
-        value={filterByTaskType}
-        onChange={(e) => {
-          setFilterByTaskType(e.target.value);
-          // setOptionValue(e.target.value);
-        }}
-      >
-        <option value="">Choose task type</option>
-        <option>Work related</option>
-        <option>Hobby</option>
-        <option>Sports</option>
-      </select>
-
-      <label for="sort">Sort by:</label>
-      <select
-        value={sortBy}
-        onChange={(e) => {
-          setSortBy(e.target.value);
-          // setSortOptionValue(e.target.value);
-        }}
-      >
-        <option value="">Choose an element</option>
-        <option value="title">Title (A-Z)</option>
-        <option value="timeEstimate">Time estimation (shortest-longest)</option>
-        <option value="type">Type (A-Z)</option>
-      </select>
+      <div className="filter-sort-wrapper">
+        {" "}
+        <div>
+          {" "}
+          <label for="filter">Filter by type:</label>
+          <select
+            value={filterByTaskType}
+            onChange={(e) => {
+              setFilterByTaskType(e.target.value);
+              // setOptionValue(e.target.value);
+            }}
+          >
+            <option value="">Choose task type</option>
+            <option>Work related</option>
+            <option>Hobby</option>
+            <option>Sports</option>
+          </select>
+        </div>
+        <div>
+          {" "}
+          <label for="sort">Sort by:</label>
+          <select
+            value={sortBy}
+            onChange={(e) => {
+              setSortBy(e.target.value);
+              // setSortOptionValue(e.target.value);
+            }}
+          >
+            <option value="">Choose an element</option>
+            <option value="title">Title (A-Z)</option>
+            <option value="timeEstimate">
+              Time estimation (shortest-longest)
+            </option>
+            <option value="type">Type (A-Z)</option>
+          </select>
+        </div>
+      </div>
       <div className="todos-wrapper">
         {(filterByTaskType === "" ? taskArray : filteredTaskArray).map(
           (task, index) => {
@@ -146,7 +162,27 @@ export default function Tasks() {
             const newTaskArray = [...taskArray];
 
             return (
-              <div key={(task, index + 1)} className="task-wrapper">
+              <div
+                key={(task, index + 1)}
+                className={!editTask ? "task-wrapper" : "task-wrapper cursor"}
+                onClick={() => {
+                  // console.log("showMoreIndex", showMoreIndex);
+                  // console.log("editTask", editTask);
+                  //  &&
+
+                  !editTask &&
+                    setShowMoreIndex((prev) => (prev === index ? null : index));
+                  // setEditTask(false);
+
+                  console.log("Task-wrapper edittask index:", editTaskIndex);
+                  console.log("Task-wrapper  showMoreIndex:", showMoreIndex);
+
+                  // console.log(showMore);
+                }}
+                style={{
+                  flexDirection: showMoreIndex === index ? "column" : "row",
+                }}
+              >
                 <div>
                   {" "}
                   <h3>Todo: </h3>
@@ -163,92 +199,121 @@ export default function Tasks() {
                     />
                   )}
                 </div>
-                <div>
-                  <h4>Description: </h4>{" "}
-                  {editTaskIndex !== index ? (
-                    <h4>{updatedTask.description}</h4>
-                  ) : (
-                    <input
-                      id={"description" + index}
-                      type="text"
-                      defaultValue={updatedTask.description}
-                      onChange={(e) => {
-                        updatedTask.description = e.target.value;
-                      }}
-                    />
-                  )}
-                </div>
-                <div>
-                  {" "}
-                  <h4>Estimated time: </h4>
-                  {editTaskIndex !== index ? (
-                    <h4>{updatedTask.timeEstimate} minutes</h4>
-                  ) : (
-                    <input
-                      id={"timeEstimate" + index}
-                      type="text"
-                      defaultValue={updatedTask.timeEstimate}
-                      onChange={(e) => {
-                        updatedTask.timeEstimate = e.target.value;
-                      }}
-                    />
-                  )}
-                </div>
-                <div>
-                  {" "}
-                  <h4>Type of activity: </h4>
-                  {editTaskIndex !== index ? (
-                    <h4>{updatedTask.type}</h4>
-                  ) : (
-                    <select
-                      required
-                      name="type"
-                      id={"type" + index}
-                      defaultValue={updatedTask.type}
-                      onChange={(e) => (updatedTask.type = e.target.value)}
-                    >
-                      <option value="">Choose task type</option>
-                      <option>Work related</option>
-                      <option>Hobby</option>
-                      <option>Sports</option>
-                    </select>
-                  )}
-                </div>
-
-                <button
-                  onClick={() => {
-                    setEditTask(!editTask);
-                    editTaskIndex !== index
-                      ? setEditTaskIndex(index)
-                      : setEditTaskIndex(null);
+                <div
+                  // className={showMore ? "show-more" : "hide"}
+                  style={{
+                    display: showMoreIndex === index ? "flex" : "none",
+                    flexDirection: "column",
                   }}
                 >
-                  Edit task
-                </button>
-                <button
-                  onClick={() =>
-                    window.confirm(
-                      "Are you sure you want to delete " + updatedTask.title
-                    )
-                      ? removeTask(index)
-                      : null
-                  }
-                >
-                  Remove this task
-                </button>
-                {editTask && editTaskIndex === index && (
-                  <button
-                    onClick={() => {
-                      newTaskArray[index] = updatedTask;
-                      setTaskArray(newTaskArray);
-                      setSaveChanges(!saveChanges);
+                  <div>
+                    <h4>Description: </h4>{" "}
+                    {editTaskIndex !== index ? (
+                      <h4>{updatedTask.description}</h4>
+                    ) : (
+                      <input
+                        id={"description" + index}
+                        type="text"
+                        defaultValue={updatedTask.description}
+                        onChange={(e) => {
+                          updatedTask.description = e.target.value;
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    {" "}
+                    <h4>Estimated time: </h4>
+                    {editTaskIndex !== index ? (
+                      <h4>{updatedTask.timeEstimate} minutes</h4>
+                    ) : (
+                      <input
+                        id={"timeEstimate" + index}
+                        type="text"
+                        defaultValue={updatedTask.timeEstimate}
+                        onChange={(e) => {
+                          updatedTask.timeEstimate = e.target.value;
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    {" "}
+                    <h4>Type of activity: </h4>
+                    {editTaskIndex !== index ? (
+                      <h4>{updatedTask.type}</h4>
+                    ) : (
+                      <select
+                        required
+                        name="type"
+                        id={"type" + index}
+                        defaultValue={updatedTask.type}
+                        onChange={(e) => (updatedTask.type = e.target.value)}
+                      >
+                        <option value="">Choose task type</option>
+                        <option>Work related</option>
+                        <option>Hobby</option>
+                        <option>Sports</option>
+                      </select>
+                    )}
+                  </div>
 
-                      console.log(taskArray);
-                    }}
-                  >
-                    Save changes
-                  </button>
-                )}
+                  <div className="edit-save-wrapper">
+                    {" "}
+                    <button
+                      onClick={(e) => {
+                        setEditTask(!editTask);
+                        // showMore !== index && setEditTask(!editTask);
+                        // setShowMoreIndex(index);
+                        // showMoreIndex !== index && setEditTaskIndex(null);
+                        e.stopPropagation();
+                        showMoreIndex === index && editTaskIndex !== index
+                          ? setEditTaskIndex(index)
+                          : setEditTaskIndex(null);
+                        console.log("edittask index:", editTaskIndex);
+                        console.log("showMoreIndex:", showMoreIndex);
+                        // console.log(showMore);
+                      }}
+                    >
+                      {editTaskIndex !== index ? "Edit this task" : "Cancel"}
+                    </button>{" "}
+                    {editTaskIndex === index && (
+                      <button
+                        onClick={() => {
+                          newTaskArray[index] = updatedTask;
+                          setTaskArray(newTaskArray);
+                          setSaveChanges(!saveChanges);
+
+                          console.log(taskArray);
+                        }}
+                      >
+                        Save changes
+                      </button>
+                    )}
+                  </div>
+                  <div className="remove-icon">
+                    {/* <p id="trash-can-text"> </p>{" "} */}
+                    <img
+                      src={TrashCan}
+                      id="trash-can-icon"
+                      alt="Trash can"
+                      // onMouseOver={(e) => {
+                      //   trashCanText.innerText = "Remove task";
+                      //   e.currentTarget.style.cursor = "pointer";
+                      // }}
+                      // onMouseOut={(e) => {
+                      //   trashCanText.innerText = "";
+                      // }}
+                      onClick={(e) => {
+                        window.confirm(
+                          "Are you sure you want to delete " + updatedTask.title
+                        ) && removeTask(index);
+
+                        e.stopPropagation();
+                      }}
+                    />{" "}
+                  </div>
+                </div>
               </div>
             );
           }

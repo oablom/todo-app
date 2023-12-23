@@ -16,7 +16,7 @@
   color: #ffff;
 }
 
-.nav-btn {
+.homepage button {
   width: 100px;
   height: 30px;
   border: 2px solid #292929;
@@ -25,38 +25,46 @@
   color: #ffff;
   cursor: pointer;
 }
-
-.nav-btn:hover {
+.homepage button:hover {
   background-color: #990000;
 }
 
-.nav-btn a {
+.homepage button a {
   text-decoration: none;
   color: #fff;
 }
 
 .tasks-homepage {
   border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
 }
 
 .habits-homepage {
   border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
 }
 
 .friends-homepage {
   border: 2px solid #292929;
   background-color: #404040;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   margin: 50px;
-}
-
-.friends-homepage ul {
-  list-style: none;
 }
 
 .friends-homepage img {
@@ -66,7 +74,11 @@
   border-radius: 50%;
 }
 
-/*Friends Component*/
+.friends-homepage ul {
+  list-style: none;
+}
+
+/*friends component*/
 .friends {
   margin: 0 auto;
   padding: 20px;
@@ -208,86 +220,117 @@
   max-width: 1000px;
   margin: 0 auto;
 }
-.new-task * {
+.task-page * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Architects Daughter", cursive;
 }
-.new-task .task-form {
-  border-radius: 10px;
-  background: #eee;
-  padding: 20px;
+.task-page button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
-.new-task .task-form #newtask-description {
-  height: 80px;
+.task-page select:hover {
+  cursor: pointer;
 }
-.new-task .task-form label {
-  margin: 5px;
-}
-.new-task .task-form .form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.new-task .task-form input,
-.new-task .task-form select,
-.new-task .task-form textarea {
-  border-radius: 10px;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  width: 100%;
-  margin-bottom: 10px;
-  margin-top: 2px;
-  padding: 10px;
-}
-.new-task .task-form textarea {
-  max-width: 100%;
-}
-
-/* Tasks Component */
-.tasks {
-  height: 100vh;
+.task-page .tasks {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px;
 }
-.tasks * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Architects Daughter", cursive;
-}
-.tasks .todos-wrapper {
+.task-page .tasks .todos-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 70%;
+  width: 30%;
+  max-width: 1000px;
 }
-.tasks .task-wrapper {
+.task-page .tasks .task-wrapper.cursor:hover {
+  cursor: auto;
+}
+.task-page .tasks .task-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   border: 2px solid black;
   border-radius: 10px;
-  width: 200px;
+  width: 600px;
   margin: 10px;
   padding: 10px;
   text-align: center;
+  background-color: rgb(230, 201, 173);
 }
-.tasks .task-wrapper div {
+.task-page .tasks .task-wrapper:hover {
+  cursor: pointer;
+}
+.task-page .tasks .task-wrapper:nth-child(odd) {
+  background-color: lightblue;
+}
+.task-page .tasks .task-wrapper .edit-save-wrapper button {
+  height: 50px;
+}
+.task-page .tasks .task-wrapper .remove-icon {
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
+  height: 80px;
+}
+.task-page .tasks .task-wrapper .remove-icon img {
+  height: 40px;
+}
+.task-page .tasks .task-wrapper .remove-icon img:hover {
+  cursor: pointer;
+  animation: mymove 1s ease-in-out;
+}
+@keyframes mymove {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.task-page .tasks .task-wrapper div {
   margin-bottom: 10px;
 }
-.tasks button,
-.tasks select {
+.task-page .tasks .filter-sort-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+}
+.task-page .tasks .filter-sort-wrapper > :nth-child(2) {
+  margin-left: 30px;
+}
+.task-page .tasks .filter-sort-wrapper select {
+  width: 200px;
+  margin: 0px;
+}
+.task-page .tasks button,
+.task-page .tasks select {
   border-radius: 10px;
   min-width: 80px;
+  z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 5px;
   display: inline-block;
 }
-.tasks button {
+.task-page .tasks button {
   margin: 10px;
 }
-.tasks select {
+.task-page .tasks select {
   width: 250px;
   height: 50px;
 }
@@ -300,4 +343,4 @@
   .tasks h1 {
     padding-top: 0px;
   }
-}
+} /*# sourceMappingURL=style.css.map */

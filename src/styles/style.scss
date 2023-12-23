@@ -7,20 +7,79 @@
 }
 
 /* Home Page */
-.nav-btn {
-  width: 100px;
-  height: 30px;
+.homepage {
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #ffff;
 
-  a {
+  button {
+    width: 100px;
+    height: 30px;
+    border: 2px solid #292929;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: #ffff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #990000;
+  }
+
+  button a {
     text-decoration: none;
+    color: #fff;
   }
 }
 
-.friends-home {
+.tasks-homepage {
   border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
 }
 
-/*Friends Component*/
+.habits-homepage {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+}
+
+.friends-homepage {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+//Friends Component
 .friends {
   margin: 0 auto;
   padding: 20px;
@@ -159,10 +218,9 @@
   }
 
   button:hover {
-    background-color: #aaaeb3;
+    background-color: #990000;
   }
 }
-
 /* NewTask Component */
 .new-task {
   * {
@@ -178,8 +236,9 @@
 
   .task-form {
     border-radius: 10px;
-    background: #eee;
+    background-color: rgba(230, 201, 173, 0.513);
     padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
     #newtask-description {
       height: 80px;
