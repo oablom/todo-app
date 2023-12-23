@@ -14,6 +14,7 @@
   justify-content: space-evenly;
   align-items: center;
   color: #ffff;
+  height: 100vh;
 }
 
 .homepage button {
@@ -24,6 +25,7 @@
   background-color: #1a1a1a;
   color: #ffff;
   cursor: pointer;
+  margin-top: 10px;
 }
 .homepage button:hover {
   background-color: #990000;
@@ -43,6 +45,8 @@
   align-items: center;
   padding: 20px;
   margin: 50px;
+  width: 30%;
+  height: 80%;
 }
 
 .habits-homepage {
@@ -52,8 +56,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
   padding: 20px;
   margin: 50px;
+  height: 80%;
+}
+
+.habits-homepage ul {
+  list-style: none;
 }
 
 .friends-homepage {
@@ -65,6 +75,8 @@
   align-items: center;
   padding: 20px;
   margin: 50px;
+  height: 80%;
+  width: 30%;
 }
 
 .friends-homepage img {
