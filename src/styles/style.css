@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Architects Daughter", cursive;
+  font-family: "arial", "Architects Daughter", cursive;
 }
 
 /* Home Page */
@@ -338,10 +338,23 @@
 }
 
 /* HabitPage */
+.habits-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .habits {
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  border: #0c0c0c solid;
+  min-height: 85vh;
+  width: 90vw;
+  justify-content: center;
+  padding: 55px;
+  transition: min-height 0.3s ease;
   /* Media Query */
 }
 .habits .myHabits {
@@ -370,6 +383,17 @@
 }
 .habits .myHabits .habitWrapper {
   margin-top: 10px;
+  display: flex;
+}
+.habits .myHabits .habitWrapper .sorting-and-filtering {
+  display: flex;
+  margin-top: 20px;
+  width: 600px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.habits .myHabits .habitWrapper .sortingBtn {
+  margin-left: 20px;
 }
 .habits .myHabits .streakContainer button {
   border-radius: 50px;
@@ -391,28 +415,6 @@
 .habits .myHabits .streak-counter button {
   align-items: center;
 }
-.habits .myHabits .sorting-and-filtering {
-  display: flex;
-  width: 600px;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.habits .myHabits .sortingBtn {
-  margin-left: 20px;
-}
-.habits .myHabits .newHabit {
-  height: 500px;
-  width: 400px;
-}
-.habits .myHabits fieldset {
-  display: flex;
-  flex-direction: column;
-}
-.habits .myHabits .habit-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
-}
 .habits .myHabits p {
   font-size: 20px;
   display: flex;
@@ -420,6 +422,70 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+.habits .habit-container {
+  display: flex !important;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.habits .newHabit {
+  height: 300px;
+  width: 400px;
+}
+.habits .newHabit .new-form {
+  display: flex !important;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+}
+.habits .newHabit .new-form legend {
+  text-align: center;
+  font-size: 35px;
+}
+.habits .newHabit .new-form input {
+  margin-top: 15px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.habits .newHabit .new-form button {
+  width: 120px;
+  align-self: center;
+  margin-top: 20px;
+}
+.habits .newHabit .new-form .starting-streak {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.habits .newHabit .new-form .starting-streak input {
+  border: none;
+  text-align: center;
+  font-size: 40px;
+  width: 50px;
+}
+.habits .newHabit .new-form .starting-streak button {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: rgba(189, 178, 178, 0.4);
+  border: none;
+}
+.habits .newHabit .radio-priority {
+  display: flex;
+  flex-direction: column;
+}
+.habits .newHabit .radio-priority label {
+  display: flex;
+  align-items: center;
+}
+.habits .newHabit .radio-priority input {
+  margin-right: 5px;
+  margin-left: 20px;
+  height: 15px;
 }
 @media screen and (max-width: 380px) {
   .habits .new-task .task-form {
