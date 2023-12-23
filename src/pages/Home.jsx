@@ -2,7 +2,27 @@ import TaskPage from "./TaskPage.jsx";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  let myFriends = [
+  const topHabits = [
+    {
+      title: "Reading",
+      priority: "mid",
+      streak: 2,
+    },
+    {
+      title: "Gaming",
+      priority: "low",
+      streak: 0,
+    },
+    {
+      title: "Gym",
+      priority: "high",
+      streak: 10,
+    },
+  ];
+
+  const latestTasks = [{}];
+
+  const myFriends = [
     {
       firstName: "Peter",
       lastName: "Parker",
@@ -18,11 +38,6 @@ export default function Home() {
       lastName: "Mario",
       picture: "https://randomuser.me/api/portraits/med/men/41.jpg",
     },
-    {
-      firstName: "Luigi",
-      lastName: "Mario",
-      picture: "https://randomuser.me/api/portraits/med/men/92.jpg",
-    },
   ];
   return (
     <div className="homepage">
@@ -35,6 +50,13 @@ export default function Home() {
 
       <div className="habits-homepage">
         <h2>Top 3 habits</h2>
+        <ul>
+          {topHabits.map((habit, index) => (
+            <li key={index}>
+              {`${habit.title} - Priority: ${habit.priority}`}
+            </li>
+          ))}
+        </ul>
         <button className="nav-btn">
           <Link to="/habits">See more</Link>
         </button>
