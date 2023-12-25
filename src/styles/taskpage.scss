@@ -1,0 +1,262 @@
+@import "./buttons.scss";
+// skrv såhär för att importera: @include button(
+//   $bg-color,
+//   $border-color,
+//   $text-color,
+//   $shadow-color,
+//   $hover-shadow-color
+// )
+
+:root {
+  /* Primary colors */
+  --primary-100: #990000; /* Dark red */
+  --primary-200: #d1432b; /* Reddish brown */
+  --primary-300: #ffa783; /* Light peach */
+
+  /* Accent colors */
+  --accent-100: #ff6600; /* Orange */
+  --accent-200: #ffffa1; /* Light yellow */
+
+  /* Text colors */
+  --text-100: #ffffff; /* White */
+  --text-200: #e0e0e0; /* Light gray */
+
+  /* Background colors */
+  --bg-100: #1a1a1a; /* Dark gray */
+  --bg-200: #292929; /* Charcoal gray */
+  --bg-300: #404040; /* Slate gray */
+}
+
+.task-page {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Architects Daughter", cursive;
+  }
+  button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  select:hover {
+    cursor: pointer;
+  }
+  background-color: var(--bg-200);
+  padding-bottom: 50px;
+
+  .tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+
+    .todos-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 30%;
+      max-width: 1000px;
+    }
+    .task-wrapper.cursor:hover {
+      cursor: auto;
+    }
+    .task-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid black;
+      border-radius: 10px;
+      width: 600px;
+      margin: 10px;
+      margin-top: 30px;
+      padding: 10px;
+      text-align: center;
+      background-color: var(--primary-300);
+      box-shadow: inset 50px 0px 50px -50px #f9f9f9,
+        inset -50px 0px 50px -50px #d8d8d8;
+      input {
+        border-radius: 5px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      &.task-wrapper.cursor.wrong-click {
+        animation: wrong-click 0.5s ease-in-out;
+      }
+      &:nth-child(odd) {
+        background-color: lightblue;
+      }
+      .edit-save-wrapper {
+        button {
+          height: 50px;
+        }
+      }
+      @keyframes wrong-click {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25%,
+        75% {
+          transform: translateX(-10px);
+        }
+        50% {
+          transform: translateX(10px);
+        }
+      }
+      .remove-icon {
+        position: absolute !important;
+        top: 15px;
+        right: 15px;
+        height: 80px;
+        img {
+          height: 40px;
+          &:hover {
+            cursor: pointer;
+            animation: mymove 1s ease-in-out;
+          }
+        }
+        @keyframes mymove {
+          0% {
+            transform: rotate(20deg);
+          }
+          20% {
+            transform: rotate(-20deg);
+          }
+          40% {
+            transform: rotate(20deg);
+          }
+          60% {
+            transform: rotate(-20deg);
+          }
+          80% {
+            transform: rotate(20deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+      }
+      div {
+        margin-bottom: 10px;
+      }
+    }
+    .filter-sort-wrapper {
+      display: flex;
+      flex-direction: row;
+      width: 400px;
+      transform: translateX(-30px);
+      > :nth-child(2) {
+        margin-left: 60px;
+      }
+      select {
+        width: 200px;
+        margin: 0px;
+      }
+    }
+    button,
+    select {
+      border-radius: 10px;
+      min-width: 80px;
+      z-index: 2;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      padding: 5px;
+      display: inline-block;
+
+      @include button(
+        $bg-color,
+        $border-color,
+        $text-color,
+        $shadow-color,
+        $hover-shadow-color
+      );
+    }
+
+    select {
+      width: 250px;
+      height: 50px;
+      background-color: var(--primary-200);
+      color: var(--bg-200);
+    }
+  }
+
+  .new-task {
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Architects Daughter", cursive;
+    }
+    width: 30%;
+    max-width: 1000px;
+    margin: 0 auto;
+    .task-form {
+      border-radius: 10px;
+      background-color: var(--bg-300);
+      padding: 20px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+      #newtask-description {
+        height: 80px;
+      }
+      label {
+        margin: 5px;
+      }
+      .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      input,
+      select,
+      textarea {
+        border-radius: 10px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-top: 2px;
+        padding: 10px;
+      }
+      textarea {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@keyframes wrong-click {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25%,
+  75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes mymove {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

@@ -1,0 +1,54 @@
+@mixin button(
+  $bg-color,
+  $border-color,
+  $text-color,
+  $shadow-color,
+  $hover-shadow-color
+) {
+  button {
+    align-items: center;
+    background-color: $bg-color;
+    border-radius: 4px;
+    border: none;
+    box-shadow: $shadow-color 0 2px 4px, $shadow-color 0 7px 13px -3px,
+      $border-color 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: $text-color;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+
+    margin: 10px;
+  }
+
+  button:focus {
+    box-shadow: $border-color 0 0 0 1.5px inset, $shadow-color 0 2px 4px,
+      $shadow-color 0 7px 13px -3px, $border-color 0 -3px 0 inset;
+  }
+
+  button:hover {
+    box-shadow: $shadow-color 0 4px 8px, $shadow-color 0 7px 13px -3px,
+      $border-color 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+
+  button:active {
+    box-shadow: $border-color 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+}
