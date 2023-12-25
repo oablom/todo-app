@@ -380,18 +380,22 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: #1a1a1a;
 }
 
 .habits {
+  background-color: #404040;
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  border: #0c0c0c solid;
+  border: 2px solid #292929;
   min-height: 85vh;
   width: 90vw;
   justify-content: center;
   padding: 55px;
   transition: min-height 0.3s ease;
+  color: #fff;
+  /* NEW HABIT */
   /* Media Query */
 }
 .habits .myHabits {
@@ -407,6 +411,7 @@
 }
 .habits .myHabits:hover {
   background-color: transparent;
+  color: black;
 }
 .habits .myHabits:hover.low {
   background-color: green;
@@ -422,20 +427,20 @@
   bottom: 6px;
   right: 10px;
   border-radius: 5px;
-  background-color: white;
+  background-color: transparent;
   border-style: none;
   padding: 4px;
 }
 .habits .myHabits .edit-btn:hover {
-  background-color: black;
-  color: white;
+  background-color: #292929;
+  color: #fff;
 }
 .habits .myHabits .priority-box {
   position: absolute;
   top: 5px;
   left: 5px;
   padding: 2px 4px;
-  color: #fff;
+  color: black;
   font-size: 10px;
   font-weight: bold;
   border-radius: 3px;
@@ -547,6 +552,8 @@
   margin-top: 15px;
   height: 30px;
   margin-bottom: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
 }
 .habits .newHabit .new-form button {
   width: 120px;
@@ -566,6 +573,8 @@
   text-align: center;
   font-size: 40px;
   width: 50px;
+  background-color: #404040;
+  color: #fff;
 }
 .habits .newHabit .new-form .starting-streak button {
   border-radius: 50px;
