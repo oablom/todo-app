@@ -577,6 +577,11 @@
         width: 600px;
         justify-content: space-evenly;
         align-items: center;
+        select:hover,
+          input[type="number"]:hover {
+            background-color: #990000;
+          }
+        }
         
       }
     
@@ -592,6 +597,10 @@
     background-color: rgb(189, 178, 178, 0.40);
     border:none;
 
+  }
+
+  .streakContainer p {
+    font-weight: 700;
   }
 
   button {
@@ -654,6 +663,12 @@
       margin-bottom:20px;
       background-color: #1a1a1a;
       color:#fff;
+      &:active {
+        background-color: #990000;
+      }
+      &:hover {
+        background-color: #990000;
+      }
     }
 
     button {
@@ -661,6 +676,12 @@
       align-self: center;
       margin-top:20px;
       cursor: pointer;
+      &:active{
+        background-color: #990000;
+      }
+      &:hover {
+        background-color: #990000;
+      }
     }
 
     .starting-streak {
@@ -687,6 +708,12 @@
           border: none;
           font-size:25px;
           font-weight: 600;
+          &:hover {
+            background-color: #990000;
+          }
+          &:active {
+            background-color: #990000;
+          }
       }
     }
   }
@@ -695,6 +722,7 @@
     display:flex;
     flex-direction: column;
   }
+
 
   .radio-priority label {
     display:flex;

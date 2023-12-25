@@ -86,7 +86,6 @@ export default function Habits() {
     <div>
       <div className="habits-legend">
         <div className="habits">
-          
           <div className="habit-container">
 
             <NewHabit habitList={habits} updateHabitList={setHabits}/>

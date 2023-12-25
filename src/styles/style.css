@@ -496,6 +496,12 @@
   justify-content: space-evenly;
   align-items: center;
 }
+.habits .myHabits .habitWrapper .sorting-and-filtering select:active {
+  background-color: #990000;
+}
+.habits .myHabits .habitWrapper .sorting-and-filtering select:hover {
+  background-color: #990000;
+}
 .habits .myHabits .habitWrapper .sortingBtn {
   margin-left: 20px;
 }
@@ -505,6 +511,9 @@
   width: 50px;
   background-color: rgba(189, 178, 178, 0.4);
   border: none;
+}
+.habits .myHabits .streakContainer p {
+  font-weight: 700;
 }
 .habits .myHabits button {
   cursor: pointer;
@@ -555,11 +564,23 @@
   background-color: #1a1a1a;
   color: #fff;
 }
+.habits .newHabit .new-form input:active {
+  background-color: #990000;
+}
+.habits .newHabit .new-form input:hover {
+  background-color: #990000;
+}
 .habits .newHabit .new-form button {
   width: 120px;
   align-self: center;
   margin-top: 20px;
   cursor: pointer;
+}
+.habits .newHabit .new-form button:active {
+  background-color: #990000;
+}
+.habits .newHabit .new-form button:hover {
+  background-color: #990000;
 }
 .habits .newHabit .new-form .starting-streak {
   align-self: center;
@@ -584,6 +605,12 @@
   border: none;
   font-size: 25px;
   font-weight: 600;
+}
+.habits .newHabit .new-form .starting-streak button:hover {
+  background-color: #990000;
+}
+.habits .newHabit .new-form .starting-streak button:active {
+  background-color: #990000;
 }
 .habits .newHabit .radio-priority {
   display: flex;
