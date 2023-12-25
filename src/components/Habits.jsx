@@ -121,17 +121,41 @@ export default function Habits() {
                 </div>
             </div>
               {filteredHabits.map((habit, i) => (
-                <div className={`myHabits ${editMode && i === habitSettings ? "editMode" : ""}`} key={i} style={{border: `3px solid ${habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}`}}>
+                <div className={`myHabits ${editMode && i === habitSettings ? "editMode" : ""} ${habit.priority}`} key={i} style={{border: `3px solid ${habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}`}} onClick={(e) =>
+    editMode && i === habitSettings && !e.target.classList.contains("edit-btn")
+      ? e.stopPropagation()
+      : editHabit(i, (edit) => (habit.streak += 1))
+  }>
+                  <div className={`priority-box ${habit.priority === "low" ? "green" : habit.priority === "mid" ? "yellow" : "red"}`}>{habit.priority}</div>
                   <h3>{habit.title}</h3>
-                  <div className="streakContainer"><p><button className="streak-counter" onClick={() => editHabit(i, edit => habit.streak -= 1)}>-</button>{habit.streak}<button className="streak-counter" onClick={() => editHabit(i,edit => habit.streak += 1)}>+</button></p>
-                  {editMode && i === habitSettings && (<div className="hidden-settings"><button onClick={() => editHabit(i, edit => habit.streak = 0)}>Reset</button><button onClick={() => setHabits(oldHabits => {let editedHabits = [...oldHabits]; editedHabits.splice(i,1); return editedHabits;})}>Delete</button>
+
+                  {/* STREAK COUNTER  */}
+                  <div className="streakContainer">
+                    {editMode && i === habitSettings ? (
+                      <p>
+                      <button className="streak-counter" onClick={() => editHabit(i, edit => edit.streak -= 1)}>-</button>
+                      {habit.streak}
+                      <button className="streak-counter" onClick={() => editHabit(i,edit => edit.streak += 1)}>+</button>
+                    </p>
+                    ): (<p>{habit.streak}</p>)}
+
+                    {/* OPEN EDIT HABIT MODE */}
+                  {editMode && i === habitSettings && (
+                  <div className="hidden-settings">
+                    <div className="hidden-buttons"><button onClick={() => editHabit(i, edit => habit.streak = 0)}>Reset</button>
+                  <button onClick={() => setHabits(oldHabits => {let editedHabits = [...oldHabits]; editedHabits.splice(i,1); return editedHabits;})}>Delete</button></div>
                   <select value={habit.priority} onChange={(e) => editHabit(i, edit => habit.priority = e.target.value)}>
                     <option value="high">High</option>
                     <option value="mid">Medium</option>
                     <option value="low">Low</option>
                   </select></div>)}
                   </div>
-                  <button className="edit-btn" onClick={() => toggleEditMode(i)}>{editMode && i === habitSettings ? "save" : "edit"}</button>
+                  {/* <button className="edit-btn" onClick={() => toggleEditMode(i)}>{editMode && i === habitSettings ? "save" : "edit"}</button> */}
+                  <button className="edit-btn" onClick={(e) => {
+                    e.stopPropagation();
+                    editMode && i === habitSettings ? setEditMode(false) : toggleEditMode(i);
+                  }}>
+                    {editMode && i === habitSettings ? "save" : "edit"}</button>
                   </div>
               ))}
             </div>

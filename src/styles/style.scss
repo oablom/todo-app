@@ -7,21 +7,96 @@
 }
 
 /* Home Page */
-.nav-btn {
-  width: 100px;
-  height: 30px;
+.homepage {
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #ffff;
+  height: 100vh;
 
-  a {
+  button {
+    width: 100px;
+    height: 30px;
+    border: 2px solid #292929;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: #ffff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background-color: #990000;
+  }
+
+  button a {
     text-decoration: none;
+    color: #fff;
   }
 }
 
-//Friends Page
+.tasks-homepage {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+  width: 30%;
+  height: 80%;
+}
+
+.habits-homepage {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+  height: 80%;
+  width: 30%;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.friends-homepage {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+  height: 80%;
+  width: 30%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+//Friends Component
 .friends {
-  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  background: #1a1a1a;
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,25 +104,36 @@
 
   h1 {
     text-align: center;
-    color: #333;
+    color: #fff;
   }
 
   button {
     padding: 8px 16px;
     margin-top: 10px;
-    background-color: #e6eaef;
-    color: #0c0c0c;
-    border: none;
-    border-radius: 4px;
+    background-color: #404040;
+    color: #ffff;
+    border: 2px solid #292929;
+    border-radius: 10px;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #aaaeb3;
+    background-color: #990000;
   }
 }
-
+/*Info friends component*/
 .infoFriend {
+  border: 2px solid #292929;
+  background-color: #404040;
+  border-radius: 10px;
+  width: 250px;
+  margin-bottom: 20px;
+  padding: 0px 20px 10px 20px;
+
+  :hover {
+    background-color: #990000;
+  }
+
   div {
     display: flex;
     flex-direction: row-reverse;
@@ -87,10 +173,13 @@
   }
 }
 
+/*Filter friends component*/
 .filterFriends {
-  border: 2px solid #ccc;
+  border: 2px solid #292929;
+  background-color: #404040;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 10px;
 
   h2 {
     font-size: 20px;
@@ -101,11 +190,28 @@
     margin-bottom: 5px;
   }
 
+  button {
+    border: 2px solid #292929;
+    background-color: #1a1a1a;
+  }
+
+  button:hover {
+    background-color: #990000;
+  }
+
   select,
   input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+
+  select:hover,
+  input[type="number"]:hover {
+    background-color: #990000;
   }
 }
 
@@ -124,215 +230,135 @@
   }
 
   button:hover {
-    background-color: #aaaeb3;
+    background-color: #990000;
   }
 }
-.task-page {
+/* NewTask Component */
+.new-task {
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: "Architects Daughter", cursive;
   }
-  button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-  select:hover {
-    cursor: pointer;
-  }
-  background-color: rgba(194, 176, 160, 0.379);
-  padding-bottom: 50px;
 
-  /* Tasks Component */
-  .tasks {
-    // background-image: url("../images/Image.jpg");
+  width: 30%;
+  max-width: 1000px;
+  margin: 0 auto;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+  .task-form {
+    border-radius: 10px;
+    background-color: rgba(230, 201, 173, 0.513);
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
-    // .show-more {
-    //   // visibility: hidden;
-    //   display: block;
-    // }
-    // .hide {
-    //   display: none;
-    // }
-    .todos-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      // background-color: aqua;
-      width: 30%;
-      max-width: 1000px;
+    #newtask-description {
+      height: 80px;
     }
-    .task-wrapper.cursor:hover {
-      cursor: auto;
+    label {
+      margin: 5px;
     }
-    .task-wrapper {
-      position: relative;
+
+    .form-buttons {
       display: flex;
       justify-content: space-between;
-      border: 2px solid black;
-      border-radius: 10px;
-      width: 600px;
-      margin: 10px;
-      padding: 10px;
-      text-align: center;
-      background-color: rgb(230, 201, 173);
-      &:hover {
-        cursor: pointer;
-      }
+      margin-top: 10px;
 
-      &:nth-child(odd) {
-        background-color: lightblue;
-      }
-      .edit-save-wrapper {
-        button {
-          height: 50px;
-        }
-      }
-      .remove-icon {
-        position: absolute !important;
-        top: 15px;
-        right: 15px;
-        height: 80px;
-        img {
-          height: 40px;
-          &:hover {
-            cursor: pointer;
-            animation: mymove 1s ease-in-out;
-          }
-        }
-        @keyframes mymove {
-          0% {
-            transform: rotate(20deg);
-          }
-          20% {
-            transform: rotate(-20deg);
-          }
-          40% {
-            transform: rotate(20deg);
-          }
-          60% {
-            transform: rotate(-20deg);
-          }
-          80% {
-            transform: rotate(20deg);
-          }
-          100% {
-            transform: rotate(0deg);
-          }
-        }
-        // right: 0;
-      }
-      div {
-        margin-bottom: 10px;
-      }
+      // button {
+      //   width: 30%;
+      //   height: 50px;
+      //   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      // }
     }
-    .filter-sort-wrapper {
-      display: flex;
-      flex-direction: row;
-      width: 400px;
-      > :nth-child(2) {
-        margin-left: 30px;
-      }
+    // button {
+    //   margin: 0px;
+    // }
 
-      select {
-        width: 200px;
-        margin: 0px;
-      }
-    }
-
-    button,
-    select {
+    input,
+    select,
+    textarea {
       border-radius: 10px;
-      min-width: 80px;
-      // min-height: 20px;
-      z-index: 2;
-
+      border-style: none;
       box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-      padding: 5px;
-      display: inline-block;
+      width: 100%;
+      margin-bottom: 10px;
+      margin-top: 2px;
+      padding: 10px;
     }
-    button {
-      margin: 10px;
+    textarea {
+      max-width: 100%;
     }
-    select {
-      width: 250px;
-      height: 50px;
+  }
+}
+
+/* Tasks Component */
+.tasks {
+  // background-image: url("../images/Image.jpg");
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Architects Daughter", cursive;
+  }
+
+  margin: 20px;
+
+  .todos-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // background-color: aqua;
+    width: 70%;
+    &:nth-child(odd) {
+      // background-color: aqua;
     }
   }
 
-  // /* Media Query */
-  // @media screen and (max-width: 380px) {
-  //   .new-task .task-form {
-  //     height: 150px;
-  //   }
-
-  //   .tasks h1 {
-  //     padding-top: 0px;
-  //   }
-  // }
-
-  /* NewTask Component */
-  .new-task {
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Architects Daughter", cursive;
+  .task-wrapper {
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    div {
+      margin-bottom: 10px;
     }
+    // button {
+    //   margin-top: 10px;
+    // }
+  }
+  button,
+  select {
+    border-radius: 10px;
+    min-width: 80px;
+    // min-height: 20px;
 
-    width: 30%;
-    max-width: 1000px;
-    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 5px;
+    display: inline-block;
+  }
+  button {
+    margin: 10px;
+  }
+  select {
+    width: 250px;
+    height: 50px;
+  }
+}
 
-    .task-form {
-      border-radius: 10px;
-      background-color: rgba(230, 201, 173, 0.513);
-      padding: 20px;
-      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+/* Media Query */
+@media screen and (max-width: 380px) {
+  .new-task .task-form {
+    height: 150px;
+  }
 
-      #newtask-description {
-        height: 80px;
-      }
-      label {
-        margin: 5px;
-      }
-
-      .form-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 10px;
-
-        // button {
-        //   width: 30%;
-        //   height: 50px;
-        //   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        // }
-      }
-      // button {
-      //   margin: 0px;
-      // }
-
-      input,
-      select,
-      textarea {
-        border-radius: 10px;
-        border-style: none;
-        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        width: 100%;
-        margin-bottom: 10px;
-        margin-top: 2px;
-        padding: 10px;
-      }
-      textarea {
-        max-width: 100%;
-      }
-    }
+  .tasks h1 {
+    padding-top: 0px;
     input,
     select,
     textarea {
@@ -434,6 +460,8 @@
   transition: min-height 0.3s ease;
 
   .myHabits {
+    cursor: pointer;
+    position:relative;
     width: 700px;
     height: 70px;
     margin-top: 10px;
@@ -441,21 +469,94 @@
     display:flex;
     justify-content: space-around;
     align-items: center;
+    
+    
+    
+      &:hover {
+          background-color: transparent;
+      
+          &.low {
+            background-color: green;
+          }
+      
+          &.mid {
+            background-color: yellow;
+          }
+      
+          &.high {
+            background-color: red;
+          }
+        }
+
+    .edit-btn {
+      position:absolute;
+      bottom:6px;
+      right: 10px;
+      border-radius: 5px;
+      background-color: white;
+      border-style: none;
+      padding:4px;
+      &:hover {
+        background-color: black;
+        color:white;
+      }
+    }
+
+    .priority-box {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      padding: 2px 4px;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      border-radius: 3px;
+
+      &.green {
+          background-color: green;
+          box-shadow: 0 0 10px rgba(green, 0.8);
+        }
+      
+        &.yellow {
+          background-color: yellow;
+          box-shadow: 0 0 10px rgba(yellow, 0.8);
+        }
+      
+        &.red {
+          background-color: red;
+          box-shadow: 0 0 10px rgba(red, 0.8);
+        }
+    }
 
     &.editMode {
       height:auto;
       transition: height 0.3 ease;
+      cursor: default;
 
       .hidden-settings {
           display: flex;
-          flex-direction: column; // Stack buttons vertically
-          align-items: center; // Center buttons horizontally
+          flex-direction: column; 
+          align-items: center;
           margin-top: 10px;
-          opacity: 1; // Make the hidden settings visible
-          transition: opacity 0.5s ease; // Smooth transition for opacity change
+          margin-bottom:10px;
+          opacity: 1; 
+          transition: opacity 0.5s ease; 
+          
+          .hidden-buttons {
+            display:flex;
+            flex-direction:row;
+            margin-bottom: 10px;
+          }
       
           button {
             margin: 5px;
+          }
+
+          select {
+            width:150px;
+            height:30px;
+            border-radius: 5px;
+            font-size: 15px;
           }
     }
   }
@@ -493,8 +594,8 @@
   }
 
   .streak-counter {
-    font-weight: 700;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -550,6 +651,7 @@
       width: 120px;
       align-self: center;
       margin-top:20px;
+      cursor: pointer;
     }
 
     .starting-streak {
@@ -572,6 +674,8 @@
           width: 50px;
           background-color: rgb(189, 178, 178, 0.40);
           border: none;
+          font-size:25px;
+          font-weight: 600;
       }
     }
   }
