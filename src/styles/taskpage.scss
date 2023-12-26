@@ -6,7 +6,6 @@
 //   $shadow-color,
 //   $hover-shadow-color
 // )
-
 :root {
   /* Primary colors */
   --primary-100: #990000; /* Dark red */
@@ -28,11 +27,17 @@
 }
 
 .task-page {
+  height: 100vh;
   * {
+    color: white;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Architects Daughter", cursive;
+    font-family: "JetBrains Mono", monospace;
+  }
+  input {
+    color: black;
+    border-radius: 5px;
   }
   button:hover {
     cursor: pointer;
@@ -71,10 +76,11 @@
       margin-top: 30px;
       padding: 10px;
       text-align: center;
-      background-color: var(--primary-300);
-      box-shadow: inset 50px 0px 50px -50px #f9f9f9,
-        inset -50px 0px 50px -50px #d8d8d8;
-      input {
+      background-color: var(--bg-300);
+      box-shadow: inset 50px 0px 50px -50px var(--accent-200),
+        // inset -50px 0px 50px -50px var(--accent-200);
+        // border: 2px solid var(--accent-100);
+        input {
         border-radius: 5px;
       }
       &:hover {
@@ -84,7 +90,10 @@
         animation: wrong-click 0.5s ease-in-out;
       }
       &:nth-child(odd) {
-        background-color: lightblue;
+        background-color: var(--bg-300);
+        // border: 2px solid var(--accent-200);
+        // box-shadow: inset 50px 0px 50px -50px var(--accent-100),
+        //   inset -50px 0px 50px -50px var(--accent-100);
       }
       .edit-save-wrapper {
         button {
@@ -162,31 +171,29 @@
       box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
       padding: 5px;
       display: inline-block;
-
-      @include button(
-        $bg-color,
-        $border-color,
-        $text-color,
-        $shadow-color,
-        $hover-shadow-color
-      );
+      color: white;
     }
-
+    @include button(
+      var(--accent-100),
+      var(--bg-300),
+      var(--bg-200),
+      var(--accent-200),
+      var(--accent-200)
+    );
     select {
       width: 250px;
       height: 50px;
-      background-color: var(--primary-200);
-      color: var(--bg-200);
+      background-color: (var(--bg-300));
+
+      color: white;
+      option {
+        color: white;
+      }
+      border: 1px solid var(--accent-200);
     }
   }
 
   .new-task {
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Architects Daughter", cursive;
-    }
     width: 30%;
     max-width: 1000px;
     margin: 0 auto;
@@ -218,6 +225,11 @@
         margin-bottom: 10px;
         margin-top: 2px;
         padding: 10px;
+        color: black;
+      }
+      select {
+        color: white;
+        border: 1px solid var(--accent-200);
       }
       textarea {
         max-width: 100%;
