@@ -1,0 +1,277 @@
+:root {
+  /* Primary colors */
+  --primary-100: #990000; /* Dark red */
+  --primary-200: #d1432b; /* Reddish brown */
+  --primary-300: #ffa783; /* Light peach */
+  /* Accent colors */
+  --accent-100: #ff6600; /* Orange */
+  --accent-200: #ffffa1; /* Light yellow */
+  /* Text colors */
+  --text-100: #ffffff; /* White */
+  --text-200: #e0e0e0; /* Light gray */
+  /* Background colors */
+  --bg-100: #1a1a1a; /* Dark gray */
+  --bg-200: #292929; /* Charcoal gray */
+  --bg-300: #404040; /* Slate gray */
+}
+
+.task-page {
+  background-color: var(--bg-200);
+  padding-bottom: 50px;
+}
+.task-page * {
+  color: white;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+}
+.task-page input {
+  color: black;
+  border-radius: 5px;
+}
+.task-page button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.task-page select:hover {
+  cursor: pointer;
+}
+.task-page .tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+.task-page .tasks .todos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 30%;
+  max-width: 1000px;
+}
+.task-page .tasks .task-wrapper.cursor:hover {
+  cursor: auto;
+}
+.task-page .tasks .task-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 600px;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--bg-300);
+  box-shadow: inset 50px 0px 50px -50px var(--accent-200), input;
+  box-shadow-border-radius: 5px;
+}
+.task-page .tasks .task-wrapper:hover {
+  cursor: pointer;
+}
+.task-page .tasks .task-wrapper.task-wrapper.cursor.wrong-click {
+  animation: wrong-click 0.5s ease-in-out;
+}
+.task-page .tasks .task-wrapper:nth-child(odd) {
+  background-color: var(--bg-300);
+}
+.task-page .tasks .task-wrapper .edit-save-wrapper button {
+  height: 50px;
+}
+@keyframes wrong-click {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+.task-page .tasks .task-wrapper .remove-icon {
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
+  height: 80px;
+}
+.task-page .tasks .task-wrapper .remove-icon img {
+  height: 40px;
+}
+.task-page .tasks .task-wrapper .remove-icon img:hover {
+  cursor: pointer;
+  animation: mymove 1s ease-in-out;
+}
+@keyframes mymove {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.task-page .tasks .task-wrapper div {
+  margin-bottom: 10px;
+}
+.task-page .tasks .filter-sort-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  transform: translateX(-30px);
+}
+.task-page .tasks .filter-sort-wrapper > :nth-child(2) {
+  margin-left: 60px;
+}
+.task-page .tasks .filter-sort-wrapper select {
+  width: 200px;
+  margin: 0px;
+}
+.task-page .tasks button,
+.task-page .tasks select {
+  border-radius: 10px;
+  min-width: 80px;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 5px;
+  display: inline-block;
+  color: white;
+}
+.task-page .tasks button {
+  align-items: center;
+  background-color: var(--accent-100);
+  border-radius: 4px;
+  border: none;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: var(--bg-200);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 10px;
+}
+.task-page .tasks button:focus {
+  box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
+}
+.task-page .tasks button:hover {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.task-page .tasks button:active {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(2px);
+}
+.task-page .tasks select {
+  width: 250px;
+  height: 50px;
+  background-color: var(--bg-300);
+  color: white;
+  border: 1px solid var(--accent-200);
+}
+.task-page .tasks select option {
+  color: white;
+}
+.task-page .new-task {
+  width: 30%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.task-page .new-task .task-form {
+  border-radius: 10px;
+  background-color: var(--bg-300);
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.task-page .new-task .task-form #newtask-description {
+  height: 80px;
+}
+.task-page .new-task .task-form label {
+  margin: 5px;
+}
+.task-page .new-task .task-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.task-page .new-task .task-form input,
+.task-page .new-task .task-form select,
+.task-page .new-task .task-form textarea {
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  padding: 10px;
+  color: black;
+}
+.task-page .new-task .task-form select {
+  color: white;
+  border: 1px solid var(--accent-200);
+}
+.task-page .new-task .task-form textarea {
+  max-width: 100%;
+}
+
+@keyframes wrong-click {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+@keyframes mymove {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-20deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}/*# sourceMappingURL=taskpage.css.map */

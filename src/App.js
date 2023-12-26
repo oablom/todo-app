@@ -1,4 +1,5 @@
 import "./styles/style.css";
+import "./styles/taskpage.css";
 
 import TaskPage from "./pages/TaskPage";
 import HabitPage from "./pages/HabitPage";
