@@ -278,7 +278,7 @@
   color: #fff;
 }
 .filterFriends select:hover,
-.filterFriends [type=number]:hover {
+.filterFriends input[type=number]:hover {
   background-color: #990000;
 }
 
@@ -506,6 +506,10 @@
 }
 .habits .header-container .nav-list li:visited {
   color: #fff !important;
+}
+.habits .header-container .nav-list li:hover, .habits .header-container .nav-list li:active {
+  color: #fff;
+  /* Change this to your desired color */
 }
 .habits .myHabits {
   cursor: pointer;

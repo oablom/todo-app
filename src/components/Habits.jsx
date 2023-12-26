@@ -96,16 +96,16 @@ export default function Habits() {
             <h1>My habits...</h1>
             <nav ><ul className="nav-list">
               <li>
-                <Link to="/">Home</Link>
+                <Link style={{color:"#fff"}} to="/">Home</Link>
               </li>
               <li>
-                <Link to="/tasks">Tasks</Link>
+                <Link style={{color:"#fff"}} to="/tasks">Tasks</Link>
               </li>
               <li>
-                <Link to="/habits">Habits</Link>
+                <Link style={{color:"#fff"}} to="/habits">Habits</Link>
               </li>
               <li>
-                <Link to="/friends">Friends</Link>
+                <Link style={{color:"#fff"}} to="/friends">Friends</Link>
               </li>
               </ul></nav>  
           </div>

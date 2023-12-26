@@ -247,7 +247,7 @@
   }
 
   select:hover,
-  [type="number"]:hover {
+  input[type="number"]:hover {
     background-color: #990000;
   }
 }
@@ -516,14 +516,9 @@
         list-style: none;
         display: flex;
         flex-direction: row;
-        width:400px;
-        justify-content:space-between;
+        width: 400px;
+        justify-content: space-between;
         font-size: larger;
-        li{
-          color: #fff;
-          &:visited {
-            color: #fff !important;
-          }
         }
       }
     
