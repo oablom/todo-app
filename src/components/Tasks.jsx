@@ -7,7 +7,7 @@
 // Samtliga ärenden ska kunna sorteras baserat på titel (bokstavsordning - stigande och fallande) och tidsestimat (stigande och fallande)
 import { useState, useEffect } from "react";
 import NewTask from "./NewTask";
-import TrashCan from "../icons/trash-can-solid.svg";
+import TrashCan from "../icons/recycle-bin.png";
 
 export default function Tasks() {
   const [showNewTask, setShowNewTask] = useState();
@@ -296,25 +296,28 @@ export default function Tasks() {
                   </div>
                   <div className="remove-icon">
                     {/* <p id="trash-can-text"> </p>{" "} */}
-                    <img
-                      src={TrashCan}
-                      id="trash-can-icon"
-                      alt="Trash can"
-                      // onMouseOver={(e) => {
-                      //   trashCanText.innerText = "Remove task";
-                      //   e.currentTarget.style.cursor = "pointer";
-                      // }}
-                      // onMouseOut={(e) => {
-                      //   trashCanText.innerText = "";
-                      // }}
-                      onClick={(e) => {
-                        window.confirm(
-                          "Are you sure you want to delete " + updatedTask.title
-                        ) && removeTask(index);
+                    <div>
+                      <img
+                        src={TrashCan}
+                        id="trash-can-icon"
+                        alt="Trash can"
+                        // onMouseOver={(e) => {
+                        //   trashCanText.innerText = "Remove task";
+                        //   e.currentTarget.style.cursor = "pointer";
+                        // }}
+                        // onMouseOut={(e) => {
+                        //   trashCanText.innerText = "";
+                        // }}
+                        onClick={(e) => {
+                          window.confirm(
+                            "Are you sure you want to delete " +
+                              updatedTask.title
+                          ) && removeTask(index);
 
-                        e.stopPropagation();
-                      }}
-                    />{" "}
+                          e.stopPropagation();
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
