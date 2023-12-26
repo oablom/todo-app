@@ -672,9 +672,12 @@
     }
 
     button {
-      width: 120px;
+      width: 150px;
       align-self: center;
+      border-radius: 10px;
+      background-color: rgb(189, 178, 178, 0.40);
       margin-top:20px;
+      padding:7px;
       cursor: pointer;
       &:active{
         background-color: #990000;
@@ -745,4 +748,4 @@
   .tasks h1 {
     padding-top: 0px;
   }
-}}
+}

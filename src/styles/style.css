@@ -395,8 +395,6 @@
   padding: 55px;
   transition: min-height 0.3s ease;
   color: #fff;
-  /* NEW HABIT */
-  /* Media Query */
 }
 .habits .myHabits {
   cursor: pointer;
@@ -496,39 +494,37 @@
   justify-content: space-evenly;
   align-items: center;
 }
-.habits .myHabits .habitWrapper .sorting-and-filtering select:active {
+.habits .myHabits .habitWrapper .sorting-and-filtering select:hover,
+.habits .myHabits .habitWrapper .sorting-and-filtering input[type=number]:hover {
   background-color: #990000;
 }
-.habits .myHabits .habitWrapper .sorting-and-filtering select:hover {
-  background-color: #990000;
-}
-.habits .myHabits .habitWrapper .sortingBtn {
+.habits .myHabits .sortingBtn {
   margin-left: 20px;
 }
-.habits .myHabits .streakContainer button {
+.habits .streakContainer button {
   border-radius: 50px;
   height: 50px;
   width: 50px;
   background-color: rgba(189, 178, 178, 0.4);
   border: none;
 }
-.habits .myHabits .streakContainer p {
+.habits .streakContainer p {
   font-weight: 700;
 }
-.habits .myHabits button {
+.habits button {
   cursor: pointer;
 }
-.habits .myHabits .streak-counter {
+.habits .streak-counter {
   font-weight: 600;
   font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.habits .myHabits .streak-counter button {
+.habits .streak-counter button {
   align-items: center;
 }
-.habits .myHabits p {
+.habits p {
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -536,60 +532,66 @@
   align-items: center;
   justify-content: center;
 }
-.habits .habit-container {
+
+.habit-container {
   display: flex !important;
   flex-direction: row-reverse;
   margin-top: 10px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.habits .newHabit {
+
+/* NEW HABIT */
+.newHabit {
   height: 300px;
   width: 400px;
 }
-.habits .newHabit .new-form {
+.newHabit .new-form {
   display: flex !important;
   flex-direction: column;
   padding: 20px;
   border-radius: 5px;
 }
-.habits .newHabit .new-form legend {
+.newHabit .new-form legend {
   text-align: center;
   font-size: 35px;
 }
-.habits .newHabit .new-form input {
+.newHabit .new-form input {
   margin-top: 15px;
   height: 30px;
   margin-bottom: 20px;
   background-color: #1a1a1a;
   color: #fff;
 }
-.habits .newHabit .new-form input:active {
+.newHabit .new-form input:active {
   background-color: #990000;
 }
-.habits .newHabit .new-form input:hover {
+.newHabit .new-form input:hover {
   background-color: #990000;
 }
-.habits .newHabit .new-form button {
-  width: 120px;
+.newHabit .new-form button {
+  width: 150px;
   align-self: center;
+  border-radius: 10px;
+  background-color: rgba(189, 178, 178, 0.4);
   margin-top: 20px;
+  padding: 7px;
   cursor: pointer;
 }
-.habits .newHabit .new-form button:active {
+.newHabit .new-form button:active {
   background-color: #990000;
 }
-.habits .newHabit .new-form button:hover {
+.newHabit .new-form button:hover {
   background-color: #990000;
 }
-.habits .newHabit .new-form .starting-streak {
+.newHabit .new-form .starting-streak {
   align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
-.habits .newHabit .new-form .starting-streak input {
+.newHabit .new-form .starting-streak input {
   border: none;
   text-align: center;
   font-size: 40px;
@@ -597,7 +599,7 @@
   background-color: #404040;
   color: #fff;
 }
-.habits .newHabit .new-form .starting-streak button {
+.newHabit .new-form .starting-streak button {
   border-radius: 50px;
   height: 50px;
   width: 50px;
@@ -606,30 +608,32 @@
   font-size: 25px;
   font-weight: 600;
 }
-.habits .newHabit .new-form .starting-streak button:hover {
+.newHabit .new-form .starting-streak button:hover {
   background-color: #990000;
 }
-.habits .newHabit .new-form .starting-streak button:active {
+.newHabit .new-form .starting-streak button:active {
   background-color: #990000;
 }
-.habits .newHabit .radio-priority {
+.newHabit .radio-priority {
   display: flex;
   flex-direction: column;
 }
-.habits .newHabit .radio-priority label {
+.newHabit .radio-priority label {
   display: flex;
   align-items: center;
 }
-.habits .newHabit .radio-priority input {
+.newHabit .radio-priority input {
   margin-right: 5px;
   margin-left: 20px;
   height: 15px;
 }
+
+/* Media Query */
 @media screen and (max-width: 380px) {
-  .habits .new-task .task-form {
+  .new-task .task-form {
     height: 150px;
   }
-  .habits .tasks h1 {
+  .tasks h1 {
     padding-top: 0px;
   }
 }/*# sourceMappingURL=style.css.map */
