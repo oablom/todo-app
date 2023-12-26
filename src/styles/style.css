@@ -3,7 +3,25 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Architects Daughter", cursive;
+  font-family: "JetBrains Mono", monospace;
+}
+
+#root {
+  background-color: var(--bg-100);
+  height: 100vh;
+  --primary-100: #990000; /* Dark red */
+  --primary-200: #d1432b; /* Reddish brown */
+  --primary-300: #ffa783; /* Light peach */
+  /* Accent colors */
+  --accent-100: #ff6600; /* Orange */
+  --accent-200: #ffffa1; /* Light yellow */
+  /* Text colors */
+  --text-100: #ffffff; /* White */
+  --text-200: #e0e0e0; /* Light gray */
+  /* Background colors */
+  --bg-100: #1a1a1a; /* Dark gray */
+  --bg-200: #292929; /* Charcoal gray */
+  --bg-300: #404040; /* Slate gray */
 }
 
 /* Home Page */
@@ -17,14 +35,46 @@
   height: 100vh;
 }
 .homepage button {
-  width: 100px;
-  height: 30px;
-  border: 2px solid #292929;
-  border-radius: 10px;
-  background-color: #1a1a1a;
-  color: white;
+  align-items: center;
+  background-color: var(--accent-100);
+  border-radius: 4px;
+  border: none;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: var(--bg-200);
   cursor: pointer;
-  margin-top: 10px;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  margin: 10px;
+}
+.homepage button:focus {
+  box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
+}
+.homepage button:hover {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.homepage button:active {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(2px);
 }
 .homepage button:hover {
   background-color: #990000;
@@ -101,13 +151,46 @@
   color: #fff;
 }
 .friends button {
-  padding: 8px 16px;
-  margin-top: 10px;
-  background-color: #404040;
-  color: white;
-  border: 2px solid #292929;
-  border-radius: 10px;
+  align-items: center;
+  background-color: var(--accent-100);
+  border-radius: 4px;
+  border: none;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: var(--bg-200);
   cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  margin: 10px;
+}
+.friends button:focus {
+  box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
+}
+.friends button:hover {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.friends button:active {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(2px);
 }
 .friends button:hover {
   background-color: #990000;
@@ -122,7 +205,7 @@
   margin-bottom: 20px;
   padding: 0px 20px 10px 20px;
 }
-.infoFriend :hover {
+.infoFriend:hover {
   background-color: #990000;
 }
 .infoFriend div {
@@ -181,6 +264,9 @@
 }
 .filterFriends button:hover {
   background-color: #990000;
+}
+.filterFriends select {
+  border: 1px solid var(--accent-200);
 }
 .filterFriends select,
 .filterFriends input[type=number] {
