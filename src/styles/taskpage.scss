@@ -37,10 +37,7 @@
     padding: 0;
     font-family: "JetBrains Mono", monospace;
   }
-  input {
-    color: black;
-    border-radius: 5px;
-  }
+
   button:hover {
     cursor: pointer;
     transform: scale(1.1);
@@ -80,9 +77,6 @@
       box-shadow: inset 50px 0px 50px -50px var(--bg-200);
       // inset -50px 0px 50px -50px var(--accent-200);
 
-      input {
-        border-radius: 5px;
-      }
       &:hover {
         cursor: pointer;
         box-shadow: var(--primary-100) 0px 10px 20px -6px;
@@ -179,7 +173,6 @@
       box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
       padding: 5px;
       display: inline-block;
-      color: white;
     }
     @include button(
       var(--accent-100),
@@ -195,9 +188,8 @@
       height: 50px;
       background-color: (var(--bg-300));
 
-      color: white;
       option {
-        color: white;
+        color: black;
       }
       border: 1px solid var(--accent-200);
     }
@@ -235,9 +227,10 @@
         margin-top: 2px;
         padding: 10px;
         color: black;
+        background-color: var(--text-200);
       }
       select {
-        color: white;
+        color: black;
         border: 1px solid var(--accent-200);
       }
       textarea {
