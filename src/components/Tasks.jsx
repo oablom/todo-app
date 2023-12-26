@@ -182,7 +182,7 @@ export default function Tasks() {
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
-                    showMoreIndex === index && "0px 10px 20px -6px #ffa783",
+                    showMoreIndex === index && "0px 10px 20px -6px #d1432b",
                   // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >

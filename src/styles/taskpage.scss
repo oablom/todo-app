@@ -91,9 +91,9 @@
       &:nth-child(odd) {
         background-color: var(--bg-300);
         &:hover {
-          box-shadow: var(--primary-200) 0px 10px 20px -6px;
+          box-shadow: var(--primary-100) 0px 10px 20px -6px;
           transform: translateY(-2px);
-          border: 2px solid var(--primary-200);
+          border: 2px solid var(--primary-100);
         }
         // border: 2px solid var(--primary-200);
         // box-shadow: inset 50px 0px 50px -50px var(--accent-100),
@@ -128,11 +128,14 @@
           border-radius: 50%;
           height: 50px;
           width: 50px;
-          // position: relative;
-          // text-align: center;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           display: flex;
           justify-content: center;
           align-items: center;
+          &:hover {
+            cursor: pointer;
+            box-shadow: var(--primary-200) 0px 5px 15px;
+          }
         }
         img {
           // background-color: var(--accent-200);
@@ -140,7 +143,7 @@
           // left: 0px;
           // position: absolute;
           height: 40px;
-          box-shadow: var(--accent-200) 5px 5px -5px;
+
           &:hover {
             // transform: translateY(4px);
             cursor: pointer;

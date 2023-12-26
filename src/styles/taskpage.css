@@ -79,9 +79,9 @@
   background-color: var(--bg-300);
 }
 .task-page .tasks .task-wrapper:nth-child(odd):hover {
-  box-shadow: var(--primary-200) 0px 10px 20px -6px;
+  box-shadow: var(--primary-100) 0px 10px 20px -6px;
   transform: translateY(-2px);
-  border: 2px solid var(--primary-200);
+  border: 2px solid var(--primary-100);
 }
 .task-page .tasks .task-wrapper .edit-save-wrapper button {
   height: 50px;
@@ -108,13 +108,17 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.task-page .tasks .task-wrapper .remove-icon div:hover {
+  cursor: pointer;
+  box-shadow: var(--primary-200) 0px 5px 15px;
+}
 .task-page .tasks .task-wrapper .remove-icon img {
   height: 40px;
-  box-shadow: var(--accent-200) 5px 5px -5px;
 }
 .task-page .tasks .task-wrapper .remove-icon img:hover {
   cursor: pointer;
