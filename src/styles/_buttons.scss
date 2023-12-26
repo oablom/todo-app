@@ -3,7 +3,9 @@
   $border-color,
   $text-color,
   $shadow-color,
-  $hover-shadow-color
+  $hover-shadow-color,
+  $radient-color1,
+  $radient-color2
 ) {
   button {
     align-items: center;
@@ -33,7 +35,11 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     white-space: nowrap;
-
+    background-image: linear-gradient(
+      to right,
+      $radient-color1,
+      $radient-color2
+    );
     margin: 10px;
   }
 

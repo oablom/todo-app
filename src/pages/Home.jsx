@@ -43,6 +43,7 @@ export default function Home() {
     <div className="homepage">
       <div className="tasks-homepage">
         <h2>Top 3 tasks</h2>
+
         <button className="nav-btn">
           <Link to="/tasks">See more</Link>
         </button>

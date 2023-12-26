@@ -1,9 +1,44 @@
+@import "./buttons.scss";
+
+//Lägg in i det elementet där button finns
+// @include button(
+//   var(--accent-100),
+//   var(--bg-300),
+//   var(--bg-200),
+//   var(--accent-200),
+//   var(--accent-200),
+//   var(--primary-100),
+//   var(--primary-200)
+// );
+
 /* Global Styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "arial","Architects Daughter", cursive;
+  // font-family: "arial","Architects Daughter", cursive;
+  font-family: "JetBrains Mono", monospace;
+}
+#root {
+  background-color: var(--bg-100);
+
+  height: 100vh;
+  --primary-100: #990000; /* Dark red */
+  --primary-200: #d1432b; /* Reddish brown */
+  --primary-300: #ffa783; /* Light peach */
+
+  /* Accent colors */
+  --accent-100: #ff6600; /* Orange */
+  --accent-200: #ffffa1; /* Light yellow */
+
+  /* Text colors */
+  --text-100: #ffffff; /* White */
+  --text-200: #e0e0e0; /* Light gray */
+
+  /* Background colors */
+  --bg-100: #1a1a1a; /* Dark gray */
+  --bg-200: #292929; /* Charcoal gray */
+  --bg-300: #404040; /* Slate gray */
 }
 
 /* Home Page */
@@ -16,16 +51,15 @@
   color: #ffff;
   height: 100vh;
 
-  button {
-    width: 100px;
-    height: 30px;
-    border: 2px solid #292929;
-    border-radius: 10px;
-    background-color: #1a1a1a;
-    color: #ffff;
-    cursor: pointer;
-    margin-top: 10px;
-  }
+  @include button(
+    var(--accent-100),
+    var(--bg-300),
+    var(--bg-200),
+    var(--accent-200),
+    var(--accent-200),
+    var(--primary-100),
+    var(--primary-200)
+  );
 
   button:hover {
     background-color: #990000;
@@ -107,15 +141,15 @@
     color: #fff;
   }
 
-  button {
-    padding: 8px 16px;
-    margin-top: 10px;
-    background-color: #404040;
-    color: #ffff;
-    border: 2px solid #292929;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+  @include button(
+    var(--accent-100),
+    var(--bg-300),
+    var(--bg-200),
+    var(--accent-200),
+    var(--accent-200),
+    var(--primary-100),
+    var(--primary-200)
+  );
 
   button:hover {
     background-color: #990000;
@@ -130,7 +164,7 @@
   margin-bottom: 20px;
   padding: 0px 20px 10px 20px;
 
-  :hover {
+  &:hover {
     background-color: #990000;
   }
 
@@ -197,6 +231,9 @@
 
   button:hover {
     background-color: #990000;
+  }
+  select {
+    border: 1px solid var(--accent-200);
   }
 
   select,
