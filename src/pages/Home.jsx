@@ -1,7 +1,10 @@
 import TaskPage from "./TaskPage.jsx";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [latestTasksArray, setLatestTasksArray] = useState([]);
+
   const topHabits = [
     {
       title: "Reading",
@@ -20,7 +23,13 @@ export default function Home() {
     },
   ];
 
-  const latestTasks = [{}];
+  // const latestTasks = [{}];
+  useEffect(() => {
+    let latestTasksString = localStorage.getItem("taskArray");
+    let latestTasks = JSON.parse(latestTasksString);
+    setLatestTasksArray(latestTasks);
+    console.log("latestTasksArray:", latestTasksArray);
+  }, []);
 
   const myFriends = [
     {
@@ -39,11 +48,14 @@ export default function Home() {
       picture: "https://randomuser.me/api/portraits/med/men/41.jpg",
     },
   ];
+
   return (
     <div className="homepage">
       <div className="tasks-homepage">
         <h2>Top 3 tasks</h2>
-
+        {latestTasksArray.map((task, index) => (
+          <h2>{task.title}</h2>
+        ))}
         <button className="nav-btn">
           <Link to="/tasks">See more</Link>
         </button>

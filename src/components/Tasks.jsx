@@ -17,7 +17,7 @@ export default function Tasks() {
   const [filterByTaskType, setFilterByTaskType] = useState("");
   const [filteredTaskArray, setFilteredTaskArray] = useState(taskArray);
   const [saveChanges, setSaveChanges] = useState(false);
-  const [showMore, setShowMore] = useState(null);
+  // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   // const [optionValue, setOptionValue] = useState("");
   // const [sortOptionValue, setSortOptionValue] = useState("");
@@ -65,6 +65,11 @@ export default function Tasks() {
   // useEffect(() => {
   //   titleInput.value
   // }, [titleInput.value]);
+  useEffect(() => {
+    let taskArrayToSend = [...taskArray];
+    localStorage.setItem("taskArray", JSON.stringify(taskArrayToSend));
+  }, [taskArray]);
+
   useEffect(() => {
     let newTaskArray = [...taskArray];
     // let sortedTaskArray = newTaskArray;
