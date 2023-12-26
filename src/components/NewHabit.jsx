@@ -15,9 +15,13 @@ function NewHabit({habitList, updateHabitList}) {
 
     let addHabit = () => {
 
+        if (!habitTitle || !priority) {
+            return
+        }
+
         let newHabit = {
             title: habitTitle,
-            streak: habitStreak,
+            streak: habitStreak !== "" ? habitStreak : 0,
             priority: priority
         };
         console.log(newHabit)
@@ -35,8 +39,8 @@ function NewHabit({habitList, updateHabitList}) {
   return (
     <div className="newHabit">
         <fieldset className="new-form">
-            <legend>Start a new habit</legend>
-            <input type="text" value={habitTitle} placeholder="Habit description" onChange={(e) => setHabitTitle(e.target.value)}/>
+            <legend>Add a new habit</legend>
+            <input type="text" maxLength="30" value={habitTitle} placeholder="Habit description" onChange={(e) => setHabitTitle(e.target.value)}/>
             <div className="starting-streak">
                  <button className="streak-counter" onClick={() => setHabitStreak((prev) => Math.max(+prev - 1, 0))}>-</button>
                 <input type="number" readOnly value={habitStreak} placeholder="0" onChange={(e) => setHabitStreak(e.target.value)}/>

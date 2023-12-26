@@ -461,12 +461,15 @@
 }
 
 /* HabitPage */
+.habits-page {
+  background: #1a1a1a;
+}
+
 .habits-legend {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #1a1a1a;
 }
 
 .habits {
@@ -475,12 +478,34 @@
   flex-direction: column;
   margin-left: 20px;
   border: 2px solid #292929;
+  border-radius: 10px;
   min-height: 85vh;
   width: 90vw;
   justify-content: center;
-  padding: 55px;
+  padding: 50px;
+  padding-top: 20px;
   transition: min-height 0.3s ease;
   color: #fff;
+}
+.habits .header-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.habits .header-container .nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  justify-content: space-between;
+  font-size: larger;
+}
+.habits .header-container .nav-list li {
+  color: #fff;
+}
+.habits .header-container .nav-list li:visited {
+  color: #fff !important;
 }
 .habits .myHabits {
   cursor: pointer;
@@ -563,11 +588,15 @@
 .habits .myHabits.editMode .hidden-settings button {
   margin: 5px;
 }
+.habits .myHabits.editMode .hidden-settings button:hover {
+  box-shadow: var(--bg-100) 0px 10px 20px -6px;
+}
 .habits .myHabits.editMode .hidden-settings select {
   width: 150px;
   height: 30px;
   border-radius: 5px;
   font-size: 15px;
+  background-color: rgba(245, 245, 245, 0.919);
 }
 .habits .myHabits .habitWrapper {
   margin-top: 10px;
@@ -579,10 +608,6 @@
   width: 600px;
   justify-content: space-evenly;
   align-items: center;
-}
-.habits .myHabits .habitWrapper .sorting-and-filtering select:hover,
-.habits .myHabits .habitWrapper .sorting-and-filtering input[type=number]:hover {
-  background-color: #990000;
 }
 .habits .myHabits .sortingBtn {
   margin-left: 20px;
@@ -610,6 +635,9 @@
 .habits .streak-counter button {
   align-items: center;
 }
+.habits .streak-counter button:hover {
+  box-shadow: var(--bg-100) 0px 10px 20px -6px;
+}
 .habits p {
   font-size: 20px;
   display: flex;
@@ -631,6 +659,7 @@
 .newHabit {
   height: 300px;
   width: 400px;
+  margin-top: 40px;
 }
 .newHabit .new-form {
   display: flex !important;
@@ -646,29 +675,49 @@
   margin-top: 15px;
   height: 30px;
   margin-bottom: 20px;
-  background-color: #1a1a1a;
-  color: #fff;
-}
-.newHabit .new-form input:active {
-  background-color: #990000;
-}
-.newHabit .new-form input:hover {
-  background-color: #990000;
+  border-radius: 10px;
 }
 .newHabit .new-form button {
-  width: 150px;
-  align-self: center;
-  border-radius: 10px;
-  background-color: rgba(189, 178, 178, 0.4);
-  margin-top: 20px;
-  padding: 7px;
+  align-items: center;
+  background-color: var(--accent-100);
+  border-radius: 4px;
+  border: none;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: var(--bg-200);
   cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  margin: 10px;
 }
-.newHabit .new-form button:active {
-  background-color: #990000;
+.newHabit .new-form button:focus {
+  box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .newHabit .new-form button:hover {
-  background-color: #990000;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.newHabit .new-form button:active {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(2px);
 }
 .newHabit .new-form .starting-streak {
   align-self: center;
@@ -689,16 +738,10 @@
   border-radius: 50px;
   height: 50px;
   width: 50px;
-  background-color: rgba(189, 178, 178, 0.4);
+  background-color: rgba(189, 178, 178, 0.4) !important;
   border: none;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 600;
-}
-.newHabit .new-form .starting-streak button:hover {
-  background-color: #990000;
-}
-.newHabit .new-form .starting-streak button:active {
-  background-color: #990000;
 }
 .newHabit .radio-priority {
   display: flex;

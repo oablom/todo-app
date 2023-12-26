@@ -476,13 +476,17 @@
 
 /* HabitPage */
 
+.habits-page {
+  background: #1a1a1a;
+}
+
 .habits-legend {
   display:flex;
   justify-content: center;
   align-items: center;
   height:100vh;
-  background: #1a1a1a;
   
+
 
 }
 
@@ -492,13 +496,40 @@
   flex-direction: column;
   margin-left:20px;
   border: 2px solid #292929;
+  border-radius: 10px;
   min-height:85vh;
   width:90vw;
   justify-content: center;
   //overflow-x: auto;
-  padding: 55px;
+  padding: 50px;
+  padding-top:20px;
   transition: min-height 0.3s ease;
   color: #fff;
+
+  .header-container {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content:space-between;
+
+    .nav-list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        width:400px;
+        justify-content:space-between;
+        font-size: larger;
+        li{
+          color: #fff;
+          &:visited {
+            color: #fff !important;
+          }
+        }
+      }
+    
+  }
+
+
 
   .myHabits {
     cursor: pointer;
@@ -592,6 +623,10 @@
       
           button {
             margin: 5px;
+            &:hover{
+              box-shadow: var(--bg-100) 0px 10px 20px -6px;
+            }
+            
           }
 
           select {
@@ -599,6 +634,7 @@
             height:30px;
             border-radius: 5px;
             font-size: 15px;
+            background-color: rgba(245, 245, 245, 0.919);
           }
     }
   }
@@ -614,10 +650,6 @@
         width: 600px;
         justify-content: space-evenly;
         align-items: center;
-        select:hover,
-          input[type="number"]:hover {
-            background-color: #990000;
-          }
         }
         
       }
@@ -652,6 +684,9 @@
     justify-content: center;
     button {
       align-items: center;
+      &:hover {
+          box-shadow: var(--bg-100) 0px 10px 20px -6px;
+        }
     }
   }
 
@@ -682,6 +717,7 @@
 .newHabit {
   height: 300px;
   width: 400px;
+  margin-top:40px;
 
   .new-form {
     display: flex !important;
@@ -698,31 +734,17 @@
       margin-top:15px;
       height:30px;
       margin-bottom:20px;
-      background-color: #1a1a1a;
-      color:#fff;
-      &:active {
-        background-color: #990000;
-      }
-      &:hover {
-        background-color: #990000;
-      }
+      border-radius: 10px;
+
     }
 
-    button {
-      width: 150px;
-      align-self: center;
-      border-radius: 10px;
-      background-color: rgb(189, 178, 178, 0.40);
-      margin-top:20px;
-      padding:7px;
-      cursor: pointer;
-      &:active{
-        background-color: #990000;
-      }
-      &:hover {
-        background-color: #990000;
-      }
-    }
+    @include button(var(--accent-100),
+      var(--bg-300),
+      var(--bg-200),
+      var(--accent-200),
+      var(--accent-200),
+      var(--primary-100),
+      var(--primary-200));
 
     .starting-streak {
       align-self: center;
@@ -741,19 +763,14 @@
       }
 
       button {
+        
         border-radius: 50px;
           height: 50px;
           width: 50px;
-          background-color: rgb(189, 178, 178, 0.40);
+          background-color: rgb(189, 178, 178, 0.40) !important;
           border: none;
-          font-size:25px;
+          font-size:30px;
           font-weight: 600;
-          &:hover {
-            background-color: #990000;
-          }
-          &:active {
-            background-color: #990000;
-          }
       }
     }
   }

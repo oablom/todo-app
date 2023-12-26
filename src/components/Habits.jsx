@@ -5,6 +5,7 @@
 // Streak (högst till lägst, och lägst till högst)
 // Prioritet (högst till lägst, och lägst till högst)
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import NewHabit from "./NewHabit";
 
 export default function Habits() {
@@ -50,9 +51,14 @@ export default function Habits() {
 
     let sortingHabits = [...filteredHabits];
     sortingHabits.sort((a,b) => {
+
+      const priorityOrder = {low: 0, mid: 1, high: 2};
+      const aPriority = priorityOrder[a.priority];
+      const bPriority = priorityOrder[b.priority];
+
       return (
         (filterType === "priority" ? 
-        (sortedHabits === "ascending" ? 1 : -1) * a.priority.localeCompare(b.priority)
+        (sortedHabits === "ascending" ? 1 : -1) * (aPriority - bPriority)
         : filterType === "streak" ? (sortedHabits === "ascending" ? 1 : -1) * (a.streak - b.streak) : 0)
       )
     });
@@ -86,6 +92,24 @@ export default function Habits() {
     <div>
       <div className="habits-legend">
         <div className="habits">
+          <div className="header-container">
+            <h1>My habits...</h1>
+            <nav ><ul className="nav-list">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/tasks">Tasks</Link>
+              </li>
+              <li>
+                <Link to="/habits">Habits</Link>
+              </li>
+              <li>
+                <Link to="/friends">Friends</Link>
+              </li>
+              </ul></nav>  
+          </div>
+          
           <div className="habit-container">
 
             <NewHabit habitList={habits} updateHabitList={setHabits}/>
