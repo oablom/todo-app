@@ -278,7 +278,7 @@
   color: #fff;
 }
 .filterFriends select:hover,
-.filterFriends input[type=number]:hover {
+.filterFriends [type=number]:hover {
   background-color: #990000;
 }
 

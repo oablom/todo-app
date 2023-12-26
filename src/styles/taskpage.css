@@ -27,10 +27,6 @@
   padding: 0;
   font-family: "JetBrains Mono", monospace;
 }
-.task-page input {
-  color: black;
-  border-radius: 5px;
-}
 .task-page button:hover {
   cursor: pointer;
   transform: scale(1.1);
@@ -67,9 +63,6 @@
   text-align: center;
   background-color: var(--bg-300);
   box-shadow: inset 50px 0px 50px -50px var(--bg-200);
-}
-.task-page .tasks .task-wrapper input {
-  border-radius: 5px;
 }
 .task-page .tasks .task-wrapper:hover {
   cursor: pointer;
@@ -159,7 +152,6 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 5px;
   display: inline-block;
-  color: white;
 }
 .task-page .tasks button {
   align-items: center;
@@ -207,11 +199,10 @@
   width: 250px;
   height: 50px;
   background-color: var(--bg-300);
-  color: white;
   border: 1px solid var(--accent-200);
 }
 .task-page .tasks select option {
-  color: white;
+  color: black;
 }
 .task-page .new-task {
   width: 30%;
@@ -247,9 +238,10 @@
   margin-top: 2px;
   padding: 10px;
   color: black;
+  background-color: var(--text-200);
 }
 .task-page .new-task .task-form select {
-  color: white;
+  color: black;
   border: 1px solid var(--accent-200);
 }
 .task-page .new-task .task-form textarea {
