@@ -28,10 +28,6 @@
   padding: 0;
   font-family: "JetBrains Mono", monospace;
 }
-.task-page button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
 .task-page select:hover {
   cursor: pointer;
 }
@@ -157,17 +153,10 @@
   margin-left: 60px;
 }
 .task-page .tasks .filter-sort-wrapper select {
+  font-weight: bold;
   width: 200px;
   margin: 0px;
-}
-.task-page .tasks button,
-.task-page .tasks select {
-  border-radius: 10px;
-  min-width: 80px;
-  z-index: 2;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  padding: 5px;
-  display: inline-block;
+  color: black;
 }
 .task-page .tasks button {
   align-items: center;
@@ -181,6 +170,7 @@
   display: inline-flex;
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
+  font-size: 14px;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -206,6 +196,7 @@
 .task-page .tasks button:hover {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
+  cursor: pointer;
 }
 .task-page .tasks button:active {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
@@ -214,11 +205,15 @@
 .task-page .tasks select {
   width: 250px;
   height: 50px;
-  background-color: var(--bg-200);
-  border: 1px solid var(--accent-200);
 }
-.task-page .tasks select option {
-  color: white;
+.task-page .tasks select:hover {
+  background-image: linear-gradient(to right, var(--text-200), var(--accent-200));
+  color: black;
+}
+.task-page .tasks select:hover option {
+  color: black;
+  font-weight: bold;
+  background-image: linear-gradient(to right, var(--primary-100), var(--accent-200));
 }
 .task-page .new-task {
   width: 30%;
@@ -259,9 +254,23 @@
 .task-page .new-task .task-form select {
   color: black;
   border: 1px solid var(--accent-200);
+  font-weight: bold;
 }
 .task-page .new-task .task-form select option {
   color: black;
+  font-weight: bold;
+}
+.task-page .new-task .task-form select option:hover {
+  background-image: linear-gradient(to right, var(--primary-100), var(--accent-200));
+}
+.task-page .new-task .task-form select:hover {
+  color: black;
+}
+.task-page .new-task .task-form select:hover option {
+  color: black;
+}
+.task-page .new-task .task-form select:hover:focus {
+  box-shadow: var(--accent-200) 0 0 0 1.5px inset;
 }
 .task-page .new-task .task-form textarea {
   max-width: 100%;

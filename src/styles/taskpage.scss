@@ -39,10 +39,6 @@
     font-family: "JetBrains Mono", monospace;
   }
 
-  button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
   select:hover {
     cursor: pointer;
   }
@@ -184,19 +180,13 @@
         margin-left: 60px;
       }
       select {
+        font-weight: bold;
         width: 200px;
         margin: 0px;
+        color: black;
       }
     }
-    button,
-    select {
-      border-radius: 10px;
-      min-width: 80px;
-      z-index: 2;
-      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-      padding: 5px;
-      display: inline-block;
-    }
+
     @include button(
       var(--accent-100),
       var(--bg-300),
@@ -209,12 +199,25 @@
     select {
       width: 250px;
       height: 50px;
-      background-color: (var(--bg-200));
+      // background-color: (var(--bg-200));
 
-      option {
-        color: white;
+      &:hover {
+        background-image: linear-gradient(
+          to right,
+          var(--text-200),
+          var(--accent-200)
+        );
+        color: black;
+        option {
+          color: black;
+          font-weight: bold;
+          background-image: linear-gradient(
+            to right,
+            var(--primary-100),
+            var(--accent-200)
+          );
+        }
       }
-      border: 1px solid var(--accent-200);
     }
   }
 
@@ -255,9 +258,28 @@
       select {
         color: black;
         border: 1px solid var(--accent-200);
+        font-weight: bold;
 
         option {
           color: black;
+          font-weight: bold;
+          &:hover {
+            background-image: linear-gradient(
+              to right,
+              var(--primary-100),
+              var(--accent-200)
+            );
+          }
+        }
+
+        &:hover {
+          color: black;
+          option {
+            color: black;
+          }
+          &:focus {
+            box-shadow: var(--accent-200) 0 0 0 1.5px inset;
+          }
         }
       }
       textarea {
