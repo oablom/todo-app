@@ -31,6 +31,15 @@ export default function Home() {
     console.log("latestTasksArray:", latestTasksArray);
   }, []);
 
+  useEffect(() => {
+    if (!latestTasksArray) {
+      return;
+    }
+    let latestTaskArrayCopy = [...latestTasksArray];
+    latestTasksArray.length > 3 &&
+      setLatestTasksArray(latestTaskArrayCopy.slice(0, 3));
+  }, [latestTasksArray]);
+
   const myFriends = [
     {
       firstName: "Peter",
