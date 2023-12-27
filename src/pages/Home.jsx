@@ -60,9 +60,10 @@ export default function Home() {
             <h3>{task.description}</h3>
           </div>
         ))}
-        <button className="nav-btn">
-          <Link to="/tasks">See more</Link>
-        </button>
+
+        <Link to="/tasks">
+          <button className="nav-btn">See more</button>
+        </Link>
       </div>
 
       <div className="habits-homepage">
@@ -74,9 +75,11 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <button className="nav-btn">
-          <Link to="/habits">See more</Link>
-        </button>
+
+        <Link to="/habits">
+          {" "}
+          <button className="nav-btn">See more </button>
+        </Link>
       </div>
 
       <div className="friends-homepage">
@@ -92,9 +95,10 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <button className="nav-btn">
-          <Link to="/friends">See all friends</Link>
-        </button>
+
+        <Link to="/friends">
+          <button className="nav-btn">See all friends </button>
+        </Link>
       </div>
     </div>
   );
