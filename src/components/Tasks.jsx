@@ -24,10 +24,7 @@ export default function Tasks() {
   // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
-  // const [insideTaskWrapper, setInsideTaskWrapper] = useState(true);
-
-  // const [optionValue, setOptionValue] = useState("");
-  // const [sortOptionValue, setSortOptionValue] = useState("");
+  const [completed, setCompleted] = useState(false);
   const [sortBy, setSortBy] = useState("");
 
   // const [savedChanges, setSavedChanges] = useState(false);
@@ -222,13 +219,9 @@ export default function Tasks() {
                 }
                 ref={taskWrapperRef}
                 onClick={(e) => {
-                  // console.log("showMoreIndex", showMoreIndex);
-                  // console.log("editTask", editTask);
-                  //  &&
                   editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
-                  // setEditTask(false);
 
                   console.log("Task-wrapper edittask index:", editTaskIndex);
                   console.log("Task-wrapper  showMoreIndex:", showMoreIndex);
@@ -242,9 +235,8 @@ export default function Tasks() {
                   // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >
-                <div>
-                  {" "}
-                  {/* <h3>Todo: </h3> */}
+                <div className="title">
+                  <h3>{showMoreIndex === index && "Title:"} </h3>
                   {editTaskIndex !== index ? (
                     <h3>{updatedTask.title}</h3>
                   ) : (
@@ -322,16 +314,12 @@ export default function Tasks() {
                     <button
                       onClick={(e) => {
                         setEditTask(!editTask);
-                        // showMore !== index && setEditTask(!editTask);
-                        // setShowMoreIndex(index);
-                        // showMoreIndex !== index && setEditTaskIndex(null);
+
                         e.stopPropagation();
+
                         showMoreIndex === index && editTaskIndex !== index
                           ? setEditTaskIndex(index)
                           : setEditTaskIndex(null);
-                        console.log("edittask index:", editTaskIndex);
-                        console.log("showMoreIndex:", showMoreIndex);
-                        // console.log(showMore);
                       }}
                     >
                       {editTaskIndex !== index ? "Edit this task" : "Cancel"}
@@ -342,7 +330,10 @@ export default function Tasks() {
                           newTaskArray[index] = updatedTask;
                           setTaskArray(newTaskArray);
                           setSaveChanges(!saveChanges);
-
+                          setEditTask(!editTask);
+                          showMoreIndex === index && editTaskIndex !== index
+                            ? setEditTaskIndex(index)
+                            : setEditTaskIndex(null);
                           console.log(taskArray);
                         }}
                       >
