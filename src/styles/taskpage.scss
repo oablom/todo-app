@@ -31,6 +31,7 @@
   overflow: auto;
   background-color: var(--bg-100);
   padding-bottom: 50px;
+
   * {
     color: white;
     box-sizing: border-box;
@@ -39,10 +40,17 @@
     font-family: "JetBrains Mono", monospace;
   }
 
-  button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
+  .todos-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--primary-100);
+    text-shadow: var(--bg-300) 0px 0px 2px;
   }
+
   select:hover {
     cursor: pointer;
   }
@@ -60,6 +68,7 @@
       justify-content: center;
       width: 30%;
       max-width: 1000px;
+      padding-bottom: 100px;
     }
     .task-wrapper.cursor:hover {
       cursor: auto;
@@ -72,12 +81,18 @@
       border-radius: 10px;
       width: 600px;
       margin: 10px;
-      margin-top: 30px;
+      // margin-top: 30px;
+
       padding: 10px;
       text-align: center;
       background-color: var(--bg-300);
       box-shadow: inset 50px 0px 50px -50px var(--bg-200);
       // inset -50px 0px 50px -50px var(--accent-200);
+      input,
+      select,
+      option {
+        color: black;
+      }
 
       &:hover {
         cursor: pointer;
@@ -85,15 +100,15 @@
         transform: translateY(-2px);
         border: 2px solid var(--primary-100);
       }
-      &.task-wrapper.cursor.wrong-click {
+      &.task-wrapper.wrong-click {
         animation: wrong-click 0.5s ease-in-out;
       }
       &:nth-child(odd) {
         background-color: var(--bg-300);
         &:hover {
-          box-shadow: var(--primary-200) 0px 10px 20px -6px;
+          box-shadow: var(--primary-100) 0px 10px 20px -6px;
           transform: translateY(-2px);
-          border: 2px solid var(--primary-200);
+          border: 2px solid var(--primary-100);
         }
         // border: 2px solid var(--primary-200);
         // box-shadow: inset 50px 0px 50px -50px var(--accent-100),
@@ -105,11 +120,9 @@
         }
       }
       @keyframes wrong-click {
-        0%,
         100% {
           transform: translateX(0);
         }
-        25%,
         75% {
           transform: translateX(-10px);
         }
@@ -128,11 +141,14 @@
           border-radius: 50%;
           height: 50px;
           width: 50px;
-          // position: relative;
-          // text-align: center;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           display: flex;
           justify-content: center;
           align-items: center;
+          &:hover {
+            cursor: pointer;
+            box-shadow: var(--primary-200) 0px 5px 15px;
+          }
         }
         img {
           // background-color: var(--accent-200);
@@ -140,7 +156,7 @@
           // left: 0px;
           // position: absolute;
           height: 40px;
-          box-shadow: var(--accent-200) 5px 5px -5px;
+
           &:hover {
             // transform: translateY(4px);
             cursor: pointer;
@@ -181,19 +197,13 @@
         margin-left: 60px;
       }
       select {
+        font-weight: bold;
         width: 200px;
         margin: 0px;
+        color: black;
       }
     }
-    button,
-    select {
-      border-radius: 10px;
-      min-width: 80px;
-      z-index: 2;
-      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-      padding: 5px;
-      display: inline-block;
-    }
+
     @include button(
       var(--accent-100),
       var(--bg-300),
@@ -206,12 +216,25 @@
     select {
       width: 250px;
       height: 50px;
-      background-color: (var(--bg-200));
+      // background-color: (var(--bg-200));
 
-      option {
-        color: white;
+      &:hover {
+        background-image: linear-gradient(
+          to right,
+          var(--text-200),
+          var(--accent-200)
+        );
+        color: black;
+        option {
+          color: black;
+          font-weight: bold;
+          background-image: linear-gradient(
+            to right,
+            var(--primary-100),
+            var(--accent-200)
+          );
+        }
       }
-      border: 1px solid var(--accent-200);
     }
   }
 
@@ -252,9 +275,28 @@
       select {
         color: black;
         border: 1px solid var(--accent-200);
+        font-weight: bold;
 
         option {
           color: black;
+          font-weight: bold;
+          &:hover {
+            background-image: linear-gradient(
+              to right,
+              var(--primary-100),
+              var(--accent-200)
+            );
+          }
+        }
+
+        &:hover {
+          color: black;
+          option {
+            color: black;
+          }
+          &:focus {
+            box-shadow: var(--accent-200) 0 0 0 1.5px inset;
+          }
         }
       }
       textarea {

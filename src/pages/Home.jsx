@@ -1,8 +1,45 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import React from "react";
-import { useState } from "react";
 
 export default function Home() {
+  const [latestTasksArray, setLatestTasksArray] = useState([]);
+
+  const topHabits = [
+    {
+      title: "Reading",
+      priority: "mid",
+      streak: 2,
+    },
+    {
+      title: "Gaming",
+      priority: "low",
+      streak: 0,
+    },
+    {
+      title: "Gym",
+      priority: "high",
+      streak: 10,
+    },
+  ];
+
+  // const latestTasks = [{}];
+  useEffect(() => {
+    let latestTasksString = localStorage.getItem("taskArray");
+    let latestTasks = JSON.parse(latestTasksString);
+    setLatestTasksArray(latestTasks);
+    console.log("latestTasksArray:", latestTasksArray);
+  }, []);
+
+  useEffect(() => {
+    if (!latestTasksArray) {
+      return;
+    }
+    let latestTaskArrayCopy = [...latestTasksArray];
+    latestTasksArray.length > 3 &&
+      setLatestTasksArray(latestTaskArrayCopy.slice(0, 3));
+  }, [latestTasksArray]);
+
   const [myFriends, setMyFriends] = useState(() => {
     // Retrieve myFriends from localStorage if available, otherwise use the default value
     const storedFriends = localStorage.getItem("myFriends");
@@ -38,6 +75,14 @@ export default function Home() {
     <div className="homepage">
       <div className="tasks-homepage">
         <h2>Top 3 tasks</h2>
+
+        {latestTasksArray?.map((task, index) => (
+          <div key={index} style={{ textAlign: "center" }}>
+            <h2>{task.title}</h2>
+            <h3>{task.description}</h3>
+          </div>
+        ))}
+
         <Link to="/tasks">
           <button className="nav-btn">See more</button>
         </Link>
@@ -45,9 +90,17 @@ export default function Home() {
 
       <div className="habits-homepage">
         <h2>Top 3 habits</h2>
+        <ul>
+          {topHabits.map((habit, index) => (
+            <li key={index}>
+              {`${habit.title} - Priority: ${habit.priority}`}
+            </li>
+          ))}
+        </ul>
 
         <Link to="/habits">
-          <button className="nav-btn">See more</button>
+          {" "}
+          <button className="nav-btn">See more </button>
         </Link>
       </div>
 

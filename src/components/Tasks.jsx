@@ -5,7 +5,7 @@
 // Redigera ärendet.
 // Samtliga ärenden ska kunna filtreras efter kategori.
 // Samtliga ärenden ska kunna sorteras baserat på titel (bokstavsordning - stigande och fallande) och tidsestimat (stigande och fallande)
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import NewTask from "./NewTask";
 import TrashCan from "../icons/recycle-bin.png";
 
@@ -17,18 +17,29 @@ export default function Tasks() {
   const [filterByTaskType, setFilterByTaskType] = useState("");
   const [filteredTaskArray, setFilteredTaskArray] = useState(taskArray);
   const [saveChanges, setSaveChanges] = useState(false);
-  const [showMore, setShowMore] = useState(null);
+  const [clickedOutside, setClickedOutside] = useState(true);
+  const [taskWrapperClassName, setTaskWrapperClassName] =
+    useState("task-wrapper");
+  const [taskArrayToSend, setTaskArrayToSend] = useState(taskArray);
+  // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
+  const taskWrapperRef = useRef(null);
+  // const [insideTaskWrapper, setInsideTaskWrapper] = useState(true);
+
   // const [optionValue, setOptionValue] = useState("");
   // const [sortOptionValue, setSortOptionValue] = useState("");
   const [sortBy, setSortBy] = useState("");
+
   // const [savedChanges, setSavedChanges] = useState(false);
   // function Task()
 
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [timeEstimate, setTimeEstimate] = useState("");
-  // const [type, setType] = useState("");
+  useEffect(() => {
+    setTaskArray(() => {
+      const storedTaskArray = JSON.parse(localStorage.getItem("taskArray"));
+      console.log("storedTaskArray", storedTaskArray);
+      return storedTaskArray || [];
+    });
+  }, []);
 
   function taskArrayFunction(newTask) {
     console.log("Adding new task:", newTask);
@@ -39,6 +50,7 @@ export default function Tasks() {
     const newTaskArray = [...taskArray];
     newTaskArray.splice(index, 1);
     setTaskArray(newTaskArray);
+    // localStorage.setItem("taskArray", JSON.stringify(newTaskArray));
     // if (editTaskIndex === index) {
     //   setEditTaskIndex(null);
     // }
@@ -66,6 +78,41 @@ export default function Tasks() {
   //   titleInput.value
   // }, [titleInput.value]);
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (taskWrapperRef.current) {
+        if (
+          !taskWrapperRef.current.contains(event.target) &&
+          editTaskIndex !== null
+        ) {
+          // taskWrapperRef.current.className = "task-wrapper cursor";
+          setTaskWrapperClassName("task-wrapper wrong-click");
+
+          setTimeout(() => {
+            setTaskWrapperClassName("task-wrapper");
+          }, 500);
+        } else {
+          setTaskWrapperClassName("task-wrapper");
+
+          // taskWrapperRef.current.className = "task-wrapper";
+        }
+      }
+    };
+    // taskWrapperRef.current.className = "task-wrapper";
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [editTaskIndex]);
+
+  useEffect(() => {
+    // setTaskArrayToSend([...taskArray]);
+    if (taskArray.length > 0) {
+      localStorage.setItem("taskArray", JSON.stringify(taskArray));
+    }
+  }, [taskArray, removeTask, saveChanges]);
+
+  useEffect(() => {
     let newTaskArray = [...taskArray];
     // let sortedTaskArray = newTaskArray;
     if (sortBy) {
@@ -86,14 +133,11 @@ export default function Tasks() {
       setFilteredTaskArray(newTaskArray);
     }
 
-    console.log("filteredTaskArray", filteredTaskArray);
-    console.log("filterByTaskType", filterByTaskType);
-    console.log("taskArray", newTaskArray);
-    console.clear();
+    // console.clear();
   }, [filterByTaskType, taskArray, sortBy, saveChanges]);
 
-  const trashCanText = document.getElementById("trash-can-text");
-  const trashCanIcon = document.getElementById("trash-can-icon");
+  // const trashCanText = document.getElementById("trash-can-text");
+  // const trashCanIcon = document.getElementById("trash-can-icon");
 
   // const titleInput = document.getElementById("title");
   // const descriptionInput = document.getElementById("description");
@@ -102,13 +146,19 @@ export default function Tasks() {
 
   return (
     <div className="tasks">
-      <h1>Tasks</h1>
+      {/* <h1>Tasks</h1> */}
       <div className="button-wrapper">
         <button onClick={() => setShowNewTask(!showNewTask)}>NewTask</button>
         <button
           onClick={() => {
             setTaskArray([]);
             setFilteredTaskArray([]);
+
+            localStorage.removeItem("taskArray");
+            console.log("taskArray", taskArray);
+            console.log("filteredTaskArray", filteredTaskArray);
+            console.log("localstorage", localStorage.getItem("taskArray"));
+
             // setOptionValue("");
           }}
         >
@@ -155,6 +205,7 @@ export default function Tasks() {
           </select>
         </div>
       </div>
+      <h1 className="todos-title">Todos:</h1>
       <div className="todos-wrapper">
         {(filterByTaskType === "" ? taskArray : filteredTaskArray).map(
           (task, index) => {
@@ -164,12 +215,17 @@ export default function Tasks() {
             return (
               <div
                 key={(task, index + 1)}
-                className={!editTask ? "task-wrapper" : "task-wrapper cursor"}
-                onClick={() => {
+                className={
+                  editTaskIndex === index
+                    ? taskWrapperClassName
+                    : "task-wrapper"
+                }
+                ref={taskWrapperRef}
+                onClick={(e) => {
                   // console.log("showMoreIndex", showMoreIndex);
                   // console.log("editTask", editTask);
                   //  &&
-
+                  editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
                   // setEditTask(false);
@@ -182,13 +238,13 @@ export default function Tasks() {
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
-                    showMoreIndex === index && "0px 10px 20px -6px #ffa783",
+                    showMoreIndex === index && "0px 10px 20px -6px #d1432b",
                   // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >
                 <div>
                   {" "}
-                  <h3>Todo: </h3>
+                  {/* <h3>Todo: </h3> */}
                   {editTaskIndex !== index ? (
                     <h3>{updatedTask.title}</h3>
                   ) : (

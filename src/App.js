@@ -5,11 +5,27 @@ import TaskPage from "./pages/TaskPage";
 import HabitPage from "./pages/HabitPage";
 import FriendPage from "./pages/FriendPage";
 import Home from "./pages/Home";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
+      <nav className="app-navigation">
+        <ul>
+          <NavLink to="/" activeClassName="active">
+            <li>Home</li>
+          </NavLink>
+          <NavLink to="/tasks" activeClassName="active">
+            <li>Tasks</li>
+          </NavLink>
+          <NavLink to="/habits" activeClassName="active">
+            <li>Habits</li>
+          </NavLink>
+          <NavLink to="/friends" activeClassName="active">
+            <li>Friends</li>
+          </NavLink>
+        </ul>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tasks" element={<TaskPage />} />

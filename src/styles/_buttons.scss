@@ -20,6 +20,7 @@
     display: inline-flex;
     font-family: "JetBrains Mono", monospace;
     font-weight: bold;
+    font-size: 14px;
     height: 48px;
     justify-content: center;
     line-height: 1;
@@ -52,6 +53,8 @@
     box-shadow: $shadow-color 0 4px 8px, $shadow-color 0 7px 13px -3px,
       $border-color 0 -3px 0 inset;
     transform: translateY(-2px);
+    cursor: pointer;
+    // transform: scale(1.05);
   }
 
   button:active {
