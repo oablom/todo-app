@@ -20,6 +20,7 @@ export default function Tasks() {
   const [clickedOutside, setClickedOutside] = useState(true);
   const [taskWrapperClassName, setTaskWrapperClassName] =
     useState("task-wrapper");
+  const [taskArrayToSend, setTaskArrayToSend] = useState(taskArray);
   // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
@@ -32,10 +33,13 @@ export default function Tasks() {
   // const [savedChanges, setSavedChanges] = useState(false);
   // function Task()
 
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [timeEstimate, setTimeEstimate] = useState("");
-  // const [type, setType] = useState("");
+  useEffect(() => {
+    setTaskArray(() => {
+      const storedTaskArray = JSON.parse(localStorage.getItem("taskArray"));
+      console.log("storedTaskArray", storedTaskArray);
+      return storedTaskArray || [];
+    });
+  }, []);
 
   function taskArrayFunction(newTask) {
     console.log("Adding new task:", newTask);
@@ -46,6 +50,7 @@ export default function Tasks() {
     const newTaskArray = [...taskArray];
     newTaskArray.splice(index, 1);
     setTaskArray(newTaskArray);
+    // localStorage.setItem("taskArray", JSON.stringify(newTaskArray));
     // if (editTaskIndex === index) {
     //   setEditTaskIndex(null);
     // }
@@ -101,9 +106,11 @@ export default function Tasks() {
   }, [editTaskIndex]);
 
   useEffect(() => {
-    let taskArrayToSend = [...taskArray];
-    localStorage.setItem("taskArray", JSON.stringify(taskArrayToSend));
-  }, [taskArray]);
+    // setTaskArrayToSend([...taskArray]);
+    if (taskArray.length > 0) {
+      localStorage.setItem("taskArray", JSON.stringify(taskArray));
+    }
+  }, [taskArray, removeTask, saveChanges]);
 
   useEffect(() => {
     let newTaskArray = [...taskArray];
@@ -126,10 +133,7 @@ export default function Tasks() {
       setFilteredTaskArray(newTaskArray);
     }
 
-    console.log("filteredTaskArray", filteredTaskArray);
-    console.log("filterByTaskType", filterByTaskType);
-    console.log("taskArray", newTaskArray);
-    console.clear();
+    // console.clear();
   }, [filterByTaskType, taskArray, sortBy, saveChanges]);
 
   // const trashCanText = document.getElementById("trash-can-text");
@@ -149,6 +153,12 @@ export default function Tasks() {
           onClick={() => {
             setTaskArray([]);
             setFilteredTaskArray([]);
+
+            localStorage.removeItem("taskArray");
+            console.log("taskArray", taskArray);
+            console.log("filteredTaskArray", filteredTaskArray);
+            console.log("localstorage", localStorage.getItem("taskArray"));
+
             // setOptionValue("");
           }}
         >

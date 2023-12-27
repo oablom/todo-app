@@ -53,11 +53,16 @@ export default function Home() {
     <div className="homepage">
       <div className="tasks-homepage">
         <h2>Top 3 tasks</h2>
-        {latestTasksArray.map((task, index) => (
-          <h2>{task.title}</h2>
+
+        {latestTasksArray?.map((task, index) => (
+          <div key={index} style={{ textAlign: "center" }}>
+            <h2>{task.title}</h2>
+            <h3>{task.description}</h3>
+          </div>
         ))}
         <button className="nav-btn">
           <Link to="/tasks">See more</Link>
+          {console.log("latestTasksArray:", latestTasksArray)}
         </button>
       </div>
 
