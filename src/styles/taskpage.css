@@ -28,6 +28,16 @@
   padding: 0;
   font-family: "JetBrains Mono", monospace;
 }
+.task-page .todos-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--primary-100);
+  text-shadow: var(--bg-300) 0px 0px 2px;
+}
 .task-page select:hover {
   cursor: pointer;
 }
@@ -44,6 +54,7 @@
   justify-content: center;
   width: 30%;
   max-width: 1000px;
+  padding-bottom: 100px;
 }
 .task-page .tasks .task-wrapper.cursor:hover {
   cursor: auto;
@@ -56,7 +67,6 @@
   border-radius: 10px;
   width: 600px;
   margin: 10px;
-  margin-top: 30px;
   padding: 10px;
   text-align: center;
   background-color: var(--bg-300);
@@ -68,7 +78,7 @@
   transform: translateY(-2px);
   border: 2px solid var(--primary-100);
 }
-.task-page .tasks .task-wrapper.task-wrapper.cursor.wrong-click {
+.task-page .tasks .task-wrapper.task-wrapper.wrong-click {
   animation: wrong-click 0.5s ease-in-out;
 }
 .task-page .tasks .task-wrapper:nth-child(odd) {
@@ -83,10 +93,10 @@
   height: 50px;
 }
 @keyframes wrong-click {
-  0%, 100% {
+  100% {
     transform: translateX(0);
   }
-  25%, 75% {
+  75% {
     transform: translateX(-10px);
   }
   50% {
