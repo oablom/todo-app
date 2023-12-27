@@ -23,7 +23,7 @@ export default function Tasks() {
   // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
-  const [insideTaskWrapper, setInsideTaskWrapper] = useState(true);
+  // const [insideTaskWrapper, setInsideTaskWrapper] = useState(true);
 
   // const [optionValue, setOptionValue] = useState("");
   // const [sortOptionValue, setSortOptionValue] = useState("");
@@ -87,6 +87,7 @@ export default function Tasks() {
           }, 500);
         } else {
           setTaskWrapperClassName("task-wrapper");
+
           // taskWrapperRef.current.className = "task-wrapper";
         }
       }
@@ -214,7 +215,7 @@ export default function Tasks() {
                   // console.log("showMoreIndex", showMoreIndex);
                   // console.log("editTask", editTask);
                   //  &&
-                  e.stopPropagation();
+                  editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
                   // setEditTask(false);
