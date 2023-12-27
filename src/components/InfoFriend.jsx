@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 
 export default function InfoFriend(props) {
+  const { data, onDelete } = props;
   let { firstName, lastName, picture, email, dob, gender } = props.data;
 
   let [showInfo, setShowInfo] = useState(false);
+
+  // Passes the entire friend's data to be deleted
+  const handleDelete = () => {
+    onDelete(data);
+  };
+
   return (
     <div className="infoFriend">
       <div
@@ -35,6 +42,13 @@ export default function InfoFriend(props) {
               <b>Gender: </b>
               {gender.charAt(0).toUpperCase() + gender.slice(1)}
             </p>
+          </li>
+          <li>
+            <button onClick={handleDelete}>
+              <span role="img" aria-label="trash-can">
+                🗑️
+              </span>
+            </button>
           </li>
         </ul>
       )}
