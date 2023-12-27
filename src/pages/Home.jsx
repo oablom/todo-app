@@ -62,7 +62,6 @@ export default function Home() {
         ))}
         <button className="nav-btn">
           <Link to="/tasks">See more</Link>
-          {console.log("latestTasksArray:", latestTasksArray)}
         </button>
       </div>
 
