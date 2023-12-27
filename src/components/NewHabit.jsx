@@ -42,14 +42,31 @@ function NewHabit({habitList, updateHabitList}) {
             <legend>Add a new habit</legend>
             <input type="text" maxLength="30" value={habitTitle} placeholder="Habit description" onChange={(e) => setHabitTitle(e.target.value)}/>
             <div className="starting-streak">
-                 <button className="streak-counter" onClick={() => setHabitStreak((prev) => Math.max(+prev - 1, 0))}>-</button>
-                <input type="number" readOnly value={habitStreak} placeholder="0" onChange={(e) => setHabitStreak(e.target.value)}/>
-                <button className="streak-counter" onClick={() => setHabitStreak((prev) => Math.max(+prev + 1, 0))}>+</button>
+                
+                 <button 
+                 className="streak-counter" 
+                 onClick={() => setHabitStreak((prev) => Math.max(+prev - 1, 0))}>
+                    -</button>
+
+                <input 
+                type="number" 
+                readOnly value={habitStreak} 
+                placeholder="0" onChange={(e) => setHabitStreak(e.target.value)}/>
+
+                <button 
+                className="streak-counter" onClick={() => setHabitStreak((prev) => Math.max(+prev + 1, 0))}>
+                    +</button>
+            
             </div>
             <div className="radio-priority">
-                <label style={{ borderRadius:"15px", border: priority === "low" ? "2px solid green" : "none" }}><input type="radio" name="priority" value="low" checked={priority === "low"} onChange={(e) => setPriority(e.target.value)}/>Low</label>
-                <label style={{ borderRadius:"15px", border: priority === "mid" ? "2px solid yellow" : "none" }}><input type="radio" name="priority" value="mid" checked={priority === "mid"} onChange={(e) => setPriority(e.target.value)} />Medium</label>
-                <label style={{ borderRadius:"15px", border: priority === "high" ? "2px solid red" : "none" }}><input type="radio" name="priority" value="high" checked={priority === "high"} onChange={(e) => setPriority(e.target.value)}/>High</label>
+                <label style={{ borderRadius:"15px", border: priority === "low" ? "2px solid green" : "none" }}>
+                    <input type="radio" name="priority" value="low" checked={priority === "low"} onChange={(e) => setPriority(e.target.value)}/>Low</label>
+
+                <label style={{ borderRadius:"15px", border: priority === "mid" ? "2px solid yellow" : "none" }}>
+                    <input type="radio" name="priority" value="mid" checked={priority === "mid"} onChange={(e) => setPriority(e.target.value)} />Medium</label>
+
+                <label style={{ borderRadius:"15px", border: priority === "high" ? "2px solid red" : "none" }}>
+                    <input type="radio" name="priority" value="high" checked={priority === "high"} onChange={(e) => setPriority(e.target.value)}/>High</label>
 
             </div>
             <button onClick={()=> addHabit()}>Start my new habit</button>
