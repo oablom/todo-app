@@ -300,8 +300,11 @@
 }
 .infoFriend ul li {
   text-align: center;
-  font-size: 14px;
   margin-bottom: 5px;
+}
+
+.infoFriend p {
+  font-size: 14px;
 }
 
 /*Filter friends component*/
