@@ -88,6 +88,11 @@
       background-color: var(--bg-300);
       box-shadow: inset 50px 0px 50px -50px var(--bg-200);
       // inset -50px 0px 50px -50px var(--accent-200);
+      input,
+      select,
+      option {
+        color: black;
+      }
 
       &:hover {
         cursor: pointer;

@@ -72,6 +72,11 @@
   background-color: var(--bg-300);
   box-shadow: inset 50px 0px 50px -50px var(--bg-200);
 }
+.task-page .tasks .task-wrapper input,
+.task-page .tasks .task-wrapper select,
+.task-page .tasks .task-wrapper option {
+  color: black;
+}
 .task-page .tasks .task-wrapper:hover {
   cursor: pointer;
   box-shadow: var(--primary-100) 0px 10px 20px -6px;
