@@ -25,6 +25,40 @@
   --bg-300: #404040; /* Slate gray */
 }
 
+.App .app-navigation {
+  display: flex;
+  background-color: #333;
+  justify-content: center;
+}
+.App .app-navigation ul {
+  list-style: none;
+  justify-content: space-around;
+  display: flex;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+}
+.App .app-navigation li {
+  margin-right: 20px;
+  text-align: center;
+  line-height: 40px;
+  width: 80px;
+}
+.App .app-navigation li:hover {
+  background-color: var(--primary-100);
+}
+.App .app-navigation a {
+  color: var(--text-100);
+  text-decoration: none;
+}
+.App .app-navigation .active {
+  font-weight: bold;
+  color: var(--accent-100);
+}
+.App .app-navigation .active:hover {
+  color: var(--text-100);
+}
+
 /* Home Page */
 .homepage {
   background-color: #1a1a1a;

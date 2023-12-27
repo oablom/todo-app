@@ -146,7 +146,7 @@ export default function Tasks() {
 
   return (
     <div className="tasks">
-      <h1>Tasks</h1>
+      {/* <h1>Tasks</h1> */}
       <div className="button-wrapper">
         <button onClick={() => setShowNewTask(!showNewTask)}>NewTask</button>
         <button
