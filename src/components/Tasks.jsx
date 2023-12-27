@@ -5,9 +5,9 @@
 // Redigera ärendet.
 // Samtliga ärenden ska kunna filtreras efter kategori.
 // Samtliga ärenden ska kunna sorteras baserat på titel (bokstavsordning - stigande och fallande) och tidsestimat (stigande och fallande)
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import NewTask from "./NewTask";
-import TrashCan from "../icons/trash-can-solid.svg";
+import TrashCan from "../icons/recycle-bin.png";
 
 export default function Tasks() {
   const [showNewTask, setShowNewTask] = useState();
@@ -17,11 +17,18 @@ export default function Tasks() {
   const [filterByTaskType, setFilterByTaskType] = useState("");
   const [filteredTaskArray, setFilteredTaskArray] = useState(taskArray);
   const [saveChanges, setSaveChanges] = useState(false);
-  const [showMore, setShowMore] = useState(null);
+  const [clickedOutside, setClickedOutside] = useState(true);
+  const [taskWrapperClassName, setTaskWrapperClassName] =
+    useState("task-wrapper");
+  // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
+  const taskWrapperRef = useRef(null);
+  // const [insideTaskWrapper, setInsideTaskWrapper] = useState(true);
+
   // const [optionValue, setOptionValue] = useState("");
   // const [sortOptionValue, setSortOptionValue] = useState("");
   const [sortBy, setSortBy] = useState("");
+
   // const [savedChanges, setSavedChanges] = useState(false);
   // function Task()
 
@@ -66,6 +73,39 @@ export default function Tasks() {
   //   titleInput.value
   // }, [titleInput.value]);
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (taskWrapperRef.current) {
+        if (
+          !taskWrapperRef.current.contains(event.target) &&
+          editTaskIndex !== null
+        ) {
+          // taskWrapperRef.current.className = "task-wrapper cursor";
+          setTaskWrapperClassName("task-wrapper wrong-click");
+
+          setTimeout(() => {
+            setTaskWrapperClassName("task-wrapper");
+          }, 500);
+        } else {
+          setTaskWrapperClassName("task-wrapper");
+
+          // taskWrapperRef.current.className = "task-wrapper";
+        }
+      }
+    };
+    // taskWrapperRef.current.className = "task-wrapper";
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [editTaskIndex]);
+
+  useEffect(() => {
+    let taskArrayToSend = [...taskArray];
+    localStorage.setItem("taskArray", JSON.stringify(taskArrayToSend));
+  }, [taskArray]);
+
+  useEffect(() => {
     let newTaskArray = [...taskArray];
     // let sortedTaskArray = newTaskArray;
     if (sortBy) {
@@ -92,8 +132,8 @@ export default function Tasks() {
     console.clear();
   }, [filterByTaskType, taskArray, sortBy, saveChanges]);
 
-  const trashCanText = document.getElementById("trash-can-text");
-  const trashCanIcon = document.getElementById("trash-can-icon");
+  // const trashCanText = document.getElementById("trash-can-text");
+  // const trashCanIcon = document.getElementById("trash-can-icon");
 
   // const titleInput = document.getElementById("title");
   // const descriptionInput = document.getElementById("description");
@@ -155,6 +195,7 @@ export default function Tasks() {
           </select>
         </div>
       </div>
+      <h1 className="todos-title">Todos:</h1>
       <div className="todos-wrapper">
         {(filterByTaskType === "" ? taskArray : filteredTaskArray).map(
           (task, index) => {
@@ -164,12 +205,17 @@ export default function Tasks() {
             return (
               <div
                 key={(task, index + 1)}
-                className={!editTask ? "task-wrapper" : "task-wrapper cursor"}
-                onClick={() => {
+                className={
+                  editTaskIndex === index
+                    ? taskWrapperClassName
+                    : "task-wrapper"
+                }
+                ref={taskWrapperRef}
+                onClick={(e) => {
                   // console.log("showMoreIndex", showMoreIndex);
                   // console.log("editTask", editTask);
                   //  &&
-
+                  editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
                   // setEditTask(false);
@@ -182,13 +228,13 @@ export default function Tasks() {
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
-                    showMoreIndex === index && "0px 10px 20px -6px #ffa783",
+                    showMoreIndex === index && "0px 10px 20px -6px #d1432b",
                   // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >
                 <div>
                   {" "}
-                  <h3>Todo: </h3>
+                  {/* <h3>Todo: </h3> */}
                   {editTaskIndex !== index ? (
                     <h3>{updatedTask.title}</h3>
                   ) : (
@@ -296,25 +342,28 @@ export default function Tasks() {
                   </div>
                   <div className="remove-icon">
                     {/* <p id="trash-can-text"> </p>{" "} */}
-                    <img
-                      src={TrashCan}
-                      id="trash-can-icon"
-                      alt="Trash can"
-                      // onMouseOver={(e) => {
-                      //   trashCanText.innerText = "Remove task";
-                      //   e.currentTarget.style.cursor = "pointer";
-                      // }}
-                      // onMouseOut={(e) => {
-                      //   trashCanText.innerText = "";
-                      // }}
-                      onClick={(e) => {
-                        window.confirm(
-                          "Are you sure you want to delete " + updatedTask.title
-                        ) && removeTask(index);
+                    <div>
+                      <img
+                        src={TrashCan}
+                        id="trash-can-icon"
+                        alt="Trash can"
+                        // onMouseOver={(e) => {
+                        //   trashCanText.innerText = "Remove task";
+                        //   e.currentTarget.style.cursor = "pointer";
+                        // }}
+                        // onMouseOut={(e) => {
+                        //   trashCanText.innerText = "";
+                        // }}
+                        onClick={(e) => {
+                          window.confirm(
+                            "Are you sure you want to delete " +
+                              updatedTask.title
+                          ) && removeTask(index);
 
-                        e.stopPropagation();
-                      }}
-                    />{" "}
+                          e.stopPropagation();
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

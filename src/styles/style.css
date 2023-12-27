@@ -7,8 +7,9 @@
 }
 
 #root {
+  position: relative;
   background-color: var(--bg-100);
-  height: 100vh;
+  min-height: 100%;
   --primary-100: #990000; /* Dark red */
   --primary-200: #d1432b; /* Reddish brown */
   --primary-300: #ffa783; /* Light peach */
@@ -46,6 +47,7 @@
   display: inline-flex;
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
+  font-size: 14px;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -71,6 +73,7 @@
 .homepage button:hover {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
+  cursor: pointer;
 }
 .homepage button:active {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
@@ -162,6 +165,7 @@
   display: inline-flex;
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
+  font-size: 14px;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -187,6 +191,7 @@
 .friends button:hover {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
+  cursor: pointer;
 }
 .friends button:active {
   box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
