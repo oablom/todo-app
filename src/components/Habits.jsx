@@ -140,7 +140,6 @@ export default function Habits() {
                 {/* SORTERADE HABITS */}
                 <div className="sortingWrapper">
                   <span className="sortingBtn"><label><input type="radio" value="ascending" checked={sortedHabits === "ascending"} onChange={(e) => setSortedHabits(e.target.value)} />Ascending</label></span>
-                  
                   <span className="sortingBtn"><label><input type="radio" value="descending" checked={sortedHabits === "descending"} onChange={(e) => setSortedHabits(e.target.value)} />Descending</label></span>
                 </div>
             </div>
@@ -188,7 +187,6 @@ export default function Habits() {
                     e.stopPropagation();
                     editMode && i === habitSettings ? setEditMode(false) : toggleEditMode(i);
                   }}>
-                    
                     {editMode && i === habitSettings ? "save" : "edit"}</button>
                   </div>
               ))}
