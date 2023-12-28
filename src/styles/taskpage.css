@@ -64,7 +64,7 @@
   border-radius: 10px;
   width: 600px;
   margin: 10px;
-  padding: 10px;
+  padding: 0px 80px 0px;
   text-align: center;
   background-color: var(--bg-300);
   box-shadow: inset 50px 0px 50px -50px var(--bg-200);
@@ -161,11 +161,15 @@
 .task-page .tasks .filter-sort-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   width: 400px;
   transform: translateX(-30px);
 }
-.task-page .tasks .filter-sort-wrapper > :nth-child(2) {
-  margin-left: 60px;
+.task-page .tasks .filter-sort-wrapper div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
 }
 .task-page .tasks .filter-sort-wrapper select {
   width: 200px;
@@ -248,11 +252,15 @@
   box-shadow: var(--accent-200) 0 0 0 1.5px inset;
 }
 .task-page .new-task {
+  display: flex;
+  justify-content: center;
   width: 30%;
   max-width: 1000px;
   margin: 0 auto;
 }
 .task-page .new-task .task-form {
+  min-height: 500px;
+  min-width: 320px;
   border-radius: 10px;
   background-color: var(--bg-300);
   padding: 20px;
@@ -321,5 +329,12 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@media screen and (max-width: 460px) {
+  #filter-sort-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 }/*# sourceMappingURL=taskpage.css.map */

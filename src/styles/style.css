@@ -810,12 +810,8 @@ p {
   height: 15px;
 }
 
-/* Media Query */
-@media screen and (max-width: 380px) {
-  .new-task .task-form {
-    height: 150px;
-  }
-  .tasks h1 {
-    padding-top: 0px;
+@media screen and (max-width: 400px) {
+  .App .app-navigation li {
+    margin: 0;
   }
 }/*# sourceMappingURL=style.css.map */

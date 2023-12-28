@@ -33,6 +33,7 @@
   overflow: auto;
   background-color: var(--bg-100);
   padding-bottom: 50px;
+  // min-width: 400px;
 
   * {
     color: white;
@@ -82,9 +83,7 @@
       width: 600px;
       margin: 10px;
 
-      // margin-top: 30px;
-
-      padding: 10px;
+      padding: 0px 80px 0px;
       text-align: center;
       background-color: var(--bg-300);
       box-shadow: inset 50px 0px 50px -50px var(--bg-200);
@@ -195,13 +194,20 @@
     }
     .filter-sort-wrapper {
       display: flex;
+
       flex-direction: row;
+      justify-content: space-between;
       width: 400px;
       transform: translateX(-30px);
-
-      > :nth-child(2) {
-        margin-left: 60px;
+      div {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 150px;
       }
+      // > :nth-child(2) {
+      //   // margin-left: 60px;
+      // }
       select {
         width: 200px;
         margin: 0px;
@@ -246,10 +252,14 @@
   }
 
   .new-task {
+    display: flex;
+    justify-content: center;
     width: 30%;
     max-width: 1000px;
     margin: 0 auto;
     .task-form {
+      min-height: 500px;
+      min-width: 320px;
       border-radius: 10px;
       background-color: var(--bg-300);
       padding: 20px;
@@ -314,5 +324,14 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@media screen and (max-width: 460px) {
+  #filter-sort-wrapper {
+    // margin-top: 400px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    // height: 400px;
   }
 }

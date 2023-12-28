@@ -10,7 +10,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <nav className="app-navigation">
+      <nav className="app-navigation" id="app-navigation">
         <ul>
           <NavLink to="/" activeClassName="active">
             <li>Home</li>

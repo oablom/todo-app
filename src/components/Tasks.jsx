@@ -165,7 +165,7 @@ export default function Tasks() {
       {showNewTask && <NewTask taskArrayFunction={taskArrayFunction} />}
       <br />
 
-      <div className="filter-sort-wrapper">
+      <div className="filter-sort-wrapper" id="filter-sort-wrapper">
         {" "}
         <div>
           {" "}
