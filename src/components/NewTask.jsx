@@ -54,10 +54,11 @@ export default function NewTask(props) {
 
   return (
     <div className="new-task">
-      <h1>NewTask Component</h1>
+      {/* <h1>NewTask Component</h1> */}
       <form className="task-form" id="task-form" onSubmit={handleSubmit}>
         <label for="title">Title:</label>
         <input
+          maxLength={60}
           required
           type="text"
           id="newtask-title"
@@ -69,6 +70,7 @@ export default function NewTask(props) {
         <br />
         <label htmlFor="description">Description:</label>
         <textarea
+          maxLength={200}
           required
           type="text"
           id="newtask-description"
@@ -79,6 +81,7 @@ export default function NewTask(props) {
         <br />
         <label htmlFor="timeEstimate">Time Estimate:</label>
         <input
+          maxLength={10}
           required
           type="number"
           id="newtask-timeEstimate"

@@ -8,6 +8,7 @@
 import { useState, useEffect, useRef } from "react";
 import NewTask from "./NewTask";
 import TrashCan from "../icons/recycle-bin.png";
+import Checked from "../icons/icons8-check.svg";
 
 export default function Tasks() {
   const [showNewTask, setShowNewTask] = useState();
@@ -24,7 +25,8 @@ export default function Tasks() {
   // const [showMore, setShowMore] = useState(null);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
-  const [completed, setCompleted] = useState(false);
+  // const [completed, setCompleted] = useState(false);
+  // const [completedIndex, setCompletedIndex] = useState(null);
   const [sortBy, setSortBy] = useState("");
 
   // const [savedChanges, setSavedChanges] = useState(false);
@@ -141,6 +143,19 @@ export default function Tasks() {
   // const timeEstimateInput = document.getElementById("timeEstimate");
   // const typeInput = document.getElementById("type");
 
+  // ... (andra useEffect och funktioner)
+
+  function toggleCompletedStatus(index) {
+    // Skapa en kopia av taskArray
+    const newTaskArray = [...taskArray];
+
+    // Toggle slutför-statusen för den specifika uppgiften i newTaskArray
+    newTaskArray[index].completed = !newTaskArray[index].completed;
+
+    // Uppdatera state med den uppdaterade arrayen
+    setTaskArray(newTaskArray);
+  }
+
   return (
     <div className="tasks">
       {/* <h1>Tasks</h1> */}
@@ -165,7 +180,7 @@ export default function Tasks() {
       {showNewTask && <NewTask taskArrayFunction={taskArrayFunction} />}
       <br />
 
-      <div className="filter-sort-wrapper">
+      <div className="filter-sort-wrapper" id="filter-sort-wrapper">
         {" "}
         <div>
           {" "}
@@ -223,24 +238,30 @@ export default function Tasks() {
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
 
-                  console.log("Task-wrapper edittask index:", editTaskIndex);
-                  console.log("Task-wrapper  showMoreIndex:", showMoreIndex);
-
                   // console.log(showMore);
                 }}
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
                     showMoreIndex === index && "0px 10px 20px -6px #d1432b",
-                  // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >
-                <div className="title">
+                <div
+                  style={{
+                    marginTop: showMoreIndex !== index ? "20px" : "40px",
+                  }}
+                  className="title"
+                >
                   <h3>{showMoreIndex === index && "Title:"} </h3>
                   {editTaskIndex !== index ? (
-                    <h3>{updatedTask.title}</h3>
+                    <div
+                      className={showMoreIndex === index && "task-text-border"}
+                    >
+                      <h3>{updatedTask.title}</h3>
+                    </div>
                   ) : (
                     <input
+                      maxLength={60}
                       id={"title" + index}
                       type="text"
                       defaultValue={updatedTask.title}
@@ -260,9 +281,12 @@ export default function Tasks() {
                   <div>
                     <h4>Description: </h4>{" "}
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.description}</h4>
+                      <div className="task-text-border">
+                        <h4>{updatedTask.description}</h4>
+                      </div>
                     ) : (
-                      <input
+                      <textarea
+                        maxLength={200}
                         id={"description" + index}
                         type="text"
                         defaultValue={updatedTask.description}
@@ -276,9 +300,12 @@ export default function Tasks() {
                     {" "}
                     <h4>Estimated time: </h4>
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.timeEstimate} minutes</h4>
+                      <div className="task-text-border">
+                        <h4>{updatedTask.timeEstimate} minutes</h4>
+                      </div>
                     ) : (
                       <input
+                        maxLength={10}
                         id={"timeEstimate" + index}
                         type="text"
                         defaultValue={updatedTask.timeEstimate}
@@ -292,11 +319,15 @@ export default function Tasks() {
                     {" "}
                     <h4>Type of activity: </h4>
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.type}</h4>
+                      <div className="task-text-border">
+                        {" "}
+                        <h4>{updatedTask.type}</h4>
+                      </div>
                     ) : (
                       <select
                         required
                         name="type"
+                        className="type"
                         id={"type" + index}
                         defaultValue={updatedTask.type}
                         onChange={(e) => (updatedTask.type = e.target.value)}
@@ -342,19 +373,11 @@ export default function Tasks() {
                     )}
                   </div>
                   <div className="remove-icon">
-                    {/* <p id="trash-can-text"> </p>{" "} */}
                     <div>
                       <img
                         src={TrashCan}
                         id="trash-can-icon"
                         alt="Trash can"
-                        // onMouseOver={(e) => {
-                        //   trashCanText.innerText = "Remove task";
-                        //   e.currentTarget.style.cursor = "pointer";
-                        // }}
-                        // onMouseOut={(e) => {
-                        //   trashCanText.innerText = "";
-                        // }}
                         onClick={(e) => {
                           window.confirm(
                             "Are you sure you want to delete " +
@@ -366,6 +389,27 @@ export default function Tasks() {
                       />
                     </div>
                   </div>
+                </div>
+                {/* <input type="checkbox" /> */}
+                <div
+                  className="completed"
+                  onClick={(e) => {
+                    toggleCompletedStatus(index);
+
+                    e.stopPropagation();
+                  }}
+                >
+                  <img
+                    style={{
+                      display: taskArray[index].completed ? "block" : "none",
+                    }}
+                    src={Checked}
+                    id="trash-can-icon"
+                    alt="Trash can"
+                    onClick={(e) => {
+                      // e.stopPropagation();
+                    }}
+                  />
                 </div>
               </div>
             );

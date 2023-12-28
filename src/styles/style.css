@@ -74,8 +74,7 @@
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -95,29 +94,23 @@
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-  user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(
-    to right,
-    var(--primary-100),
-    var(--primary-200)
-  );
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
   margin: 10px;
 }
 .homepage button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .homepage button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .homepage button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .homepage button:hover {
@@ -153,8 +146,35 @@
   height: 80%;
   width: 30%;
 }
-.habits-homepage ul {
-  list-style: none;
+.habits-homepage .front-page-habit-wrapper {
+  margin-top: 20px;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits {
+  padding: 15px;
+  margin: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.low {
+  border-color: green;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.low:hover {
+  background-color: green;
+  color: black;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.mid {
+  border-color: yellow;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.mid:hover {
+  background-color: yellow;
+  color: black;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.high {
+  border-color: red;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.high:hover {
+  background-color: red;
+  color: black;
 }
 
 .friends-homepage {
@@ -172,7 +192,8 @@
 .friends-homepage img {
   width: 60%;
   height: 60%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -202,8 +223,7 @@
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -223,29 +243,23 @@
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-  user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(
-    to right,
-    var(--primary-100),
-    var(--primary-200)
-  );
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
   margin: 10px;
 }
 .friends button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .friends button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .friends button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .friends button:hover {
@@ -262,7 +276,10 @@
   padding: 5px 10px 15px 5px;
   cursor: pointer;
 }
-
+.infoFriend:hover {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
 .infoFriend div {
   display: flex;
   flex-direction: row-reverse;
@@ -273,17 +290,11 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.infoFriend:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
 .infoFriend img {
   width: 80%;
   height: 80%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -298,13 +309,10 @@
 .infoFriend ul {
   list-style: none;
 }
-.infoFriend ul li {
+.infoFriend li {
   text-align: center;
+  font-size: 10px;
   margin-bottom: 5px;
-}
-
-.infoFriend p {
-  font-size: 14px;
 }
 
 /*Filter friends component*/
@@ -333,7 +341,7 @@
   border: 1px solid var(--accent-200);
 }
 .filterFriends select,
-.filterFriends input[type="number"] {
+.filterFriends input[type=number] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -342,7 +350,7 @@
   color: #fff;
 }
 .filterFriends select:hover,
-.filterFriends input[type="number"]:hover {
+.filterFriends input[type=number]:hover {
   background-color: #990000;
 }
 
@@ -688,6 +696,7 @@
 
 .streakContainer p {
   font-weight: 700;
+  gap: 5px;
 }
 
 button {
@@ -752,8 +761,7 @@ p {
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -773,29 +781,23 @@ p {
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-  user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(
-    to right,
-    var(--primary-100),
-    var(--primary-200)
-  );
+  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
   margin: 10px;
 }
 .newHabit .new-form button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .newHabit .new-form button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .newHabit .new-form button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
-    var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .newHabit .new-form .starting-streak {
@@ -836,12 +838,8 @@ p {
   height: 15px;
 }
 
-/* Media Query */
-@media screen and (max-width: 380px) {
-  .new-task .task-form {
-    height: 150px;
+@media screen and (max-width: 400px) {
+  .App .app-navigation li {
+    margin: 0;
   }
-  .tasks h1 {
-    padding-top: 0px;
-  }
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

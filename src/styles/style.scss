@@ -112,6 +112,8 @@
     text-decoration: none;
     color: #fff;
   }
+
+  
 }
 
 .tasks-homepage {
@@ -125,6 +127,8 @@
   margin: 50px;
   width: 30%;
   height: 80%;
+
+  
 }
 
 .habits-homepage {
@@ -139,8 +143,44 @@
   height: 80%;
   width: 30%;
 
-  ul {
-    list-style: none;
+
+  .front-page-habit-wrapper {
+
+    margin-top:20px;
+
+    .front-page-habits {
+      padding: 15px;
+      margin: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
+      &.low {
+          border-color: green;
+          &:hover {
+            background-color: green;
+            color:black;
+          }
+        }
+      
+        &.mid {
+          border-color: yellow;
+          &:hover {
+            background-color: yellow;
+            color:black;
+          }
+        }
+      
+        &.high {
+          border-color: red;
+          &:hover {
+            background-color: red;
+            color:black;
+          
+          }
+        }
+
+    }
+
   }
 }
 
@@ -697,6 +737,7 @@
   justify-content: space-between;
 }
 
+
 .streakContainer button {
   border-radius: 50px;
   height: 50px;
@@ -707,6 +748,7 @@
 
 .streakContainer p {
   font-weight: 700;
+  gap:5px;
 }
 
 button {
@@ -824,13 +866,10 @@ p {
   }
 }
 
-/* Media Query */
-@media screen and (max-width: 380px) {
-  .new-task .task-form {
-    height: 150px;
-  }
-
-  .tasks h1 {
-    padding-top: 0px;
+@media screen and (max-width: 400px) {
+  .App {
+    .app-navigation li {
+      margin: 0;
+    }
   }
 }
