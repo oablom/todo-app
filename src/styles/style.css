@@ -190,8 +190,8 @@
   width: 30%;
 }
 .friends-homepage img {
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 50%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
@@ -311,8 +311,10 @@
 }
 .infoFriend li {
   text-align: center;
-  font-size: 10px;
   margin-bottom: 5px;
+}
+.infoFriend p {
+  font-size: 14px;
 }
 
 /*Filter friends component*/
