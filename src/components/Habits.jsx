@@ -92,20 +92,6 @@ export default function Habits() {
         <div className="habits">
           <div className="header-container">
             <h1>My habits...</h1>
-{/*             <nav ><ul className="nav-list">
-              <li>
-                <Link style={{color:"#fff"}} to="/">Home</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/tasks">Tasks</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/habits">Habits</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/friends">Friends</Link>
-              </li>
-              </ul></nav>  */} 
           </div>
           
           <div className="habit-container">

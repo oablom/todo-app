@@ -100,16 +100,18 @@ export default function Home() {
 
       <div className="habits-homepage">
         <h2>Top 3 habits</h2>
-        <ul>
+      
+        <div className="front-page-habit-wrapper">
           {topHabits.map((habit, index) => (
-            <li key={index}>
+            <div className={`front-page-habits ${habit.priority}`} key={index}>
               {`${habit.title} - Streak: ${habit.streak}`}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
+      
 
         <Link to="/habits">
-          {" "}
+         
           <button className="nav-btn">See more </button>
         </Link>
       </div>
