@@ -223,24 +223,25 @@ export default function Tasks() {
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
 
-                  console.log("Task-wrapper edittask index:", editTaskIndex);
-                  console.log("Task-wrapper  showMoreIndex:", showMoreIndex);
-
                   // console.log(showMore);
                 }}
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
                     showMoreIndex === index && "0px 10px 20px -6px #d1432b",
-                  // border: showMoreIndex === index && "2px solid  #d1432b",
                 }}
               >
                 <div className="title">
                   <h3>{showMoreIndex === index && "Title:"} </h3>
                   {editTaskIndex !== index ? (
-                    <h3>{updatedTask.title}</h3>
+                    <div
+                      className={showMoreIndex === index && "task-text-border"}
+                    >
+                      <h3>{updatedTask.title}</h3>
+                    </div>
                   ) : (
                     <input
+                      maxLength={60}
                       id={"title" + index}
                       type="text"
                       defaultValue={updatedTask.title}
@@ -260,9 +261,12 @@ export default function Tasks() {
                   <div>
                     <h4>Description: </h4>{" "}
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.description}</h4>
+                      <div className="task-text-border">
+                        <h4>{updatedTask.description}</h4>
+                      </div>
                     ) : (
-                      <input
+                      <textarea
+                        maxLength={200}
                         id={"description" + index}
                         type="text"
                         defaultValue={updatedTask.description}
@@ -276,9 +280,12 @@ export default function Tasks() {
                     {" "}
                     <h4>Estimated time: </h4>
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.timeEstimate} minutes</h4>
+                      <div className="task-text-border">
+                        <h4>{updatedTask.timeEstimate} minutes</h4>
+                      </div>
                     ) : (
                       <input
+                        maxLength={10}
                         id={"timeEstimate" + index}
                         type="text"
                         defaultValue={updatedTask.timeEstimate}
@@ -292,11 +299,15 @@ export default function Tasks() {
                     {" "}
                     <h4>Type of activity: </h4>
                     {editTaskIndex !== index ? (
-                      <h4>{updatedTask.type}</h4>
+                      <div className="task-text-border">
+                        {" "}
+                        <h4>{updatedTask.type}</h4>
+                      </div>
                     ) : (
                       <select
                         required
                         name="type"
+                        className="type"
                         id={"type" + index}
                         defaultValue={updatedTask.type}
                         onChange={(e) => (updatedTask.type = e.target.value)}

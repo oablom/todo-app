@@ -1,0 +1,14 @@
+@mixin option-styling($gradient-color-1, $gradient-color-2) {
+  color: black;
+  font-weight: bold;
+  &:hover {
+    background-image: linear-gradient(
+      to right,
+      $gradient-color-1,
+      $gradient-color-2
+    );
+    &:focus {
+      box-shadow: $gradient-color-2 0 0 0 1.5px inset;
+    }
+  }
+}

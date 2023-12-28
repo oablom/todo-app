@@ -1,0 +1,12 @@
+@mixin select-input-textarea-styling($background-color) {
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  background-color: $background-color;
+}
