@@ -1,9 +1,3 @@
-// Ni ska visa ut samtliga habits användaren har, samt streak för varje habit.
-// Man ska kunna öka, minska och nollställa streak för varje habit.
-// Man ska kunna filtrera habits baserat på prioritet.
-// Användare ska kunna sortera habits på
-// Streak (högst till lägst, och lägst till högst)
-// Prioritet (högst till lägst, och lägst till högst)
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NewHabit from "./NewHabit";
@@ -68,7 +62,10 @@ export default function Habits() {
   
   }, [habits, priorityFilter, sortedHabits, filterType]);  
 
-
+  useEffect(() => {
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [])
+  
 
 
   let editHabit = (i, edit) => {
@@ -87,6 +84,7 @@ export default function Habits() {
   };
 
 
+
  console.log(filterType)
   return (
     <div>
@@ -94,20 +92,6 @@ export default function Habits() {
         <div className="habits">
           <div className="header-container">
             <h1>My habits...</h1>
-            <nav ><ul className="nav-list">
-              <li>
-                <Link style={{color:"#fff"}} to="/">Home</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/tasks">Tasks</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/habits">Habits</Link>
-              </li>
-              <li>
-                <Link style={{color:"#fff"}} to="/friends">Friends</Link>
-              </li>
-              </ul></nav>  
           </div>
           
           <div className="habit-container">
@@ -170,7 +154,10 @@ export default function Habits() {
 
                     <div className="hidden-buttons"><button onClick={() => editHabit(i, edit => habit.streak = 0)}>Reset</button>
 
-                  <button onClick={() => setHabits(oldHabits => {let editedHabits = [...oldHabits]; editedHabits.splice(i,1); return editedHabits;})}>
+                  <button onClick={() => 
+                    {setHabits(oldHabits => {let editedHabits = [...oldHabits]; editedHabits.splice(i, 1); 
+                      return editedHabits;}); 
+                    setEditMode(false);}}>
                     Delete</button></div>
 
                   <select value={habit.priority} onChange={(e) => editHabit(i, edit => habit.priority = e.target.value)}>
