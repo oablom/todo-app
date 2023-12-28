@@ -146,8 +146,35 @@
   height: 80%;
   width: 30%;
 }
-.habits-homepage ul {
-  list-style: none;
+.habits-homepage .front-page-habit-wrapper {
+  margin-top: 20px;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits {
+  padding: 15px;
+  margin: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.low {
+  border-color: green;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.low:hover {
+  background-color: green;
+  color: black;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.mid {
+  border-color: yellow;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.mid:hover {
+  background-color: yellow;
+  color: black;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.high {
+  border-color: red;
+}
+.habits-homepage .front-page-habit-wrapper .front-page-habits.high:hover {
+  background-color: red;
+  color: black;
 }
 
 .friends-homepage {
@@ -669,6 +696,7 @@
 
 .streakContainer p {
   font-weight: 700;
+  gap: 5px;
 }
 
 button {

@@ -5,7 +5,9 @@ import React from "react";
 export default function Home() {
   const [latestTasksArray, setLatestTasksArray] = useState([]);
 
-  const topHabits = [
+  const [habits, setHabits] = useState(() => {
+    const storedHabits = localStorage.getItem("habits");
+    return storedHabits ? JSON.parse(storedHabits) : [
     {
       title: "Reading",
       priority: "mid",
@@ -22,13 +24,21 @@ export default function Home() {
       streak: 10,
     },
   ];
+  });
+
+  const getTopHabits = () => {
+    return habits.slice(0,-3);
+  };
+
+  const topHabits = getTopHabits();
+  console.log(topHabits)
+  console.log(habits)
 
   // const latestTasks = [{}];
   useEffect(() => {
     let latestTasksString = localStorage.getItem("taskArray");
     let latestTasks = JSON.parse(latestTasksString);
     setLatestTasksArray(latestTasks);
-    console.log("latestTasksArray:", latestTasksArray);
   }, []);
 
   useEffect(() => {
@@ -90,16 +100,18 @@ export default function Home() {
 
       <div className="habits-homepage">
         <h2>Top 3 habits</h2>
-        <ul>
+      
+        <div className="front-page-habit-wrapper">
           {topHabits.map((habit, index) => (
-            <li key={index}>
-              {`${habit.title} - Priority: ${habit.priority}`}
-            </li>
+            <div className={`front-page-habits ${habit.priority}`} key={index}>
+              {`${habit.title} - Streak: ${habit.streak}`}
+            </div>
           ))}
-        </ul>
+        </div>
+      
 
         <Link to="/habits">
-          {" "}
+         
           <button className="nav-btn">See more </button>
         </Link>
       </div>
