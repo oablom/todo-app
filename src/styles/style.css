@@ -25,6 +25,40 @@
   --bg-300: #404040; /* Slate gray */
 }
 
+.App .app-navigation {
+  display: flex;
+  background-color: #333;
+  justify-content: center;
+}
+.App .app-navigation ul {
+  list-style: none;
+  justify-content: space-around;
+  display: flex;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+}
+.App .app-navigation li {
+  margin-right: 20px;
+  text-align: center;
+  line-height: 40px;
+  width: 80px;
+}
+.App .app-navigation li:hover {
+  background-color: var(--primary-100);
+}
+.App .app-navigation a {
+  color: var(--text-100);
+  text-decoration: none;
+}
+.App .app-navigation .active {
+  font-weight: bold;
+  color: var(--accent-100);
+}
+.App .app-navigation .active:hover {
+  color: var(--text-100);
+}
+
 /* Home Page */
 .homepage {
   background-color: #1a1a1a;
@@ -40,7 +74,8 @@
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -60,23 +95,29 @@
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  background-image: linear-gradient(
+    to right,
+    var(--primary-100),
+    var(--primary-200)
+  );
   margin: 10px;
 }
 .homepage button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .homepage button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .homepage button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .homepage button:hover {
@@ -129,19 +170,22 @@
   width: 30%;
 }
 .friends-homepage img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
   border-radius: 50%;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .friends-homepage ul {
+  margin-top: 20px;
   list-style: none;
+  text-align: center;
 }
 
 .friends {
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   background: #1a1a1a;
   color: #fff;
   display: flex;
@@ -158,7 +202,8 @@
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -178,23 +223,29 @@
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  background-image: linear-gradient(
+    to right,
+    var(--primary-100),
+    var(--primary-200)
+  );
   margin: 10px;
 }
 .friends button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .friends button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .friends button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .friends button:hover {
@@ -206,13 +257,12 @@
   border: 2px solid #292929;
   background-color: #404040;
   border-radius: 10px;
-  width: 250px;
+  width: 260px;
   margin-bottom: 20px;
-  padding: 0px 20px 10px 20px;
+  padding: 5px 10px 15px 5px;
+  cursor: pointer;
 }
-.infoFriend:hover {
-  background-color: #990000;
-}
+
 .infoFriend div {
   display: flex;
   flex-direction: row-reverse;
@@ -222,13 +272,18 @@
   height: 100%;
   margin-bottom: 20px;
   margin-top: 20px;
-  cursor: pointer;
 }
+.infoFriend:hover {
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
 .infoFriend img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -246,6 +301,10 @@
 .infoFriend ul li {
   text-align: center;
   margin-bottom: 5px;
+}
+
+.infoFriend p {
+  font-size: 14px;
 }
 
 /*Filter friends component*/
@@ -274,7 +333,7 @@
   border: 1px solid var(--accent-200);
 }
 .filterFriends select,
-.filterFriends input[type=number] {
+.filterFriends input[type="number"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -283,7 +342,7 @@
   color: #fff;
 }
 .filterFriends select:hover,
-.filterFriends input[type=number]:hover {
+.filterFriends input[type="number"]:hover {
   background-color: #990000;
 }
 
@@ -693,7 +752,8 @@ p {
   background-color: var(--accent-100);
   border-radius: 4px;
   border: none;
-  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: #1a1a1a 0 2px 4px, #1a1a1a 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   box-sizing: border-box;
   color: var(--bg-200);
   cursor: pointer;
@@ -713,23 +773,29 @@ p {
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
   -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
+  background-image: linear-gradient(
+    to right,
+    var(--primary-100),
+    var(--primary-200)
+  );
   margin: 10px;
 }
 .newHabit .new-form button:focus {
   box-shadow: var(--bg-300) 0 0 0 1.5px inset, var(--accent-200) 0 2px 4px;
 }
 .newHabit .new-form button:hover {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(-2px);
   cursor: pointer;
 }
 .newHabit .new-form button:active {
-  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px, var(--bg-300) 0 -3px 0 inset;
+  box-shadow: var(--accent-200) 0 4px 8px, var(--accent-200) 0 7px 13px -3px,
+    var(--bg-300) 0 -3px 0 inset;
   transform: translateY(2px);
 }
 .newHabit .new-form .starting-streak {
@@ -778,4 +844,4 @@ p {
   .tasks h1 {
     padding-top: 0px;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

@@ -9,6 +9,7 @@ export default function NewTask(props) {
   const [description, setDescription] = useState("");
   const [timeEstimate, setTimeEstimate] = useState("");
   const [type, setType] = useState("");
+  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     async function fetchTask() {
@@ -37,6 +38,7 @@ export default function NewTask(props) {
       description,
       timeEstimate,
       type,
+      completed,
     };
     console.log("Submitted Values:", title, description, timeEstimate, type);
 

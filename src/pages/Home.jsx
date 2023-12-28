@@ -1,6 +1,6 @@
-import TaskPage from "./TaskPage.jsx";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import React from "react";
 
 export default function Home() {
   const [latestTasksArray, setLatestTasksArray] = useState([]);
@@ -41,34 +41,61 @@ export default function Home() {
     setLatestTasksArray(latestTasks);
   }, []);
 
-  const myFriends = [
-    {
-      firstName: "Peter",
-      lastName: "Parker",
-      picture: "https://randomuser.me/api/portraits/med/men/71.jpg",
-    },
-    {
-      firstName: "Mary",
-      lastName: "Jane",
-      picture: "https://randomuser.me/api/portraits/med/women/95.jpg",
-    },
-    {
-      firstName: "Mario",
-      lastName: "Mario",
-      picture: "https://randomuser.me/api/portraits/med/men/41.jpg",
-    },
-  ];
+  useEffect(() => {
+    if (!latestTasksArray) {
+      return;
+    }
+    let latestTaskArrayCopy = [...latestTasksArray];
+    latestTasksArray.length > 3 &&
+      setLatestTasksArray(latestTaskArrayCopy.slice(0, 3));
+  }, [latestTasksArray]);
+
+  const [myFriends, setMyFriends] = useState(() => {
+    // Retrieve myFriends from localStorage if available, otherwise use the default value
+    const storedFriends = localStorage.getItem("myFriends");
+    return storedFriends
+      ? JSON.parse(storedFriends)
+      : [
+          {
+            firstName: "Peter",
+            lastName: "Parker",
+            picture: "https://randomuser.me/api/portraits/med/men/71.jpg",
+          },
+          {
+            firstName: "Mary",
+            lastName: "Jane",
+            picture: "https://randomuser.me/api/portraits/med/women/95.jpg",
+          },
+          {
+            firstName: "Mario",
+            lastName: "Mario",
+            picture: "https://randomuser.me/api/portraits/med/men/41.jpg",
+          },
+        ];
+  });
+
+  // Function to get the latest three friends
+  const getLatestFriends = () => {
+    return myFriends.slice(-3); // Extracting the last 3 friends
+  };
+
+  const latestThreeFriends = getLatestFriends();
 
   return (
     <div className="homepage">
       <div className="tasks-homepage">
         <h2>Top 3 tasks</h2>
-    {/*     {latestTasksArray.map((task, index) => (
-          <h2>{task.title}</h2>
-        ))} */}
-        <button className="nav-btn">
-          <Link to="/tasks">See more</Link>
-        </button>
+
+        {latestTasksArray?.map((task, index) => (
+          <div key={index} style={{ textAlign: "center" }}>
+            <h2>{task.title}</h2>
+            <h3>{task.description}</h3>
+          </div>
+        ))}
+
+        <Link to="/tasks">
+          <button className="nav-btn">See more</button>
+        </Link>
       </div>
 
       <div className="habits-homepage">
@@ -80,27 +107,26 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <button className="nav-btn">
-          <Link to="/habits">See more</Link>
-        </button>
+
+        <Link to="/habits">
+          {" "}
+          <button className="nav-btn">See more </button>
+        </Link>
       </div>
 
       <div className="friends-homepage">
-        <h2>Recently added friends</h2>
+        <h2>Recently Added Friends</h2>
         <ul>
-          {myFriends.map((friend, index) => (
+          {latestThreeFriends.map((friend, index) => (
             <li key={index}>
               <p>{`${friend.firstName} ${friend.lastName}`}</p>
-              <img
-                src={friend.picture}
-                alt={`${friend.firstName} ${friend.lastName}`}
-              />
+              <img src={friend.picture} />
             </li>
           ))}
         </ul>
-        <button className="nav-btn">
-          <Link to="/friends">See all friends</Link>
-        </button>
+        <Link to="/friends">
+          <button className="nav-btn">See More</button>
+        </Link>
       </div>
     </div>
   );
