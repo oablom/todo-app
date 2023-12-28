@@ -1,9 +1,9 @@
 import Friends from "../components/Friends";
 
-export default function FriendPage({ myFriends }) {
+export default function FriendPage() {
   return (
     <div>
-      <Friends myFriends={myFriends} />
+      <Friends />
     </div>
   );
 }
