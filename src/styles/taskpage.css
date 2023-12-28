@@ -293,8 +293,16 @@
 }
 .task-page .new-task .task-form .form-buttons {
   display: flex;
-  justify-content: space-between;
+  text-align: center;
   margin-top: 10px;
+}
+.task-page .new-task .task-form .form-buttons button {
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+}
+.task-page .new-task .task-form .form-buttons :nth-child(1) {
+  margin-left: 0px;
 }
 .task-page .new-task .task-form input,
 .task-page .new-task .task-form select,

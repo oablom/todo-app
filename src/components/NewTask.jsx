@@ -19,7 +19,7 @@ export default function NewTask(props) {
         if (response.ok) {
           const data = await response.json();
           setFetchedData(data);
-          setTitle(fetchedData.activity);
+          title !== "" && setTitle(fetchedData.activity);
         } else {
           setFetchedData("Error fetching data: ", response.status);
         }
@@ -105,6 +105,7 @@ export default function NewTask(props) {
         </select>
         <br />
         <div className="form-buttons">
+          {" "}
           <button
             onClick={() => {
               console.log(title, description, timeEstimate, type);
@@ -115,12 +116,13 @@ export default function NewTask(props) {
           </button>
           <button
             type="button"
+            className="randomise-btn"
             onClick={() => {
               setRandomise(!randomise);
               setTitle(fetchedData.activity);
             }}
           >
-            Randomise Activity
+            Randomise
           </button>
           <button
             onClick={() => {

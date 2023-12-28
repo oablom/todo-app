@@ -288,9 +288,19 @@
       }
       .form-buttons {
         display: flex;
-        justify-content: space-between;
+        text-align: center;
         margin-top: 10px;
+        // min-width: 320px;
+        button {
+          min-width: 80px;
+          display: flex;
+          flex-direction: column;
+        }
+        :nth-child(1) {
+          margin-left: 0px;
+        }
       }
+
       input,
       select,
       textarea {
