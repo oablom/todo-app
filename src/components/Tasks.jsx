@@ -237,6 +237,7 @@ export default function Tasks() {
                   editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
+                  console.log("completed:", taskArray[index].completed);
 
                   // console.log(showMore);
                 }}
@@ -244,6 +245,8 @@ export default function Tasks() {
                   flexDirection: showMoreIndex === index ? "column" : "row",
                   boxShadow:
                     showMoreIndex === index && "0px 10px 20px -6px #d1432b",
+                  border: taskArray[index].completed && "2px solid green",
+                  // display: taskArray[index].completed && "none",
                 }}
               >
                 <div
@@ -404,8 +407,7 @@ export default function Tasks() {
                       display: taskArray[index].completed ? "block" : "none",
                     }}
                     src={Checked}
-                    id="trash-can-icon"
-                    alt="Trash can"
+                    alt="Checkbox"
                     onClick={(e) => {
                       // e.stopPropagation();
                     }}

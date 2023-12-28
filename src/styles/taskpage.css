@@ -170,6 +170,9 @@
   border-radius: 5px;
   position: absolute;
 }
+.task-page .tasks .task-wrapper .completed img {
+  width: 40px;
+}
 .task-page .tasks .task-wrapper div {
   margin-bottom: 10px;
 }
