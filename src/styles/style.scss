@@ -112,8 +112,6 @@
     text-decoration: none;
     color: #fff;
   }
-
-  
 }
 
 .tasks-homepage {
@@ -127,8 +125,6 @@
   margin: 50px;
   width: 30%;
   height: 80%;
-
-  
 }
 
 .habits-homepage {
@@ -143,10 +139,8 @@
   height: 80%;
   width: 30%;
 
-
   .front-page-habit-wrapper {
-
-    margin-top:20px;
+    margin-top: 20px;
 
     .front-page-habits {
       padding: 15px;
@@ -155,32 +149,29 @@
       border-radius: 5px;
 
       &.low {
-          border-color: green;
-          &:hover {
-            background-color: green;
-            color:black;
-          }
+        border-color: green;
+        &:hover {
+          background-color: green;
+          color: black;
         }
-      
-        &.mid {
-          border-color: yellow;
-          &:hover {
-            background-color: yellow;
-            color:black;
-          }
-        }
-      
-        &.high {
-          border-color: red;
-          &:hover {
-            background-color: red;
-            color:black;
-          
-          }
-        }
+      }
 
+      &.mid {
+        border-color: yellow;
+        &:hover {
+          background-color: yellow;
+          color: black;
+        }
+      }
+
+      &.high {
+        border-color: red;
+        &:hover {
+          background-color: red;
+          color: black;
+        }
+      }
     }
-
   }
 }
 
@@ -197,8 +188,8 @@
   width: 30%;
 
   img {
-    width: 60%;
-    height: 60%;
+    width: 50%;
+    height: 50%;
     object-fit: cover;
     border-radius: 50%;
     margin-top: 10px;
@@ -292,8 +283,10 @@
 
   li {
     text-align: center;
-    font-size: 10px;
     margin-bottom: 5px;
+  }
+  p {
+    font-size: 14px;
   }
 }
 
@@ -737,7 +730,6 @@
   justify-content: space-between;
 }
 
-
 .streakContainer button {
   border-radius: 50px;
   height: 50px;
@@ -748,7 +740,7 @@
 
 .streakContainer p {
   font-weight: 700;
-  gap:5px;
+  gap: 5px;
 }
 
 button {

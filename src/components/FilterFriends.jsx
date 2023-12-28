@@ -60,6 +60,8 @@ export default function FilterFriends({ myFriends, setFilteredFriends }) {
           type="number"
           value={minAge}
           onChange={(e) => setMinAge(e.target.value)}
+          min="10"
+          max={maxAge ? Math.min(maxAge, 100) : "100"}
         />
       </div>
       <div>
@@ -68,6 +70,8 @@ export default function FilterFriends({ myFriends, setFilteredFriends }) {
           type="number"
           value={maxAge}
           onChange={(e) => setMaxAge(e.target.value)}
+          min={minAge ? Math.max(minAge, 10) : "10"}
+          max="100"
         />
       </div>
       <button onClick={filterFriends}>Apply Filters</button>
