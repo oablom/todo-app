@@ -67,12 +67,7 @@
       height: 0%;
     }
   }
-  #show-more-animation {
-    animation: height-animation 0.1s ease-in;
-  }
-  #show-less-animation {
-    animation: reverse-height-animation 0.1s ease-in;
-  }
+
   .tasks {
     display: flex;
     flex-direction: column;
@@ -344,6 +339,13 @@
   textarea {
     max-width: 100%;
   }
+}
+
+#show-more-animation {
+  animation: height-animation 0.1s ease-in;
+}
+#show-less-animation {
+  animation: reverse-height-animation 0.1s ease-in;
 }
 
 @keyframes wrong-click {

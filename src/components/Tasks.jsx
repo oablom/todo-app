@@ -57,7 +57,7 @@ export default function Tasks() {
     if (element === "timeEstimate") {
       return newTaskArray.sort((a, b) => a[element] - b[element]);
     } else if (element === "completed") {
-      return newTaskArray.sort((a, b) => a[element] - b[element]);
+      return newTaskArray.sort((b, a) => a[element] - b[element]);
     } else {
       return newTaskArray.sort((a, b) => a[element].localeCompare(b[element]));
     }
