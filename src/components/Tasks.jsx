@@ -41,6 +41,9 @@ export default function Tasks() {
   function taskArrayFunction(newTask) {
     console.log("Adding new task:", newTask);
     setTaskArray([...taskArray, newTask]);
+    setEditTask(false);
+    setEditTaskIndex(null);
+    setShowMoreIndex(null);
   }
 
   function removeTask(index) {
