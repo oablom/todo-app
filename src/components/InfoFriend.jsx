@@ -33,7 +33,7 @@ export default function InfoFriend(props) {
           </li>
           <li>
             <p>
-              <b>Dob: </b>
+              <b>DOB: </b>
               {dob.slice(0, -14)}
             </p>
           </li>
