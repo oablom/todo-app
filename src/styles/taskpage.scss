@@ -246,12 +246,12 @@
       @include select-input-textarea-styling(var(--text-200));
       width: 250px;
       height: 50px;
+      color: black;
     }
     select {
-      // width: 250px;
-      // height: 50px;
-      // background-color: (var(--bg-200));
-
+      option {
+        color: black;
+      }
       &:hover {
         background-image: linear-gradient(
           to right,

@@ -18,15 +18,12 @@ export default function Tasks() {
   const [filterByTaskType, setFilterByTaskType] = useState("");
   const [filteredTaskArray, setFilteredTaskArray] = useState(taskArray);
   const [saveChanges, setSaveChanges] = useState(false);
-  const [clickedOutside, setClickedOutside] = useState(true);
   const [taskWrapperClassName, setTaskWrapperClassName] =
     useState("task-wrapper");
-  const [taskArrayToSend, setTaskArrayToSend] = useState(taskArray);
-  // const [showMore, setShowMore] = useState(null);
+
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
-  // const [completed, setCompleted] = useState(false);
-  // const [completedIndex, setCompletedIndex] = useState(null);
+
   const [sortBy, setSortBy] = useState("");
 
   // const [savedChanges, setSavedChanges] = useState(false);
@@ -58,6 +55,8 @@ export default function Tasks() {
   function sort(array, element) {
     const newTaskArray = [...array];
     if (element === "timeEstimate") {
+      return newTaskArray.sort((a, b) => a[element] - b[element]);
+    } else if (element === "completed") {
       return newTaskArray.sort((a, b) => a[element] - b[element]);
     } else {
       return newTaskArray.sort((a, b) => a[element].localeCompare(b[element]));
@@ -113,15 +112,12 @@ export default function Tasks() {
 
   useEffect(() => {
     let newTaskArray = [...taskArray];
-    // let sortedTaskArray = newTaskArray;
     if (sortBy) {
       setTaskArray(sort([...newTaskArray], sortBy));
-      // setSortedTaskArray(newTaskArray);
     }
-  }, [sortBy, saveChanges]);
+  }, [sortBy, saveChanges, toggleCompletedStatus]);
 
   useEffect(() => {
-    // let newTaskArray = sortedTaskArray ? [...sortedTaskArray] : [...taskArray];
     const newTaskArray = [...taskArray];
 
     if (filterByTaskType !== "") {
@@ -135,21 +131,10 @@ export default function Tasks() {
     // console.clear();
   }, [filterByTaskType, taskArray, sortBy, saveChanges]);
 
-  // const trashCanText = document.getElementById("trash-can-text");
-  // const trashCanIcon = document.getElementById("trash-can-icon");
-
-  // const titleInput = document.getElementById("title");
-  // const descriptionInput = document.getElementById("description");
-  // const timeEstimateInput = document.getElementById("timeEstimate");
-  // const typeInput = document.getElementById("type");
-
-  // ... (andra useEffect och funktioner)
-
   function toggleCompletedStatus(index) {
-    // Skapa en kopia av taskArray
     const newTaskArray = [...taskArray];
 
-    // Toggle slutför-statusen för den specifika uppgiften i newTaskArray
+    // Toggla slutför-statusen för den specifika uppgiften i newTaskArray
     newTaskArray[index].completed = !newTaskArray[index].completed;
 
     // Uppdatera state med den uppdaterade arrayen
@@ -158,7 +143,6 @@ export default function Tasks() {
 
   return (
     <div className="tasks">
-      {/* <h1>Tasks</h1> */}
       <div className="button-wrapper">
         <button onClick={() => setShowNewTask(!showNewTask)}>NewTask</button>
         <button
@@ -170,8 +154,6 @@ export default function Tasks() {
             console.log("taskArray", taskArray);
             console.log("filteredTaskArray", filteredTaskArray);
             console.log("localstorage", localStorage.getItem("taskArray"));
-
-            // setOptionValue("");
           }}
         >
           Clear all todos
@@ -181,9 +163,7 @@ export default function Tasks() {
       <br />
 
       <div className="filter-sort-wrapper" id="filter-sort-wrapper">
-        {" "}
         <div>
-          {" "}
           <label for="filter">Filter by type:</label>
           <select
             value={filterByTaskType}
@@ -199,7 +179,6 @@ export default function Tasks() {
           </select>
         </div>
         <div>
-          {" "}
           <label for="sort">Sort by:</label>
           <select
             value={sortBy}
@@ -214,6 +193,7 @@ export default function Tasks() {
               Time estimation (shortest-longest)
             </option>
             <option value="type">Type (A-Z)</option>
+            <option value="completed">Completed-Not completed</option>
           </select>
         </div>
       </div>

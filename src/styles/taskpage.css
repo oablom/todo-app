@@ -254,6 +254,10 @@
   background-color: var(--text-200);
   width: 250px;
   height: 50px;
+  color: black;
+}
+.task-page .tasks select option {
+  color: black;
 }
 .task-page .tasks select:hover {
   background-image: linear-gradient(to right, var(--text-200), var(--accent-200));
