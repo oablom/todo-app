@@ -20,6 +20,7 @@ export default function Tasks() {
   const [saveChanges, setSaveChanges] = useState(false);
   const [taskWrapperClassName, setTaskWrapperClassName] =
     useState("task-wrapper");
+  const [removeTaskIndex, setRemoveTaskIndex] = useState(null);
 
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
@@ -46,10 +47,6 @@ export default function Tasks() {
     const newTaskArray = [...taskArray];
     newTaskArray.splice(index, 1);
     setTaskArray(newTaskArray);
-    // localStorage.setItem("taskArray", JSON.stringify(newTaskArray));
-    // if (editTaskIndex === index) {
-    //   setEditTaskIndex(null);
-    // }
   }
 
   function sort(array, element) {
@@ -362,14 +359,22 @@ export default function Tasks() {
                         id="trash-can-icon"
                         alt="Trash can"
                         onClick={(e) => {
-                          window.confirm(
-                            "Are you sure you want to delete " +
-                              updatedTask.title
-                          ) && removeTask(index);
+                          if (
+                            window.confirm(
+                              "Are you sure you want to delete " +
+                                updatedTask.title
+                            )
+                          ) {
+                            removeTask(index);
+                            setEditTask(false);
+                            setEditTaskIndex(null);
+                            setShowMoreIndex(null);
+                          }
 
                           e.stopPropagation();
                         }}
                       />
+                      {removeTaskIndex === index && <h1>Are you sure</h1>}
                     </div>
                   </div>
                 </div>
