@@ -11,6 +11,8 @@ export default function NewTask(props) {
   const [type, setType] = useState("");
   const [completed, setCompleted] = useState(false);
 
+  const [animtion, setAnimation] = useState(false);
+
   useEffect(() => {
     async function fetchTask() {
       try {
@@ -19,7 +21,7 @@ export default function NewTask(props) {
         if (response.ok) {
           const data = await response.json();
           setFetchedData(data);
-          setTitle(fetchedData.activity);
+          title !== "" && setTitle(fetchedData.activity);
         } else {
           setFetchedData("Error fetching data: ", response.status);
         }
@@ -53,7 +55,12 @@ export default function NewTask(props) {
   // const inputTitle = document.getElementById("newtask-title");
 
   return (
-    <div className="new-task">
+    <div
+      className="new-task"
+      onClick={() => {
+        setAnimation(!animtion);
+      }}
+    >
       {/* <h1>NewTask Component</h1> */}
       <form className="task-form" id="task-form" onSubmit={handleSubmit}>
         <label for="title">Title:</label>
@@ -105,6 +112,7 @@ export default function NewTask(props) {
         </select>
         <br />
         <div className="form-buttons">
+          {" "}
           <button
             onClick={() => {
               console.log(title, description, timeEstimate, type);
@@ -115,12 +123,13 @@ export default function NewTask(props) {
           </button>
           <button
             type="button"
+            className="randomise-btn"
             onClick={() => {
               setRandomise(!randomise);
               setTitle(fetchedData.activity);
             }}
           >
-            Randomise Activity
+            Randomise
           </button>
           <button
             onClick={() => {

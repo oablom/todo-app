@@ -4,35 +4,37 @@ import React from "react";
 
 export default function Home() {
   const [latestTasksArray, setLatestTasksArray] = useState([]);
-
+  const [showMoreIndex, setShowMoreIndex] = useState(null);
   const [habits, setHabits] = useState(() => {
     const storedHabits = localStorage.getItem("habits");
-    return storedHabits ? JSON.parse(storedHabits) : [
-    {
-      title: "Reading",
-      priority: "mid",
-      streak: 2,
-    },
-    {
-      title: "Gaming",
-      priority: "low",
-      streak: 0,
-    },
-    {
-      title: "Gym",
-      priority: "high",
-      streak: 10,
-    },
-  ];
+    return storedHabits
+      ? JSON.parse(storedHabits)
+      : [
+          {
+            title: "Reading",
+            priority: "mid",
+            streak: 2,
+          },
+          {
+            title: "Gaming",
+            priority: "low",
+            streak: 0,
+          },
+          {
+            title: "Gym",
+            priority: "high",
+            streak: 10,
+          },
+        ];
   });
 
   const getTopHabits = () => {
-    return habits.slice(0,-3);
+    return habits.slice(0, -3);
   };
 
   const topHabits = getTopHabits();
-  console.log(topHabits)
-  console.log(habits)
+  console.log(topHabits);
+  console.log(habits);
 
   // const latestTasks = [{}];
   useEffect(() => {
@@ -46,6 +48,8 @@ export default function Home() {
       return;
     }
     let latestTaskArrayCopy = [...latestTasksArray];
+    latestTaskArrayCopy = latestTaskArrayCopy.filter((task) => !task.completed);
+
     latestTasksArray.length > 3 &&
       setLatestTasksArray(latestTaskArrayCopy.slice(0, 3));
   }, [latestTasksArray]);
@@ -80,16 +84,64 @@ export default function Home() {
   };
 
   const latestThreeFriends = getLatestFriends();
+  useEffect(() => {
+    console.log(showMoreIndex);
+  }, [showMoreIndex]);
 
   return (
     <div className="homepage">
       <div className="tasks-homepage">
-        <h2>Top 3 tasks</h2>
+        <h2>Top 3 uncompleted tasks</h2>
 
         {latestTasksArray?.map((task, index) => (
-          <div key={index} style={{ textAlign: "center" }}>
-            <h2>{task.title}</h2>
-            <h3>{task.description}</h3>
+          <div
+            className="task-wrapper"
+            key={index}
+            style={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              padding: showMoreIndex === index ? "20px" : "10px",
+              overflow: showMoreIndex === index ? "auto" : "hidden",
+            }}
+            onClick={(e) => {
+              setShowMoreIndex((prev) => (prev === index ? null : index));
+              console.log(showMoreIndex);
+              e.stopPropagation();
+            }}
+          >
+            {showMoreIndex === index ? (
+              <div>
+                <h3>Title:</h3>
+                <div
+                  className="task-text-border"
+                  style={{ display: showMoreIndex === index }}
+                >
+                  <h3> {task.title}</h3>
+                </div>
+              </div>
+            ) : (
+              <h3>{task.title}</h3>
+            )}
+
+            {showMoreIndex === index && (
+              <div>
+                <h3>Description:</h3>{" "}
+                <div className="task-text-border">
+                  <h3>{task.description}</h3>
+                </div>
+                <h3>Time Estimate:</h3>{" "}
+                <div className="task-text-border">
+                  <h3>{task.timeEstimate} minutes</h3>
+                </div>
+                <h3>
+                  Type of activity: <br />
+                </h3>{" "}
+                <div className="task-text-border">
+                  <h3>{task.type}</h3>
+                </div>
+              </div>
+            )}
           </div>
         ))}
 
@@ -100,7 +152,7 @@ export default function Home() {
 
       <div className="habits-homepage">
         <h2>Top 3 habits</h2>
-      
+
         <div className="front-page-habit-wrapper">
           {topHabits.map((habit, index) => (
             <div className={`front-page-habits ${habit.priority}`} key={index}>
@@ -108,10 +160,8 @@ export default function Home() {
             </div>
           ))}
         </div>
-      
 
         <Link to="/habits">
-         
           <button className="nav-btn">See more </button>
         </Link>
       </div>
