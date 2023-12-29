@@ -20,7 +20,6 @@ export default function Tasks() {
   const [saveChanges, setSaveChanges] = useState(false);
   const [taskWrapperClassName, setTaskWrapperClassName] =
     useState("task-wrapper");
-  const [removeTaskIndex, setRemoveTaskIndex] = useState(null);
 
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const taskWrapperRef = useRef(null);
@@ -212,11 +211,14 @@ export default function Tasks() {
                     ? taskWrapperClassName
                     : "task-wrapper"
                 }
-                id={
-                  showMoreIndex === index
-                    ? "show-more-animation"
-                    : "show-less-animation"
-                }
+                // id={
+                //   showMoreIndex === index
+                //     ? "show-more-animation"
+                //     : "show-less-animation" &&
+                //       setTimeout(() => {
+                //         taskWrapperRef.current.id = "none";
+                //       }, 1000)
+                // }
                 ref={taskWrapperRef}
                 onClick={(e) => {
                   editTaskIndex === index && e.stopPropagation();
@@ -224,11 +226,10 @@ export default function Tasks() {
                     setShowMoreIndex((prev) => (prev === index ? null : index));
                   console.log("completed:", taskArray[index].completed);
                   console.log("shoewmoreINDEX", showMoreIndex);
-
-                  // console.log(showMore);
                 }}
                 style={{
                   flexDirection: showMoreIndex === index ? "column" : "row",
+                  height: showMoreIndex === index ? "auto" : "50px",
                   boxShadow:
                     showMoreIndex === index && "0px 10px 20px -6px #d1432b",
                   border: taskArray[index].completed && "2px solid green",
@@ -382,7 +383,6 @@ export default function Tasks() {
                           e.stopPropagation();
                         }}
                       />
-                      {removeTaskIndex === index && <h1>Are you sure</h1>}
                     </div>
                   </div>
                 </div>

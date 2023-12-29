@@ -92,13 +92,16 @@
       border-radius: 10px;
       width: 600px;
       margin: 10px;
+      min-width: 320px;
       min-height: 80px;
-      padding: 0px 80px 0px;
+      padding: 0px 15% 0px;
       text-align: center;
       background-color: var(--bg-300);
       box-shadow: inset 50px 0px 50px -50px var(--bg-200);
-      overflow: hidden;
+      overflow: auto;
       // inset -50px 0px 50px -50px var(--accent-200);
+      /* Add these styles to your CSS */
+
       h3,
       h4 {
         color: #ffffd1;
@@ -255,11 +258,12 @@
     select,
     textarea {
       @include select-input-textarea-styling(var(--text-200));
-      width: 250px;
+      min-width: 200px;
       height: 50px;
       color: black;
     }
     select {
+      text-align: center;
       option {
         color: black;
       }
