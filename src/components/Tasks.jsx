@@ -26,8 +26,7 @@ export default function Tasks() {
 
   const [sortBy, setSortBy] = useState("");
 
-  // const [savedChanges, setSavedChanges] = useState(false);
-  // function Task()
+  const [removeLastTask, setRemoveLastTask] = useState(false);
 
   useEffect(() => {
     setTaskArray(() => {
@@ -36,6 +35,13 @@ export default function Tasks() {
       return storedTaskArray || [];
     });
   }, []);
+
+  useEffect(() => {
+    // setTaskArrayToSend([...taskArray]);
+    if (taskArray.length > 0) {
+      localStorage.setItem("taskArray", JSON.stringify(taskArray));
+    }
+  }, [taskArray, saveChanges]);
 
   function taskArrayFunction(newTask) {
     console.log("Adding new task:", newTask);
@@ -49,6 +55,7 @@ export default function Tasks() {
     const newTaskArray = [...taskArray];
     newTaskArray.splice(index, 1);
     setTaskArray(newTaskArray);
+    localStorage.setItem("taskArray", JSON.stringify(newTaskArray));
   }
 
   function sort(array, element) {
@@ -103,13 +110,6 @@ export default function Tasks() {
   }, [editTaskIndex]);
 
   useEffect(() => {
-    // setTaskArrayToSend([...taskArray]);
-    if (taskArray.length > 0) {
-      localStorage.setItem("taskArray", JSON.stringify(taskArray));
-    }
-  }, [taskArray, removeTask, saveChanges]);
-
-  useEffect(() => {
     let newTaskArray = [...taskArray];
     if (sortBy) {
       setTaskArray(sort([...newTaskArray], sortBy));
@@ -153,6 +153,7 @@ export default function Tasks() {
             console.log("taskArray", taskArray);
             console.log("filteredTaskArray", filteredTaskArray);
             console.log("localstorage", localStorage.getItem("taskArray"));
+            taskArray.length === 1 && setRemoveLastTask(!removeLastTask);
           }}
         >
           Clear all todos
