@@ -41,6 +41,20 @@
 .task-page select:hover {
   cursor: pointer;
 }
+@keyframes reverse-height-animation {
+  0% {
+    height: 65%;
+  }
+  100% {
+    height: 0%;
+  }
+}
+.task-page #show-more-animation {
+  animation: height-animation 0.1s ease-in;
+}
+.task-page #show-less-animation {
+  animation: reverse-height-animation 0.1s ease-in;
+}
 .task-page .tasks {
   display: flex;
   flex-direction: column;
@@ -69,6 +83,7 @@
   text-align: center;
   background-color: var(--bg-300);
   box-shadow: inset 50px 0px 50px -50px var(--bg-200);
+  overflow: hidden;
 }
 .task-page .tasks .task-wrapper h3,
 .task-page .tasks .task-wrapper h4 {
@@ -279,6 +294,15 @@
   width: 30%;
   max-width: 1000px;
   margin: 0 auto;
+  animation: height-animation 0.1s ease-in-out;
+}
+@keyframes height-animation {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 65%;
+  }
 }
 .task-page .new-task .task-form {
   min-height: 500px;
@@ -288,6 +312,7 @@
   padding: 20px;
   box-shadow: inset 50px 0px 50px -50px var(--bg-200);
   margin-bottom: 10px;
+  animation: new-task-height 0.5s ease-in-out;
 }
 .task-page .new-task .task-form #newtask-description {
   height: 80px;

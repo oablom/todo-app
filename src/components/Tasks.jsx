@@ -212,12 +212,18 @@ export default function Tasks() {
                     ? taskWrapperClassName
                     : "task-wrapper"
                 }
+                id={
+                  showMoreIndex === index
+                    ? "show-more-animation"
+                    : "show-less-animation"
+                }
                 ref={taskWrapperRef}
                 onClick={(e) => {
                   editTaskIndex === index && e.stopPropagation();
                   !editTask &&
                     setShowMoreIndex((prev) => (prev === index ? null : index));
                   console.log("completed:", taskArray[index].completed);
+                  console.log("shoewmoreINDEX", showMoreIndex);
 
                   // console.log(showMore);
                 }}
@@ -255,7 +261,6 @@ export default function Tasks() {
                   )}
                 </div>
                 <div
-                  // className={showMore ? "show-more" : "hide"}
                   style={{
                     display: showMoreIndex === index ? "flex" : "none",
                     flexDirection: "column",

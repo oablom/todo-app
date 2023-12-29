@@ -11,6 +11,8 @@ export default function NewTask(props) {
   const [type, setType] = useState("");
   const [completed, setCompleted] = useState(false);
 
+  const [animtion, setAnimation] = useState(false);
+
   useEffect(() => {
     async function fetchTask() {
       try {
@@ -53,7 +55,12 @@ export default function NewTask(props) {
   // const inputTitle = document.getElementById("newtask-title");
 
   return (
-    <div className="new-task">
+    <div
+      className="new-task"
+      onClick={() => {
+        setAnimation(!animtion);
+      }}
+    >
       {/* <h1>NewTask Component</h1> */}
       <form className="task-form" id="task-form" onSubmit={handleSubmit}>
         <label for="title">Title:</label>
