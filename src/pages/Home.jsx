@@ -4,6 +4,7 @@ import React from "react";
 
 export default function Home() {
   const [latestTasksArray, setLatestTasksArray] = useState([]);
+  const [taskArray, setTaskArray] = useState([]);
   const [showMoreIndex, setShowMoreIndex] = useState(null);
   const [habits, setHabits] = useState(() => {
     const storedHabits = localStorage.getItem("habits");
@@ -33,8 +34,8 @@ export default function Home() {
   };
 
   const topHabits = getTopHabits();
-  console.log(topHabits);
-  console.log(habits);
+  // console.log(topHabits);
+  // console.log(habits);
 
   // const latestTasks = [{}];
   useEffect(() => {
@@ -44,14 +45,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+  
     if (!latestTasksArray) {
       return;
     }
     let latestTaskArrayCopy = [...latestTasksArray];
     latestTaskArrayCopy = latestTaskArrayCopy.filter((task) => !task.completed);
+ 
 
-    latestTasksArray.length > 3 &&
-      setLatestTasksArray(latestTaskArrayCopy.slice(0, 3));
+    latestTasksArray.length > 3 ?
+      setTaskArray(latestTaskArrayCopy.slice(0, 3)) : setTaskArray(latestTaskArrayCopy);
   }, [latestTasksArray]);
 
   const [myFriends, setMyFriends] = useState(() => {
@@ -93,7 +96,7 @@ export default function Home() {
       <div className="tasks-homepage">
         <h2>Top 3 uncompleted tasks</h2>
 
-        {latestTasksArray?.map((task, index) => (
+        {taskArray?.map((task, index) => (
           <div
             className="task-wrapper"
             key={index}
